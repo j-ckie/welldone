@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <ul>
+      Your Posts
+      {{#userPosts}}
+      <li>
+        <h2>{{title}}</h2>
+        <p>Comments: {{comments}}</p>
+        <form action="/post" method="post">
+          <input type="hidden" name="postId" value="{{id}}">
+          <button type="button" name="button">Details</button>
+        </form>
+      </li>
+      {{/userPosts}}
+      {{^userPosts}}
+      You Have No Posts
+      {{/userPosts}}
+    </ul>
+    <ul>
+      Your Favourites
+      {{#favouritePosts}}
+      <li>
+        <h2>{{title}}</h2>
+        <p>Comments: {{comments}}</p>
+        <form action="/post" method="post">
+          <input type="hidden" name="postId" value="{{id}}">
+          <button type="button" name="button">Details</button>
+        </form>
+      </li>
+      {{/favouritePosts}}
+      {{^favouritePosts}}
+      You Have No Favourites
+      {{/favouritePosts}}
+    </ul>
+  </body>
+</html>

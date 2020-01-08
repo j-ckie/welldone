@@ -11,6 +11,12 @@ const VIEWS_PATH = path.join(__dirname, "/views")
 const mustacheExpress = require("mustache-express");
 const bcrypt = require("bcrypt");
 
+//Routes
+const postRouter = require('./routes/post')
+app.use('/post',postRouter)
+
+const acctRouter = require('./routes/acct')
+
 app.use(express.static(path.join(__dirname, "partials")));
 app.engine('mustache', mustacheExpress(VIEWS_PATH + '/partials', '.mustache'))
 app.set("views", "./views");
