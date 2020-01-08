@@ -23,3 +23,20 @@ app.use(cors())
 app.listen(3000, () => {
     console.log("Server is live on http://localhost:3000");
 });
+
+// ############ render homepage ############
+app.get("/", (req, res) => res.render("index"))
+// ############ end homepage ############
+
+// ############ user registration and login ############
+const {
+    register,
+    login
+} = require("./handlers/users");
+
+app.post("/register", register);
+app.post("/login", login);
+
+app.get("/register", (req, res) => res.render("register"))
+app.get("/login", (req, res) => res.render("login"))
+// ########### end user registration and login ##########
