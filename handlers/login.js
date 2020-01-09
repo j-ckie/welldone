@@ -18,7 +18,7 @@ router.post("/", (req, res) => {
         email: email,
         password: password
     }
-    // console.log("FOO")
+    console.log("FOO")
     const { valid, errors } = validateLogin(loginData)
     if (!valid) return res.status(400).json(errors)
 
@@ -28,12 +28,12 @@ router.post("/", (req, res) => {
         }
     }).then(persistedUser => {
         if (persistedUser) {
-            jwt.sign({ email: email }, "everythingisfine", function (error, token) {
-                if (token) {
-                    bcrypt.compare(password, persistedUser.password)
-                        .then(success => {
-                            if (success) {
-                                console.log("FOO")
+            bcrypt.compare(password, persistedUser.password)
+                .then(success => {
+                    if (success) {
+                        // res.redirect("/index");
+                        jwt.sign({ email: email }, "everythingisfine", function (error, token) {
+                            if (token) {
                                 res.json({
                                     email: persistedUser.email,
                                     name: persistedUser.name,
@@ -41,15 +41,16 @@ router.post("/", (req, res) => {
                                     token: token,
                                     status: 200
                                 })
+                                // res.redirect(200, "/index")
+                                console.log(res)
                             } else {
-                                res.render("login", { message: "invalid information" })
+                                res.status(500).json({ message: "Unable to generate token" });
                             }
-                        }).then(() => res.redirect("/index"))
-
-                } else {
-                    res.status(500).json({ message: "Unable to generate token" });
-                }
-            })
+                        })
+                    } else {
+                        res.render("login", { message: "invalid information" })
+                    }
+                })
         } else {
             let invalidLogin = "Invalid login attempt";
             res.status(500).json({ message: invalidLogin });
