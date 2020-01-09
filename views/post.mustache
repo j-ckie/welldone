@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {{#post}}
+      <h2>{{title}}</h2>
+      <p>{{body}}</p>
+      <p>{{createdAt}}</p>
+    {{/post}}
+    <ul>
+    {{#comments}}
+    Comments
+    <li>
+      <h3>{{title}}</h3>
+      <p>{{body}}</p>
+      <p>{{createdAt}}</p>
+    </li>
+    {{/comments}}
+    {{^comments}}
+    <li>This Post Has No Comments</li>
+    {{/comments}}
+    </ul>
+  </body>
+</html>
