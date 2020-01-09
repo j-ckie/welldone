@@ -125,6 +125,10 @@
     margin-top: 15px;
   }
 
+  .nav-links-text {
+    font-size: 0.8rem;
+  }
+
 /* ----------------------------- DESKTOP STYLING ----------------------------- */
 
 @media (min-width: 851px) {
@@ -157,3 +161,4 @@
   }
 
 }
+
