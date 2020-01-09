@@ -1,3 +1,4 @@
+//Variable Set-Up
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -11,38 +12,25 @@ const VIEWS_PATH = path.join(__dirname, "/views")
 const mustacheExpress = require("mustache-express");
 const bcrypt = require("bcrypt");
 
-// ############ middleware to auth and assign token ############
-const auth = require("./util/auth"); // add this before ability to create post to authorize if user is valid
-// ex: app.post("/post", auth, createPost) 
-// ask Jackie for specifics
-// ########## end middleware to auth and assign token ##########
+//Routes
+const postRouter = require('./routes/post')
+app.use('/post',postRouter)
 
+const acctRouter = require('./routes/acct')
+app.use('/acct',acctRouter)
+
+//Mustache
 app.use(express.static(path.join(__dirname, "partials")));
 app.engine('mustache', mustacheExpress(VIEWS_PATH + '/partials', '.mustache'))
 app.set("views", "./views");
 app.set("view engine", "mustache");
 
+//Parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 
+//Server Connection
 app.listen(3000, () => {
     console.log("Server is live on http://localhost:3000");
 });
-
-// ############   homepage   ############
-app.get("/", (req, res) => res.render("index"))
-// ############ end homepage ############
-
-// ############ user registration and login ############
-const {
-    register,
-    login
-} = require("./handlers/users");
-
-app.post("/register", register);
-app.post("/login", login);
-
-app.get("/register", (req, res) => res.render("register"))
-app.get("/login", (req, res) => res.render("login"))
-// ########## end user registration and login ##########
