@@ -6,66 +6,69 @@
 
 <!--HEADER-->
 
-<div class="row justify-content-center">
-    <nav class="nav">
+<div id="header-margin-top" class="row d-flex justify-content-center">
+    <div class="col">
         <a class="nav-link active text-body" id="welldone-logo" href="#">Welldone</a>
         <a class="nav-link active text-body" id="welldone-letter-logo" href="#">W</a>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" id="searchbar" type="search" placeholder="Search" aria-label="Search">
-            <button type="submit"><img id="searchglass" src="./images/iconfinder_magnifying-glass_226571.png"></button>
-        </form>
-        <a class="nav-link text-secondary nav-links-mobile" href="#">Become a member</a>
-        <a class="nav-link text-success nav-links-mobile" href="#">Sign In</a>
-        <a class="nav-link text-success" id="get-started-button" href="#">Get started</a>
-    </nav>
+    </div>
+    <div class="row d-flex">
+        <div class="col nav-links-mobile">
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" id="searchbar" type="search" placeholder="Search" aria-label="Search">
+                <button type="submit"><img id="searchglass" src="./images/iconfinder_magnifying-glass_226571.png"></button>
+            </form>
+        </div>
+            <a class="nav-link text-secondary nav-links-mobile-hidden" href="#">Become a member</a>
+            <a class="nav-link text-success nav-links-mobile-hidden" href="#">Sign In</a>
+            <a id="get-started-button" class="nav-link text-success" href="#">Get started</a>
+    </div>
 </div>
 
 <!--CAROUSEL NAV BAR-->
 
-<div class="row justify-content-center bg-light">
-    <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <a class="nav-link text-muted" href="#">ONEZERO</a>
-            </div>
-            <div class="carousel-item">
-                <a class="nav-link text-secondary" href="#">ELEMENTAL</a>
-            </div>
-            <div class="carousel-item">
-                <a class="nav-link text-secondary" href="#">ZEN</a>
-            </div>
-            <div class="carousel-item">
-                <a class="nav-link text-secondary" href="#">FORGE</a>
-            </div>
-            <div class="carousel-item">
-                <a class="nav-link text-secondary" href="#">HUMAN PARTS</a>
-            </div>
-            <div class="carousel-item">
-                <a class="nav-link text-secondary" href="#">ELEMENTAL</a>
-            </div>
-            <div class="carousel-item">
-                <a class="nav-link text-secondary" href="#">HEATED</a>
-            </div>
-            <div class="carousel-item">
-                <a class="nav-link text-secondary" href="#">MODUS</a>
-            </div>
-            <div class="carousel-item">
-                <a class="nav-link text-secondary" href="#">ZORA</a>
-            </div>
-            <div class="carousel-item">
-                <a class="nav-link text-secondary" href="#">MORE</a>
-            </div>
+<div id="carousel" class="container-fluid">
+    <div id="carousel-1" class="carousel slide abreast" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-1" data-slide-to="1"></li>
+        <li data-target="#carousel-1" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <a class="nav-link text-muted" href="#">ONEZERO</a>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-        </a>
+        <div class="item">
+            <a class="nav-link text-secondary" href="#">ELEMENTAL</a>
+        </div>
+        <div class="item">
+            <a class="nav-link text-secondary" href="#">ZEN</a>
+        </div>
+        <div class="item">
+            <a class="nav-link text-secondary" href="#">FORGE</a>
+        </div>
+        <div class="item">
+            <a class="nav-link text-secondary" href="#">HUMAN PARTS</a>
+        </div>
+        <div class="item">
+            <a class="nav-link text-secondary" href="#">HEATED</a>
+        </div>
+        <div class="item">
+            <a class="nav-link text-secondary" href="#">MODUS</a>
+        </div>
+        <div class="item">
+            <a class="nav-link text-secondary" href="#">ZORA</a>
+        </div>
+        <div class="item">
+            <a class="nav-link text-secondary" href="#">MORE</a>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#carousel-1" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span class="sr-only">Previous</span></a>
+      <a class="right carousel-control" href="#carousel-1" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">Next</span></a>
     </div>
 </div>
+
+    <div class="row d-flex py-3"></div>
+
 
 <!--CALL TO ACTION, DESKTOP-->
 
@@ -75,11 +78,11 @@
       </div>
       <div class="col py-5">
         <h1>Never miss a story</h1>
-        <p class="text-secondary">Sign up for Welldone’s Daily Digest and get the best of Welldone, tailored for you.</p>
+        <p class="text-secondary">Sign up for Welldone’s Daily Digest and get the best of Welldone, tailored for you. Yum!</p>
         <form>
-            <div class="form-group">
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email Address">
-              <button class="btn btn-dark" type="submit">Sign Up</button>
+            <div class="form-group row d-flex">
+              <input type="email" class="email-line" placeholder="Email Address">
+              <button class="btn btn-dark mx-5" type="submit">Sign Up</button>
             </div>
         </form>
       </div>
@@ -91,11 +94,11 @@
     <div class="col">
       <img class="img-fluid" src="./images/welldonesteak.jpg">
       <h1>Never miss a story</h1>
-      <p class="text-secondary">Sign up for Welldone’s Daily Digest and get the best of Welldone, tailored for you.</p>
+      <p class="text-secondary">Sign up for Welldone’s Daily Digest and get the best of Welldone, tailored for you. Yum!</p>
       <form>
-          <div class="form-group">
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email Address">
-            <button class="btn btn-dark" type="submit">Sign Up</button>
+          <div class="form-inline" id="email-row-mobile">
+            <input type="email" class="email-line" placeholder="Email Address">
+            <button class="btn btn-dark mb-2" type="submit">Sign Up</button>
           </div>
       </form>
     </div>
@@ -134,11 +137,6 @@
                     {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
                 </p>
             </div>
-            <div class="col-1 bookmark">
-                <p>
-                    <span class="bookmark-icon">&#9750;</span>
-                </p>
-            </div>
         </div>
     </div>
     <div class="col-4">
@@ -163,11 +161,6 @@
                 </p>
                 <p class="post-secondary-text text-secondary">
                     {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
-                </p>
-            </div>
-            <div class="col-1 bookmark">
-                <p>
-                    <span class="bookmark-icon">&#9750;</span>
                 </p>
             </div>
         </div>
@@ -210,11 +203,6 @@
                     {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
                 </p>
             </div>
-            <div class="col-1 bookmark">
-                <p>
-                    <span class="bookmark-icon">&#9750;</span>
-                </p>
-            </div>
         </div>
     </div>
     <div class="col-4">
@@ -239,11 +227,6 @@
                 </p>
                 <p class="post-secondary-text text-secondary">
                     {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
-                </p>
-            </div>
-            <div class="col-1 bookmark">
-                <p>
-                    <span class="bookmark-icon">&#9750;</span>
                 </p>
             </div>
         </div>
@@ -286,11 +269,6 @@
                     {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
                 </p>
             </div>
-            <div class="col-1 bookmark">
-                <p>
-                    <span class="bookmark-icon">&#9750;</span>
-                </p>
-            </div>
         </div>
     </div>
     <div class="col-4">
@@ -315,11 +293,6 @@
                 </p>
                 <p class="post-secondary-text text-secondary">
                     {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
-                </p>
-            </div>
-            <div class="col-1 bookmark">
-                <p>
-                    <span class="bookmark-icon">&#9750;</span>
                 </p>
             </div>
         </div>
@@ -362,11 +335,6 @@
                     {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
                 </p>
             </div>
-            <div class="col-1 bookmark">
-                <p>
-                    <span class="bookmark-icon">&#9750;</span>
-                </p>
-            </div>
         </div>
     </div>
     <div class="col-4">
@@ -393,11 +361,6 @@
                     {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
                 </p>
             </div>
-            <div class="col-1 bookmark">
-                <p>
-                    <span class="bookmark-icon">&#9750;</span>
-                </p>
-            </div>
         </div>
     </div>
     <div class="col-4">
@@ -406,7 +369,6 @@
 </div>
 
 <div class="row d-flex py-3"></div>
-
 
 
 {{footer}}
