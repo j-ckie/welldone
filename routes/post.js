@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const PostController = require('../controllers/postController')
+const PostController = require('../handlers/postController')
 
 router.get('/',PostController.getPost)
 

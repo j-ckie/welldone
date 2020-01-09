@@ -1,5 +1,6 @@
-const models = require ('./models')
+const models = require('../models')
 
+//Grabs Users Posts and sends them to Page
 module.exports.getYourPosts = (req,res,next) => {
   models.User.getByPk(userId, {
     include: [
@@ -25,6 +26,7 @@ module.exports.getYourPosts = (req,res,next) => {
   })
 }
 
+//Grabs Users Favourite Posts and sends them to Page
 module.exports.getYourFavourites = (req,res,next) => {
   models.User.getByPk(userId, {
     include: [
