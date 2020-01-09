@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+    {{> head}}
+    {{> navbar}}
+    <body>
+        <div class="container">
+            <form method="POST" action="/register">
+                <input type="text" name="email" placeholder="Email address" />
+                <input type="text" name="name" placeholder="Full name" />
+                <input type="password" name="password" placeholder="Password" />
+                <input type="password" name="confirmPassword" placeholder="Confirm password" />
+                <button>Submit</button>
+            </form>
+        </div>
+    {{>footer}}
+    </body>
+</html>

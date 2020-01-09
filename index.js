@@ -12,12 +12,16 @@ const VIEWS_PATH = path.join(__dirname, "/views")
 const mustacheExpress = require("mustache-express");
 const bcrypt = require("bcrypt");
 
+//======== registration ========
+const registrationRouter = require('./handlers/register');
+app.use("/register", registrationRouter);
+
 //Routes
 const postRouter = require('./routes/post')
-app.use('/post',postRouter)
+app.use('/post', postRouter)
 
 const acctRouter = require('./routes/acct')
-app.use('/acct',acctRouter)
+app.use('/acct', acctRouter)
 
 //Mustache
 app.use(express.static(path.join(__dirname, "partials")));
