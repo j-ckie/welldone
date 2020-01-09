@@ -1,0 +1,331 @@
+*{
+  margin:0;
+  padding:0;
+  /* box-sizing: border-box; */
+
+}
+body{
+  background-color: rgba(166, 176, 219, 0.623);
+  font-family:sans-serif;
+  overflow: hidden;
+}
+
+
+
+@media only screen and (min-width: 728px){
+header{
+  box-shadow: 0px 3px 10px rgba(53, 49, 49, 0.3);
+  position: sticky;
+  top: 0px;
+  background-color: rgba(56, 63, 68, 0.521);
+  
+}
+nav{
+  height: 75px;
+  margin:auto;
+  width:90%;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav {
+ font-size: 1.1rem;
+ flex:1;
+ vertical-align: sub;
+}
+nav b{
+  font-size: 1.6rem;
+}
+nav {
+  list-style:none;
+  display: flex;
+  justify-content: space-between;
+}
+nav a{
+  color:black;
+  text-decoration: none;
+}
+nav i{
+  color: rgba(128, 128, 128, 0.705);
+  font-size: 16px;
+}
+
+hr{
+  margin:10px auto 0px auto;
+  width:650px;
+}
+section a{ 
+  color:rgba(22, 21, 21, 0.9);
+  text-decoration: none;
+  padding:10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+section{
+  margin:40px auto 0px auto;
+  width:650px;
+  
+}
+section h1{
+  font-size: 40px;
+ font-family: 'Catamaran', sans-serif;;
+}
+section h1 a{
+  color:rgb(100, 95, 95);
+}
+section h1 a:hover{
+  color:black;
+}
+
+section h1 span{
+  font-size: small;
+  font-weight:400;
+  border: 1px solid rgb(90, 87, 87);
+  border-radius: 4px;
+  vertical-align: middle;
+  margin:30px;
+  padding:.1px 2px;
+}
+section h1 span:hover{
+  border: 1px solid black;
+}
+
+section:nth-child(2){
+  margin:70px auto 10px auto;
+  /* width:720px; */
+  font-weight: 400px;
+}
+section:nth-child(2) a{
+  padding:0px;
+  color:grey;
+}
+
+section:nth-child(2) a:hover{
+  color:rgb(58, 54, 54);
+}
+section:nth-child(2) a:active{
+  color:blue;
+  text-decoration: underline;
+}
+section:nth-child(2) span{
+  padding:15px;
+}
+section:nth-child(4){
+  color:rgb(44, 42, 42);
+  text-shadow: -1px -1px grey;
+  font-style: italic;
+  margin: 40px auto 20px auto;
+}
+
+section:nth-child(5){
+  margin:20px auto 10px auto;
+  font-size: 14px;
+  border-top: 1px ridge rgba(121, 114, 114, 0.315);
+  height: 370px;
+  width:650px;
+  overflow: scroll;
+}
+section:nth-child(5) div{
+  padding: 20px 10px 25px 10px;
+  border-bottom: 1px ridge rgba(121, 114, 114, 0.315);;
+  border-left: 1px ridge rgba(121, 114, 114, 0.315);
+  border-right: 1px ridge rgba(121, 114, 114, 0.315);
+ 
+}
+section:nth-child(5) div a:hover{
+  text-decoration: underline;
+}
+section:nth-child(5) p a{
+  color: grey;
+  font-size: 14px; 
+}
+}
+
+@media only screen and (max-width: 728px){
+  body{
+    overflow: hidden;
+    height:100vh;
+  }
+  header{
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0px;
+    background-color: whitesmoke;
+  }
+  nav{
+    height: 72px;
+    margin:auto;
+    width:90%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav {
+   font-size: 1.1rem;
+   flex:1;
+   vertical-align: sub;
+  }
+  nav b{
+    font-size: 1.6rem;
+  }
+  nav {
+    list-style:none;
+    display: flex;
+    justify-content: space-between;
+  }
+  nav a{
+    color:black;
+    text-decoration: none;
+  }
+  nav i{
+    color: rgba(128, 128, 128, 0.705);
+    font-size: 16px;
+  }
+  
+  hr{
+    margin:10px auto 0px auto;
+    width:90vw;
+  }
+  section a{ 
+    color:rgba(22, 21, 21, 0.9);
+    text-decoration: none;
+    padding:10px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  section{
+    margin:35px auto 0px auto;
+    width:90vw;
+    
+  }
+  section h1{
+    font-size: 40px;
+   font-family: 'Catamaran', sans-serif;;
+  }
+  section h1 a{
+    color:rgb(100, 95, 95);
+  }
+  section h1 a:hover{
+    color:black;
+  }
+  
+  section h1 span {
+    font-size: small;
+    font-weight:400;
+    border: 1px solid rgb(90, 87, 87);
+    border-radius: 4px;
+    vertical-align: middle;
+    margin:30px;
+    padding:2px 0px;
+    display: inline-block;
+  }
+  section h1 span:hover{
+    border: 1px solid black;
+  }
+  
+  section:nth-child(2){
+    margin:50px auto 10px auto;
+    font-weight: 400px;
+  }
+  section:nth-child(2) a{
+    padding:0px;
+    color:grey;
+  }
+  
+  section:nth-child(2) a:hover{
+    color:rgb(58, 54, 54);
+  }
+  section:nth-child(2) a:active{
+    color:blue;
+    text-decoration: underline;
+  }
+  section:nth-child(2) span{
+    padding:15px;
+  }
+  section:nth-child(4){
+    color:rgb(44, 42, 42);
+    text-shadow: -1px -1px grey;
+    font-style: italic;
+    margin:40px auto 20px auto;
+    
+  }
+  
+  section:nth-child(5) {
+    margin:20px auto 0px auto;
+    font-size: 14px;
+    border-top: 1px ridge rgba(121, 114, 114, 0.315);
+    height:55.5vh;
+    width:90vw;
+    overflow:scroll;
+    }
+  section:nth-child(5).noscroll::-webkit-scrollbar{
+    display: none;
+  }
+  section:nth-child(5) div{
+    padding: 20px 10px 25px 10px;
+    border-bottom: 1px ridge rgba(121, 114, 114, 0.315);;
+    border-left: 1px ridge rgba(121, 114, 114, 0.315);
+    border-right: 1px ridge rgba(121, 114, 114, 0.315);
+   
+  }
+  section:nth-child(5) div a:hover{
+    text-decoration: underline;
+  }
+  section:nth-child(5) p a{
+    color: grey;
+    font-size: 14px; 
+  }
+  }
+  @media only screen and (max-width:400px){
+    section h1 span {
+   
+      
+      margin:0px 10px 10px 10px; 
+    }
+  }
+  @media only screen and (max-height:750px){
+    section:nth-child(5) {
+      margin:20px auto 0px auto;
+      font-size: 14px;
+      border-top: 1px ridge rgba(121, 114, 114, 0.315);
+      height:48vh;
+      width:90vw;
+      overflow:scroll;
+      }
+  }
+  @media only screen and (max-height:670px){
+    nav{
+      height: 60px;
+      margin:auto;
+      width:90%;
+      display:flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    section:nth-child(5) {
+      margin:20px auto 0px auto;
+      font-size: 14px;
+      border-top: 1px ridge rgba(121, 114, 114, 0.315);
+      height:43.5vh;
+      width:90vw;
+      overflow:scroll;
+      }
+  }
+  @media only screen and (max-height:600px){
+    nav{
+      height: 50px;
+      margin:auto;
+      width:90%;
+      display:flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    section:nth-child(5) {
+      margin:20px auto 0px auto;
+      font-size: 14px;
+      border-top: 1px ridge rgba(121, 114, 114, 0.315);
+      height:37vh;
+      width:90vw;
+      overflow:scroll;
+      }
+  }
