@@ -35,47 +35,48 @@ exports.register = (req, res) => {
         where: {
             handle: req.body.handle
         }
-    }).then(user => {
-        if (user) res.status(500).json({ message: "Handle already exists" })
-        else {
-            let handle = req.body.handle,
-                password = req.body.password,
-                email = req.body.email;
-            bcrypt.hash(password, SALT_ROUNDS).then(hash => {
-                let newUser = models.Users.build({
-                    handle: handle,
-                    password: hash,
-                    email: email
-                })
-                newUser.save().then(() => res.redirect("/login"))
-                    .then(data => {
-                        userID = data.user.id // checks and sets user id. confirm if this follows columns on table later
-                        return data.user.getIdToken();
+    })
+        .then(user => {
+            if (user) res.status(500).json({ message: "Handle already exists" })
+            else {
+                let handle = req.body.handle,
+                    password = req.body.password,
+                    email = req.body.email;
+                bcrypt.hash(password, SALT_ROUNDS).then(hash => {
+                    let newUser = models.Users.build({
+                        handle: handle,
+                        password: hash,
+                        email: email
                     })
-                    .then(idToken => {
-                        token = idToken;
-                        const userCredentials = {
-                            handle: newUser.handle,
-                            email: newUser.email,
-                            createdAt: new Date().toISOString(),
-                            userID
-                            // imgURL: `stuff`
-                        };
-                        userCredentials.save().then(() => {
-                            return res.status(201).json({ token })
-                        }).catch(err => console.error(err))
-                    })
-                    .catch(err => {
-                        console.error(err);
-                        if (err.code === "auth/email-already-in-use") {
-                            return res.status(400).json({ email: "Email is already in use" });
-                        } else {
-                            return res.status(400).json({ general: "Something went wrong, please try again" });
-                        }
-                    });
-            });
-        }
-    });
+                    newUser.save().then(() => res.redirect("/login"))
+                        .then(data => {
+                            userID = data.user.id // checks and sets user id. confirm if this follows columns on table later
+                            return data.user.getIdToken();
+                        })
+                        .then(idToken => {
+                            token = idToken;
+                            const userCredentials = {
+                                handle: newUser.handle,
+                                email: newUser.email,
+                                createdAt: new Date().toISOString(),
+                                userID
+                                // imgURL: `stuff`
+                            };
+                            userCredentials.save().then(() => {
+                                return res.status(201).json({ token })
+                            }).catch(err => console.error(err))
+                        })
+                        .catch(err => {
+                            console.error(err);
+                            if (err.code === "auth/email-already-in-use") {
+                                return res.status(400).json({ email: "Email is already in use" });
+                            } else {
+                                return res.status(400).json({ general: "Something went wrong, please try again" });
+                            }
+                        });
+                });
+            }
+        });
 }
 
 // console.log(validateRegistration({

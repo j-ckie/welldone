@@ -5,8 +5,6 @@ const isEmail = email => {
     else return false;
 };
 
-// console.log(isEmail("test"))
-
 // validate registration data
 exports.validateRegistration = data => { // exports.FUNCTIONNAME exports function in same line
     let errors = {};

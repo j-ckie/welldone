@@ -1,13 +1,29 @@
-const jwt = require("")
+const jwt = require("jsonwebtoken");
+const models = require("../models");
 
 module.exports = (req, res, next) => {
-    let idToken;
-
-    if (req.headers.authorization && req.headers.authorization.startsWith("Bearer ")) {
-        idToken = req.headers.authorization.split("Bearer ")[1];
-    } else {
-        console.error("No token found");
-        return res.status(403).json({ error: "Unauthorized" });
-    }
-
+    let handle = req.body.handle
+    models.Users.findOne({
+        where: {
+            handle: handle
+        }
+    })
+        .then(user => {
+            jwt.sign({ handle: handle }, "secret", (error, token) => {
+                if (token) {
+                    res.json({
+                        handle: handle,
+                        token: token,
+                        id: user.id,
+                        name: user.name,
+                        email: user.email,
+                        status: 200
+                    })
+                    return next();
+                } else {
+                    res.status(500).json({ message: "Unable to generate token" })
+                }
+            });
+        })
+        .catch(err => console.error(err));
 }

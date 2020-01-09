@@ -3,7 +3,7 @@
         "username": "dslqtglr",
         "password": "unYCo1P9sMJDGIJlOVxWLCRzsXB7aN_7",
         "database": "dslqtglr",
-        "host": "http://rajje.db.elephantsql.com/",
+        "host": "rajje.db.elephantsql.com",
         "dialect": "postgres",
         "operatorsAliases": false
     },
@@ -11,7 +11,7 @@
         "username": "dslqtglr",
         "password": "unYCo1P9sMJDGIJlOVxWLCRzsXB7aN_7",
         "database": "dslqtglr",
-        "host": "http://rajje.db.elephantsql.com/",
+        "host": "rajje.db.elephantsql.com",
         "dialect": "postgres",
         "operatorsAliases": false
     },
@@ -19,7 +19,7 @@
         "username": "dslqtglr",
         "password": "unYCo1P9sMJDGIJlOVxWLCRzsXB7aN_7",
         "database": "dslqtglr",
-        "host": "http://rajje.db.elephantsql.com/",
+        "host": "rajje.db.elephantsql.com",
         "dialect": "postgres",
         "operatorsAliases": false
     }
