@@ -1,11 +1,412 @@
-<!doctype html>
-<html>
-    {{> head}}
-    {{> navbar}}
-    <body>
-        <div class="container">
-            {{! content here }}
+{{head}}
+
+<div class="container-fluid">
+<div class="row d-flex justify-content-center">
+<div id="desktop-container-outer-space" class="col-12 col-md-7">
+
+<!--HEADER-->
+
+<div class="row justify-content-center">
+    <nav class="nav">
+        <a class="nav-link active text-body" id="welldone-logo" href="#">Welldone</a>
+        <a class="nav-link active text-body" id="welldone-letter-logo" href="#">W</a>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" id="searchbar" type="search" placeholder="Search" aria-label="Search">
+            <button type="submit"><img id="searchglass" src="./images/iconfinder_magnifying-glass_226571.png"></button>
+        </form>
+        <a class="nav-link text-secondary nav-links-mobile" href="#">Become a member</a>
+        <a class="nav-link text-success nav-links-mobile" href="#">Sign In</a>
+        <a class="nav-link text-success" id="get-started-button" href="#">Get started</a>
+    </nav>
+</div>
+
+<!--CAROUSEL NAV BAR-->
+
+<div class="row justify-content-center bg-light">
+    <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a class="nav-link text-muted" href="#">ONEZERO</a>
+            </div>
+            <div class="carousel-item">
+                <a class="nav-link text-secondary" href="#">ELEMENTAL</a>
+            </div>
+            <div class="carousel-item">
+                <a class="nav-link text-secondary" href="#">ZEN</a>
+            </div>
+            <div class="carousel-item">
+                <a class="nav-link text-secondary" href="#">FORGE</a>
+            </div>
+            <div class="carousel-item">
+                <a class="nav-link text-secondary" href="#">HUMAN PARTS</a>
+            </div>
+            <div class="carousel-item">
+                <a class="nav-link text-secondary" href="#">ELEMENTAL</a>
+            </div>
+            <div class="carousel-item">
+                <a class="nav-link text-secondary" href="#">HEATED</a>
+            </div>
+            <div class="carousel-item">
+                <a class="nav-link text-secondary" href="#">MODUS</a>
+            </div>
+            <div class="carousel-item">
+                <a class="nav-link text-secondary" href="#">ZORA</a>
+            </div>
+            <div class="carousel-item">
+                <a class="nav-link text-secondary" href="#">MORE</a>
+            </div>
         </div>
-    {{>footer}}
-    </body>
-</html>
+        <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+<!--CALL TO ACTION, DESKTOP-->
+
+  <div id="call-to-action-desktop" class="row bg-light">
+      <div class="col">
+        <img class="img-fluid" src="./images/welldonesteak.jpg">
+      </div>
+      <div class="col py-5">
+        <h1>Never miss a story</h1>
+        <p class="text-secondary">Sign up for Welldone’s Daily Digest and get the best of Welldone, tailored for you.</p>
+        <form>
+            <div class="form-group">
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email Address">
+              <button class="btn btn-dark" type="submit">Sign Up</button>
+            </div>
+        </form>
+      </div>
+  </div>
+
+<!--CALL TO ACTION, MOBILE-->
+
+<div id="call-to-action-mobile" class="row bg-light">
+    <div class="col">
+      <img class="img-fluid" src="./images/welldonesteak.jpg">
+      <h1>Never miss a story</h1>
+      <p class="text-secondary">Sign up for Welldone’s Daily Digest and get the best of Welldone, tailored for you.</p>
+      <form>
+          <div class="form-group">
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email Address">
+            <button class="btn btn-dark" type="submit">Sign Up</button>
+          </div>
+      </form>
+    </div>
+</div>
+
+<!--TECHNOLOGY-->
+
+<div class="row d-flex py-3"></div>
+
+<div class="row d-flex">
+    <div id="articles-category" class="col-9">
+        <a class="text-body" href="#"><b>Technology</b></a>
+    </div>
+    <div class="col-3">
+        <a class="text-secondary" href="#">More ></a>
+    </div>
+</div>
+<div class="row d-flex">
+    <hr class="article-hr">
+</div>
+
+<div class="row d-flex">
+    <div class="col-8">
+        <p class="post-title-text">
+            {{Post Title}}
+        </p>
+        <p class="text-secondary post-secondary-text">
+            {{Post Opener}}
+        </p>
+        <div class="row d-flex">
+            <div class="col-10">
+                <p class="author-category-text">
+                    {{Author}} in {{Category}}
+                </p>
+                <p class="post-secondary-text text-secondary">
+                    {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
+                </p>
+            </div>
+            <div class="col-1 bookmark">
+                <p>
+                    <span class="bookmark-icon">&#9750;</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <img src="./images/pcImage.jpg">
+    </div>
+</div>
+
+<div class="row d-flex py-3"></div>
+
+<div class="row d-flex">
+    <div class="col-8">
+        <p class="post-title-text">
+            {{Post Title}}
+        </p>
+        <p class="text-secondary post-secondary-text">
+            {{Post Opener}}
+        </p>
+        <div class="row d-flex">
+            <div class="col-10">
+                <p class="author-category-text">
+                    {{Author}} in {{Category}}
+                </p>
+                <p class="post-secondary-text text-secondary">
+                    {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
+                </p>
+            </div>
+            <div class="col-1 bookmark">
+                <p>
+                    <span class="bookmark-icon">&#9750;</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <img src="./images/pcImage.jpg">
+    </div>
+</div>
+
+<div class="row d-flex py-3"></div>
+
+<!--STARTUPS-->
+
+<div class="row d-flex">
+    <div id="articles-category" class="col-9">
+        <a class="text-body" href="#"><b>Startups</b></a>
+    </div>
+    <div class="col-3">
+        <a class="text-secondary" href="#">More ></a>
+    </div>
+</div>
+<div class="row d-flex">
+    <hr class="article-hr">
+</div>
+
+<div class="row d-flex">
+    <div class="col-8">
+        <p class="post-title-text">
+            {{Post Title}}
+        </p>
+        <p class="text-secondary post-secondary-text">
+            {{Post Opener}}
+        </p>
+        <div class="row d-flex">
+            <div class="col-10">
+                <p class="author-category-text">
+                    {{Author}} in {{Category}}
+                </p>
+                <p class="post-secondary-text text-secondary">
+                    {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
+                </p>
+            </div>
+            <div class="col-1 bookmark">
+                <p>
+                    <span class="bookmark-icon">&#9750;</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <img src="./images/pcImage.jpg">
+    </div>
+</div>
+
+<div class="row d-flex py-3"></div>
+
+<div class="row d-flex">
+    <div class="col-8">
+        <p class="post-title-text">
+            {{Post Title}}
+        </p>
+        <p class="text-secondary post-secondary-text">
+            {{Post Opener}}
+        </p>
+        <div class="row d-flex">
+            <div class="col-10">
+                <p class="author-category-text">
+                    {{Author}} in {{Category}}
+                </p>
+                <p class="post-secondary-text text-secondary">
+                    {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
+                </p>
+            </div>
+            <div class="col-1 bookmark">
+                <p>
+                    <span class="bookmark-icon">&#9750;</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <img src="./images/pcImage.jpg">
+    </div>
+</div>
+
+<div class="row d-flex py-3"></div>
+
+<!--CREATIVITY-->
+
+<div class="row d-flex">
+    <div id="articles-category" class="col-9">
+        <a class="text-body" href="#"><b>Creativity</b></a>
+    </div>
+    <div class="col-3">
+        <a class="text-secondary" href="#">More ></a>
+    </div>
+</div>
+<div class="row d-flex">
+    <hr class="article-hr">
+</div>
+
+<div class="row d-flex">
+    <div class="col-8">
+        <p class="post-title-text">
+            {{Post Title}}
+        </p>
+        <p class="text-secondary post-secondary-text">
+            {{Post Opener}}
+        </p>
+        <div class="row d-flex">
+            <div class="col-10">
+                <p class="author-category-text">
+                    {{Author}} in {{Category}}
+                </p>
+                <p class="post-secondary-text text-secondary">
+                    {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
+                </p>
+            </div>
+            <div class="col-1 bookmark">
+                <p>
+                    <span class="bookmark-icon">&#9750;</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <img src="./images/pcImage.jpg">
+    </div>
+</div>
+
+<div class="row d-flex py-3"></div>
+
+<div class="row d-flex">
+    <div class="col-8">
+        <p class="post-title-text">
+            {{Post Title}}
+        </p>
+        <p class="text-secondary post-secondary-text">
+            {{Post Opener}}
+        </p>
+        <div class="row d-flex">
+            <div class="col-10">
+                <p class="author-category-text">
+                    {{Author}} in {{Category}}
+                </p>
+                <p class="post-secondary-text text-secondary">
+                    {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
+                </p>
+            </div>
+            <div class="col-1 bookmark">
+                <p>
+                    <span class="bookmark-icon">&#9750;</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <img src="./images/pcImage.jpg">
+    </div>
+</div>
+
+<div class="row d-flex py-3"></div>
+
+<!--CULTURE-->
+
+<div class="row d-flex">
+    <div id="articles-category" class="col-9">
+        <a class="text-body" href="#"><b>Culture</b></a>
+    </div>
+    <div class="col-3">
+        <a class="text-secondary" href="#">More ></a>
+    </div>
+</div>
+<div class="row d-flex">
+    <hr class="article-hr">
+</div>
+
+<div class="row d-flex">
+    <div class="col-8">
+        <p class="post-title-text">
+            {{Post Title}}
+        </p>
+        <p class="text-secondary post-secondary-text">
+            {{Post Opener}}
+        </p>
+        <div class="row d-flex">
+            <div class="col-10">
+                <p class="author-category-text">
+                    {{Author}} in {{Category}}
+                </p>
+                <p class="post-secondary-text text-secondary">
+                    {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
+                </p>
+            </div>
+            <div class="col-1 bookmark">
+                <p>
+                    <span class="bookmark-icon">&#9750;</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <img src="./images/pcImage.jpg">
+    </div>
+</div>
+
+<div class="row d-flex py-3"></div>
+
+<div class="row d-flex">
+    <div class="col-8">
+        <p class="post-title-text">
+            {{Post Title}}
+        </p>
+        <p class="text-secondary post-secondary-text">
+            {{Post Opener}}
+        </p>
+        <div class="row d-flex">
+            <div class="col-10">
+                <p class="author-category-text">
+                    {{Author}} in {{Category}}
+                </p>
+                <p class="post-secondary-text text-secondary">
+                    {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
+                </p>
+            </div>
+            <div class="col-1 bookmark">
+                <p>
+                    <span class="bookmark-icon">&#9750;</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <img src="./images/pcImage.jpg">
+    </div>
+</div>
+
+<div class="row d-flex py-3"></div>
+
+
+
+{{footer}}
