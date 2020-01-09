@@ -15,6 +15,13 @@ const bcrypt = require("bcrypt");
 //======== registration ========
 const registrationRouter = require('./handlers/register');
 app.use("/register", registrationRouter);
+//==============================
+
+//======== login ========
+const loginRouter = require("./handlers/login")
+app.use("/login", loginRouter)
+app.get("/login", (req, res) => res.render("login"));
+//=======================
 
 //Routes
 const postRouter = require('./routes/post')

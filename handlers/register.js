@@ -8,7 +8,6 @@ router.use(express.urlencoded());
 
 const {
     validateRegistration
-    // validateLogin // for later
 } = require("../util/validators");
 
 router.get("/", (req, res) => res.render("register"));
