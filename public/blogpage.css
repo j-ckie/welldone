@@ -9,7 +9,15 @@ body{
   overflow: hidden;
 }
 ::-webkit-scrollbar{
-  display: none;
+  -webkit-appearance: none;
+ width:0;
+}
+::-webkit-scrollbar-thumb:horizontal{
+  border-radius: 10px;
+  border: 3.5px solid transparent;
+  background-color: rgba(0,0,0,0.5);
+  background-clip: content-box;
+  
 }
 /* ////////////////////////////////////////////////////////////////// */
 @media only screen and (min-width: 768px){
@@ -43,12 +51,12 @@ div ul li span a:hover{
 } */
 .navbar-nav{
   margin: 155px auto 0 auto;
-  overflow: auto;
-  
+  overflow: scroll;
   width: 50vw;
   display: flex;
   border: .25rem solid rgba(36, 34, 34, 0.61);
   border-radius: 15px 5px 15px 5px; 
+ 
 }
 
 .navbar-expand-md .navbar-nav .nav-link {
