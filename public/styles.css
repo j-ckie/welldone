@@ -1,0 +1,141 @@
+
+/* ----------------------------- GLOBAL STYLING ----------------------------- */
+
+  /*
+  body {
+    background-color: rgba(166, 176, 219, 0.623);
+  }
+
+  #call-to-action-desktop {
+    background-color: rgba(56, 63, 68, 0.521);
+  }
+  */
+
+  #call-to-action-mobile {
+    display: none !important;
+  }
+
+  #searchbar {
+    display: none;
+  }
+
+  #welldone-logo {
+    font-size: 16px;
+  }
+
+  #welldone-letter-logo {
+    display: none !important;
+  }
+
+  #searchglass {
+      opacity: 60%;
+      margin-top: 9px;
+      height: 17px;
+      width: auto;
+  }
+
+  #get-started-button {
+    border: 1px solid #28a745;
+  }
+
+  .article-hr {
+    width: 90%;
+  }
+
+  .post-secondary-text {
+    font-size: 0.8rem;
+  }
+
+  .author-category-text {
+    font-size: 0.8rem;
+  }
+
+  .bookmark {
+    margin-top: 8px;
+    padding: 0;
+  }
+
+  #footer-heart {
+    color: red;
+    font-size: 20px;
+  }
+
+  #with-love {
+    font-family: monospace;
+  }
+
+  #footer {
+    justify-content: center;
+  }
+
+  .favortie-article-heart {
+    font-size: 18px;
+    color: red;
+  }
+
+  .bookmark-icon {
+    color: orange;
+  }
+
+  .nav-links-mobile {
+    padding: 0px;
+  }
+
+  #get-started-button {
+    padding: 0, 15, 0, 0 !important;
+  }
+
+  /* The heart of the matter */
+.abreast .carousel-inner {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.abreast .item {
+  display: inline-block;
+  margin: 6px 4px 0 0;
+}
+.abreast .carousel-control, 
+.abreast .carousel-indicators {
+  display: none;
+}
+
+/* Make the images responsive. */
+.carousel-inner img {
+  height: auto;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+/* ----------------------------- DESKTOP STYLING ----------------------------- */
+
+@media (min-width: 851px) {
+
+
+
+}
+
+  /* ----------------------------- MOBILE STYLING ----------------------------- */
+
+@media (max-width: 850px) {
+  #call-to-action-desktop {
+    display: none !important;
+  }
+
+  #call-to-action-mobile {
+    display: flex !important;
+  }
+
+  .nav-links-mobile-hidden {
+    display: none;
+  }
+
+  #welldone-logo {
+    display: none !important;
+  }
+
+  #welldone-letter-logo {
+    display: flex !important;
+    padding: 0px !important;
+  }
+
+}
