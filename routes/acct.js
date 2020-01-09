@@ -2,9 +2,7 @@ const express = require('express')
 const router = express.Router()
 const AcctController = require('../handlers/acctController')
 
-router.get('/',AcctController.getYourPosts)
-
-router.get('/',AcctController.getYourFavourites)
+router.get('/',AcctController.getYourPostsandFavourites)
 
 router.post('/addPost',AcctController.postToYourPosts)
 
