@@ -1,4 +1,8 @@
-// regex to validate email
+// regex to validate email - ask jackie if you want to learn how it works
+let emptyError = "Must not be empty";
+let invalidEmail = "Must be a valid email address";
+let pwmatchError = "Passwords must match";
+
 const isEmail = email => {
     const regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (email.match(regEx)) return true;
@@ -6,35 +10,22 @@ const isEmail = email => {
 };
 
 // validate registration data
-exports.validateRegistration = data => { // exports.FUNCTIONNAME exports function in same line
+exports.validateRegistration = data => {
     let errors = {};
 
     if (data.email === "") {
-        errors.email = "Must not be empty";
+        errors.email = emptyError;
     } else if (!isEmail(data.email)) {
-        errors.email = "Must be a valid email address";
+        errors.email = invalidEmail;
     }
 
-    if (data.password === "") errors.password = "Must not be empty";
-    if (data.password !== data.confirmPassword) errors.confirmPassword = "Passwords must match";
-    if (data.handle === "") errors.handle = "Must not be empty";
+    if (data.name === "") errors.name = emptyError;
+    if (data.password === "") errors.password = emptyError;
+    if (data.confirmPassword === "") errors.confirmPassword = emptyError;
+    if (data.password !== data.confirmPassword) errors.confirmPassword = pwmatchError;
 
     return {
         errors,
         valid: Object.keys(errors).length === 0 ? true : false
     };
-};
-
-// validate login data
-exports.validateLogin = data => {
-    let errors = {};
-    if (data.email === "") errors.email = "Must not be empty";
-    if (data.password === "") errors.password = "Must not be empty";
-    // console.log("FOO")
-    console.log(data)
-    console.log(errors)
-    return {
-        errors,
-        valid: Object.keys(errors).length === 0 ? true : false
-    };
-};
+}
