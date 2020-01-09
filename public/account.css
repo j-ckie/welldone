@@ -32,21 +32,20 @@ nav {
  font-size: 1.1rem;
  flex:1;
  vertical-align: sub;
+ list-style:none;
+ display: flex;
+ justify-content: space-between;
 }
 nav b{
   font-size: 1.6rem;
 }
-nav {
-  list-style:none;
-  display: flex;
-  justify-content: space-between;
-}
+
 nav a{
   color:black;
   text-decoration: none;
 }
 nav i{
-  color: rgba(128, 128, 128, 0.705);
+  color: rgba(230, 223, 223, 0.705);
   font-size: 16px;
 }
 
@@ -150,7 +149,7 @@ section:nth-child(5) p a{
     box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
     position: sticky;
     top: 0px;
-    background-color: whitesmoke;
+    background-color: rgba(56, 63, 68, 0.521);
   }
   nav{
     height: 72px;
@@ -164,21 +163,19 @@ section:nth-child(5) p a{
    font-size: 1.1rem;
    flex:1;
    vertical-align: sub;
+   list-style:none;
+    display: flex;
+    justify-content: space-between;
   }
   nav b{
     font-size: 1.6rem;
-  }
-  nav {
-    list-style:none;
-    display: flex;
-    justify-content: space-between;
   }
   nav a{
     color:black;
     text-decoration: none;
   }
   nav i{
-    color: rgba(128, 128, 128, 0.705);
+    color: rgba(230, 223, 223, 0.705);
     font-size: 16px;
   }
   
