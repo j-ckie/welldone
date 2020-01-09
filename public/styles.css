@@ -7,6 +7,8 @@
 
   #searchbar {
     display: none;
+    border: none;
+    background: none;
   }
 
   #welldone-logo {
@@ -18,10 +20,15 @@
   }
 
   #searchglass {
-      opacity: 60%;
-      margin-top: 9px;
-      height: 17px;
-      width: auto;
+    opacity: 60%;
+    margin-top: 9px;
+    height: 17px;
+    width: auto;
+  }
+
+  #search-glass-button {
+    border: none;
+    background: none;
   }
 
   #get-started-button {
@@ -98,8 +105,12 @@
 
   .email-line {
     border: none;
-    border-bottom: 1px solid #343a40;
+    border-bottom: 1px solid rgba(0,0,0,.15);
     border-radius: unset;
+  }
+
+  .email-line, textarea {
+    background-color: #f8f9fa;
   }
 
   #email-row-mobile {
