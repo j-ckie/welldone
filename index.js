@@ -27,6 +27,7 @@ app.use('/acct', acctRouter)
 
 //Mustache
 app.use(express.static(path.join(__dirname, "partials")));
+app.use(express.static(path.join(__dirname, '/public')))
 app.engine('mustache', mustacheExpress(VIEWS_PATH + '/partials', '.mustache'))
 app.set("views", "./views");
 app.set("view engine", "mustache");
@@ -36,7 +37,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 
+app.get('/index', (req, res) => {
+    res.render('index')
+})
+
 //Server Connection
 app.listen(3000, () => {
-    console.log("Server is live on http://localhost:3000");
+    console.log("Server is live on http://localhost:3000 at " + Date.now());
 });
