@@ -24,7 +24,7 @@ router.post("/", (req, res) => {
         email: email,
         password: password
     }
-    console.log("FOO")
+
     const { valid, errors } = validateLogin(loginData)
     if (!valid) return res.status(400).json(errors)
 
