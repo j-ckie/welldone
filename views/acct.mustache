@@ -27,13 +27,13 @@
           <textarea name="body" rows="8" cols="40"></textarea><br>
           <button>Update</button>
         </form>
-        <form action="/acct/post" method="post">
-          <input type="hidden" name="post_id" value="{{id}}">
-          <button>Post Page</button>
-        </form>
         <form action="/acct/deletePost" method="post">
           <input type="hidden" name="post_id" value="{{id}}">
           <button>Delete Post</button>
+        </form>
+        <form action="/post" method="get">
+          <input type="hidden" name="post_id" value="{{id}}">
+          <button>Post Page</button>
         </form>
       </li>
       {{/userPosts}}
@@ -45,10 +45,14 @@
       Your Favourites
       {{#favouritePosts}}
       <li>
-        <h2>{{title}}</h2>
+        <h2>{{post.title}}</h2>
         <form action="/post" method="post">
-          <input type="hidden" name="post_id" value="{{id}}">
-          <button>Details</button>
+          <input type="hidden" name="post_id" value="{{post.id}}">
+          <button>Post Page</button>
+        </form>
+        <form action="/acct/removeFavourite" method="post">
+          <input type="hidden" name="favouriteId" value="{{id}}">
+          <button>Remove Favourite</button>
         </form>
       </li>
       {{/favouritePosts}}

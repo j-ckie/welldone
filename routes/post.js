@@ -4,4 +4,6 @@ const PostController = require('../handlers/postController')
 
 router.get('/',PostController.getPost)
 
+router.post('/addFavourite',PostController.addFavourite)
+
 module.exports = router

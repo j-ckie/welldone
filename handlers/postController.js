@@ -2,10 +2,10 @@ const models = require('../models')
 
 //Grabs post and sends it to page
 module.exports.getPost = (req,res,next) => {
-  models.Post.findByPk(postId,{
+  models.Posts.findByPk(req.query.post_id,{
     include: [
       {
-        model: models.Comment,
+        model: models.Comments,
         as: 'comment'
       }
     ]
@@ -13,4 +13,13 @@ module.exports.getPost = (req,res,next) => {
     let comments = post.comment
     res.render('post', {post: post, comments: comments})
   })
+}
+
+module.exports.addFavourite = (req,res,next) => {
+  let favourite = models.Favourite.build({
+    isFavourite: 'TRUE',
+    post_id: req.body.post_id,
+    user_id: 1
+  })
+  favourite.save().then(() => res.redirect('back'))
 }
