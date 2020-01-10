@@ -8,7 +8,12 @@
     Create Post
     <form action="/acct/addPost" method="post">
       <input type="hidden" name="user_id" value="1">
-      <input type="text" name="category"><br>
+      {{#categories}}
+      <div>
+        <input type="checkbox" name="categories" value="{{id}}">
+        <label for="huey">{{category}}</label>
+      </div>
+      {{/categories}}
       <input type="text" name="title"><br>
       <textarea name="body" rows="8" cols="40"></textarea><br>
       <button>Add Post</button>
@@ -18,14 +23,22 @@
       {{#userPosts}}
       <li>
         <h2>{{title}}</h2>
+        {{#postswithcategories}}
+        <p>{{category.category}}</p>
+        {{/postswithcategories}}
         <p>{{body}}</p>
         <form action="/acct/updatePost" method="post">
           <input type="hidden" name="post_id" value="{{id}}">
           <input type="hidden" name="user_id" value="1">
-          <input type="text" name="category"><br>
+          {{#categories}}
+          <div>
+            <input type="checkbox" name="categories" value="{{id}}">
+            <label for="huey">{{category}}</label>
+          </div>
+          {{/categories}}
           <input type="text" name="title"><br>
           <textarea name="body" rows="8" cols="40"></textarea><br>
-          <button>Update</button>
+          <button>Update Post</button>
         </form>
         <form action="/acct/deletePost" method="post">
           <input type="hidden" name="post_id" value="{{id}}">
@@ -51,7 +64,7 @@
           <button>Post Page</button>
         </form>
         <form action="/acct/removeFavourite" method="post">
-          <input type="hidden" name="favouriteId" value="{{id}}">
+          <input type="hidden" name="favourite_id" value="{{id}}">
           <button>Remove Favourite</button>
         </form>
       </li>
