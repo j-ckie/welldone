@@ -41,7 +41,8 @@
 
   .article-hr {
     width: 90%;
-    color: #f8f9fa;
+    margin: auto;
+    border-top: 1px solid #f8f9fa;
   }
 
   .post-secondary-text {

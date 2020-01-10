@@ -37,6 +37,7 @@ color: #9E9E9E;
 header{
   z-index: 2;
   background-color: black;
+  height: 3rem;
 }
 ul.navbar-nav{
   background-color:rgb(65,65,65) ;
@@ -45,6 +46,11 @@ ul.navbar-nav{
 .inline{
   display: inline-block;
 }
+
+.post-image {
+    text-align: end;
+}
+
 
 @media only screen and (min-width: 768px){
 
