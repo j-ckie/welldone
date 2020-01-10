@@ -15,6 +15,7 @@ const bcrypt = require("bcrypt");
 app.use(express.urlencoded({ extended: true }))
 
 
+
 //======== registration ========
 const registrationRouter = require('./handlers/register');
 app.use("/register", registrationRouter);

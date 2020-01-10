@@ -3,6 +3,7 @@
 .abreast .carousel-inner {
 overflow-x: auto;
 white-space: nowrap;
+margin:0;
 }
 .abreast .item {
 display: inline-block;
@@ -60,15 +61,26 @@ header div a:nth-child(1):hover,header div a:nth-child(2):hover,header div a:nth
 header div a:nth-child(2),header div a:nth-child(3){
   padding-top: 18px;
 }
-
 .post-image {
     text-align: end;
 }
-
+#blog-column{
+  margin: 0 75px;
+}
+#navbarTogglerDemo02{
+  width:98vw;
+}
+.navbar-nav{
+  width:76.5vw;
+}
 
 @media only screen and (min-width: 768px){
 
 
+.navbar-expand-lg .navbar-nav .nav-link{
+  padding-left: 2rem;
+
+}
 
 }
 
@@ -79,8 +91,20 @@ header div a:nth-child(2),header div a:nth-child(3){
   .container-fluid{
     padding:0
   }
-
-
+  #blog-column{
+    margin: 0 20px;
+  }
+  .nav-button {
+    transition: all .2s ease-in-out;
+    text-align:center;
+    }
+    .nav-button:hover {
+    transform: scale(1.5);  
+    color: #9E9E9E;
+    }
+  div#carousel.container-fluid.navbar.navbar-expand-lg.navbar-dark{
+    position: fixed;
+  }
 }
 
 @media only screen and (max-height:670px){
