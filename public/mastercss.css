@@ -40,15 +40,18 @@ header{
   background-color: black;
   height: 3.5rem;
 }
+
 ul.navbar-nav{
   background-color:rgb(65,65,65) ;
   margin:140px 0 0 0;
 }
+
 header div{
   display:flex;
   width:100%;
   justify-content: space-around;
 }
+
 header div a:nth-child(1){
   text-decoration: none;
   font-size: 2rem;
@@ -74,8 +77,19 @@ header div a:nth-child(2),header div a:nth-child(3){
   width:76.5vw;
 }
 
-@media only screen and (min-width: 768px){
+.popular-posts {
+    text-align: center;
+}
 
+.popular-title-text {
+    font-size: medium;
+}
+
+#popular-column {
+    margin: 0 10px;
+}
+
+@media only screen and (min-width: 768px){
 
 .navbar-expand-lg .navbar-nav .nav-link{
   padding-left: 2rem;
@@ -105,6 +119,15 @@ header div a:nth-child(2),header div a:nth-child(3){
   div#carousel.container-fluid.navbar.navbar-expand-lg.navbar-dark{
     position: fixed;
   }
+
+  #blog-column {
+    margin: 0 20px;
+  }
+
+  #most-popular {
+      display: none !important;  
+  }
+
 }
 
 @media only screen and (max-height:670px){
