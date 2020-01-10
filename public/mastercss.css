@@ -37,11 +37,28 @@ color: #9E9E9E;
 header{
   z-index: 2;
   background-color: black;
-  height: 3rem;
+  height: 3.5rem;
 }
 ul.navbar-nav{
   background-color:rgb(65,65,65) ;
   margin:140px 0 0 0;
+}
+header div{
+  display:flex;
+  width:100%;
+  justify-content: space-around;
+}
+header div a:nth-child(1){
+  text-decoration: none;
+  font-size: 2rem;
+  padding-top:5px;
+  padding-right:15vw;
+}
+header div a:nth-child(1):hover,header div a:nth-child(2):hover,header div a:nth-child(3):hover{
+  color:white;
+}
+header div a:nth-child(2),header div a:nth-child(3){
+  padding-top: 18px;
 }
 
 
@@ -52,7 +69,12 @@ ul.navbar-nav{
 }
 
 @media only screen and (max-width: 768px){
-
+  body{
+    overflow: scroll !important;
+  }
+  .container-fluid{
+    padding:0
+  }
 
 
 }
