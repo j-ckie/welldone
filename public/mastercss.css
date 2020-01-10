@@ -37,21 +37,20 @@ color: #9E9E9E;
 header{
   z-index: 2;
   background-color: black;
-<<<<<<< HEAD
-  height: 3rem;
-=======
   height: 3.5rem;
->>>>>>> 9afc5bc40d614f633184539654cd01ab21bee699
 }
+
 ul.navbar-nav{
   background-color:rgb(65,65,65) ;
   margin:140px 0 0 0;
 }
+
 header div{
   display:flex;
   width:100%;
   justify-content: space-around;
 }
+
 header div a:nth-child(1){
   text-decoration: none;
   font-size: 2rem;
@@ -65,16 +64,27 @@ header div a:nth-child(2),header div a:nth-child(3){
   padding-top: 18px;
 }
 
-<<<<<<< HEAD
 .post-image {
     text-align: end;
 }
 
-=======
->>>>>>> 9afc5bc40d614f633184539654cd01ab21bee699
+#blog-column {
+    margin: 0 75px;
+}
+
+.popular-posts {
+    text-align: center;
+}
+
+.popular-title-text {
+    font-size: medium;
+}
+
+#popular-column {
+    margin: 0 10px;
+}
 
 @media only screen and (min-width: 768px){
-
 
 
 }
@@ -87,6 +97,13 @@ header div a:nth-child(2),header div a:nth-child(3){
     padding:0
   }
 
+  #blog-column {
+    margin: 0 20px;
+  }
+
+  #most-popular {
+      display: none !important;  
+  }
 
 }
 
