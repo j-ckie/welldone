@@ -14,6 +14,7 @@ const bcrypt = require("bcrypt");
 
 app.use(express.urlencoded({ extended: true }))
 
+
 //======== registration ========
 const registrationRouter = require('./handlers/register');
 app.use("/register", registrationRouter);
@@ -36,11 +37,17 @@ app.set("view engine", "mustache");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
-
-app.get('/index', (req, res) => {
+//account page
+app.get('/account',(req,res)=>{
+    res.render('account')
+  })
+//blogpage page
+app.get('/blogpage',(req,res)=>{
+    res.render('blogpage')
+  })
+app.get('/index',(req,res)=>{
     res.render('index')
 })
-
 //Server Connection
 app.listen(3000, () => {
     console.log("Server is live on http://localhost:3000 at " + Date.now());
