@@ -19,6 +19,42 @@ body{
   background-clip: content-box;
   
 }
+
+.article-hr {
+  width: 90%;
+  color: #f8f9fa;
+}
+
+.post-secondary-text {
+  font-size: 0.8rem;
+}
+
+.author-category-text {
+  font-size: 0.8rem;
+}
+
+.bookmark {
+  margin-top: 8px;
+  padding: 0;
+}
+
+#footer-heart {
+  color: red;
+  font-size: 20px;
+}
+
+#with-love {
+  font-family: monospace;
+}
+
+#footer {
+  justify-content: center;
+}
+
+.favortie-article-heart {
+  font-size: 18px;
+  color: red;
+}
 /* ////////////////////////////////////////////////////////////////// */
 @media only screen and (min-width: 768px){
  

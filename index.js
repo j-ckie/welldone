@@ -37,6 +37,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 
+app.get('/account', (req, res) => {
+    res.render('account')
+})
+
+app.get('/blogpage', (req, res) => {
+    res.render('blogpage')
+})
+
 app.get('/index', (req, res) => {
     res.render('index')
 })

@@ -1,6 +1,19 @@
 
 /* ----------------------------- GLOBAL STYLING ----------------------------- */
 
+
+  body {
+    background-color: rgb(65, 65, 65);
+  }
+
+  p {
+    color: #f8f9fa;
+  }
+
+  a {
+    color: #f8f9fa;
+  }
+
   #call-to-action-mobile {
     display: none !important;
   }
@@ -41,6 +54,7 @@
 
   .article-hr {
     width: 90%;
+    color: #f8f9fa;
   }
 
   .post-secondary-text {
@@ -127,6 +141,15 @@
 
   .nav-links-text {
     font-size: 0.8rem;
+  }
+
+  .nav-button {
+    transition: all .2s ease-in-out;
+  }
+
+  .nav-button:hover {
+    transform: scale(1.2);
+    color: #9e9e9e;
   }
 
 /* ----------------------------- DESKTOP STYLING ----------------------------- */
