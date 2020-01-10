@@ -5,6 +5,10 @@
     display: none !important;
   }
 
+  p{
+    color:#f8f9fa;
+  }
+
   #searchbar {
     display: none;
     border: none;
@@ -170,7 +174,7 @@
 body{
   background-color: rgb(65, 65, 65);
   font-family:sans-serif;
-  overflow: hidden;
+ 
 }
 ::-webkit-scrollbar{
   -webkit-appearance: none;
