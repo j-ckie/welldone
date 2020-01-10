@@ -1,7 +1,6 @@
 
 /* ----------------------------- GLOBAL STYLING ----------------------------- */
 
-
   body {
     background-color: rgb(65, 65, 65);
   }
@@ -93,10 +92,7 @@
 body{
   background-color: rgb(65, 65, 65);
   font-family:sans-serif;
-<<<<<<< HEAD
  
-=======
->>>>>>> d393224c431623d0eb5a480232713b9ba33157ba
 }
 ::-webkit-scrollbar{
   -webkit-appearance: none;
