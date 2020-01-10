@@ -11,8 +11,16 @@ const path = require("path");
 const VIEWS_PATH = path.join(__dirname, "/views")
 const mustacheExpress = require("mustache-express");
 const bcrypt = require("bcrypt");
+const cookieParser = require("cookie-parser");
+require("dotenv").config();
 
 app.use(express.urlencoded({ extended: true }))
+
+// cookie parser for JWT
+app.use(cookieParser());
+
+//======== token auth ========
+const auth = require("./util/auth");
 
 //======== registration ========
 const registrationRouter = require('./handlers/register');
@@ -23,6 +31,10 @@ app.use("/register", registrationRouter);
 const loginRouter = require("./handlers/login")
 app.use("/login", loginRouter)
 app.get("/login", (req, res) => res.render("login"));
+
+//testing stuff
+app.get("/test", (req, res) => res.render("test"));
+
 //=======================
 
 //Routes
