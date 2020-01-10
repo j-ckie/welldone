@@ -9,6 +9,10 @@
       <h2>{{title}}</h2>
       <p>{{body}}</p>
       <p>{{createdAt}}</p>
+      <form action="/post/addFavourite" method="post">
+        <input type="hidden" name="post_id" value="{{id}}">
+        <button>Add Favourite</button>
+      </form>
     {{/post}}
     <ul>
     {{#comments}}
