@@ -19,6 +19,19 @@ height: auto;
 margin: 0 auto;
 max-width: 100%;
 }
+
+.nav-button {
+transition: all .2s ease-in-out;
+}
+.nav-button:hover {
+transform: scale(1.2);
+color: #9E9E9E;
+}
+
+#carousel {
+    border: 2px solid black;
+    border-radius: 0 0 10px 10px;
+}
 /*end carousel code*/
 
 header{
