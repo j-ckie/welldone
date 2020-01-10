@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     category: DataTypes.STRING
   }, {});
   Categories.associate = function(models) {
+    models.Categories.hasMany(models.PostsWithCategories, {as: 'postswithcategories',foreignKey: 'category_id'})
     // associations can be defined here
   };
   return Categories;

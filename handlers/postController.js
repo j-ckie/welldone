@@ -23,3 +23,30 @@ module.exports.addFavourite = (req,res,next) => {
   })
   favourite.save().then(() => res.redirect('back'))
 }
+
+module.exports.addComment = (req,res,next) => {
+  let comment = models.Comments.build({
+    body: req.body.body,
+    post_id: req.body.post_id,
+    user_id: req.body.user_id
+  })
+  comment.save().then(() => res.redirect('back'))
+}
+
+module.exports.updateComment = (req,res,next) => {
+  models.Comments.update({
+    body: req.body.body
+  }, {
+    where: {
+      id: req.body.comment_id
+    }
+  }).then(() => res.redirect('back'))
+}
+
+module.exports.deleteComment = (req,res,next) => {
+  models.Comments.destroy({
+    where: {
+      id: req.body.comment_id
+    }
+  }).then(() => res.redirect('back'))
+}
