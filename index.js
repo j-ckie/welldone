@@ -12,6 +12,8 @@ const VIEWS_PATH = path.join(__dirname, "/views")
 const mustacheExpress = require("mustache-express");
 const bcrypt = require("bcrypt");
 
+app.use(express.urlencoded({ extended: true }))
+
 //======== registration ========
 const registrationRouter = require('./handlers/register');
 app.use("/register", registrationRouter);
