@@ -32,15 +32,19 @@ router.post("/", (req, res) => {
                 .then(success => {
                     if (success) {
                         // res.redirect("/index");
-                        jwt.sign({ email: email }, "everythingisfine", function (error, token) {
+                        jwt.sign({
+                            exp: Math.floor(Date.now() / 1000) + (60 * 60), // sets token expiration to 1hr
+                            email: email
+                        }, "everythingisfine", function (error, token) {
                             if (token) {
-                                res.json({
-                                    email: persistedUser.email,
-                                    name: persistedUser.name,
-                                    id: persistedUser.id,
-                                    token: token,
-                                    status: 200
-                                })
+                                res.cookie()
+                                // res.json({
+                                //     email: persistedUser.email,
+                                //     name: persistedUser.name,
+                                //     id: persistedUser.id,
+                                //     token: token,
+                                //     status: 200
+                                // })
                                 // res.redirect(200, "/index")
                                 console.log(res)
                             } else {
