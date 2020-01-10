@@ -24,13 +24,10 @@ max-width: 100%;
 header{
   z-index: 2;
   background-color: black;
+  height: 3rem;
 }
 ul.navbar-nav{
   background-color:rgb(65,65,65) ;
-<<<<<<< HEAD
-  width:70vw;
-=======
->>>>>>> 7b36a8b3b1cbc8f5ab217bd8faff9d34e505680e
   margin:140px 0 0 0;
 }
 
