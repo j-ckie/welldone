@@ -34,8 +34,19 @@ app.get("/login", (req, res) => res.render("login"));
 
 //testing stuff
 app.get("/test", (req, res) => res.render("test"));
-
 //=======================
+
+//========== account page route ==========
+app.get('/account', (req, res) => {
+    res.render('account')
+})
+//=========================================
+
+//========== blog page route ==========
+app.get('/blogpage', (req, res) => {
+    res.render('blogpage')
+})
+//=====================================
 
 //Routes
 const postRouter = require('./routes/post')

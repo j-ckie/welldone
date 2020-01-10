@@ -5,7 +5,7 @@ const config = require("./config");
 dotenv.config();
 
 const checkToken = async (req, res, next) => {
-    let token = req.cookies.token;
+    let token = req.cookies.token || '';
     try {
         if (!token) {
             return res.status(401).json({ message: "Please log in" })

@@ -37,10 +37,8 @@ router.post("/", (req, res) => {
             bcrypt.compare(password, persistedUser.password)
                 .then(success => {
                     if (success) {
-                        // res.redirect("/index");
                         let userToken = generateToken(res, persistedUser.id, persistedUser.email);
-                        console.log(userToken);
-                        console.log("FOO")
+
 
                         res.redirect("/test");
                     } else {
@@ -50,7 +48,6 @@ router.post("/", (req, res) => {
         } else {
             let invalidLogin = "Invalid login attempt";
             res.status(500).json({ message: invalidLogin });
-            console.log("Login failed; incorrect information");
         }
     });
 });
