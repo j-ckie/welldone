@@ -70,12 +70,12 @@ header div a:nth-child(2),header div a:nth-child(3){
 #blog-column{
   margin: 0 75px;
 }
-#navbarTogglerDemo02{
+/* #navbarTogglerDemo02{
   width:98vw;
 }
 .navbar-nav{
   width:76.5vw;
-}
+} */
 
 .popular-posts {
     text-align: center;
@@ -99,7 +99,7 @@ header div a:nth-child(2),header div a:nth-child(3){
 }
 
 @media only screen and (max-width: 768px){
-  body{
+  /* body{
     overflow: scroll !important;
   }
   .container-fluid{
@@ -115,15 +115,10 @@ header div a:nth-child(2),header div a:nth-child(3){
     .nav-button:hover {
     transform: scale(1.5);  
     color: #9E9E9E;
-    }
-  div#carousel.container-fluid.navbar.navbar-expand-lg.navbar-dark{
-    position: fixed;
-  }
-
+    } */
   #blog-column {
     margin: 0 20px;
   }
-
   #most-popular {
       display: none !important;  
   }
