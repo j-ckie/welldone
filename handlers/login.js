@@ -16,6 +16,8 @@ router.use(express.urlencoded());
 
 router.use(cookieParser());
 
+router.get("/", (req, res) => res.render("login"));
+
 router.post("/", (req, res) => {
     let email = req.body.email,
         password = req.body.password;

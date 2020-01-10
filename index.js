@@ -30,7 +30,7 @@ app.use("/register", registrationRouter);
 //======== login ========
 const loginRouter = require("./handlers/login")
 app.use("/login", loginRouter)
-app.get("/login", (req, res) => res.render("login"));
+//app.get("/login", (req, res) => res.render("login"));
 
 //testing stuff
 app.get("/test", (req, res) => res.render("test"));
@@ -40,7 +40,6 @@ app.get("/test", (req, res) => res.render("test"));
 app.get('/account', (req, res) => {
     res.render('account')
 })
-//=========================================
 
 //========== blog page route ==========
 app.get('/blogpage', (req, res) => {

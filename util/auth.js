@@ -16,6 +16,7 @@ const checkToken = async (req, res, next) => {
             id: decrypt.id,
             email: decrypt.email
         };
+        res.locals.loggedIn = true
         next();
     } catch (err) {
         console.error(err)
