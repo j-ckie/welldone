@@ -1,4 +1,11 @@
-{{head}}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="./bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="./styles.css">
+    </head>
+    <body>
 
 <div class="container-fluid">
 <div class="row d-flex justify-content-center">
@@ -15,12 +22,12 @@
         <div class="col nav-links-mobile">
             <form class="form-inline">
                 <input class="form-control mr-sm-2" id="searchbar" type="search" placeholder="Search" aria-label="Search">
-                <button type="submit"><img id="searchglass" src="./images/iconfinder_magnifying-glass_226571.png"></button>
+                <button id="search-glass-button" type="submit"><img id="searchglass" src="images/iconfinder_magnifying-glass_226571.png"></button>
             </form>
         </div>
-            <a class="nav-link text-secondary nav-links-mobile-hidden" href="#">Become a member</a>
-            <a class="nav-link text-success nav-links-mobile-hidden" href="#">Sign In</a>
-            <a id="get-started-button" class="nav-link text-success" href="#">Get started</a>
+            <a class="nav-link text-secondary nav-links-mobile-hidden nav-links-text" href="#">Become a member</a>
+            <a class="nav-link text-success nav-links-mobile-hidden nav-links-text" href="#">Sign In</a>
+            <a id="get-started-button" class="nav-link text-success nav-links-text" href="#">Get started</a>
     </div>
 </div>
 
@@ -61,6 +68,18 @@
         <div class="item">
             <a class="nav-link text-secondary" href="#">MORE</a>
         </div>
+        <div class="item">
+            <a class="nav-link text-secondary" href="#">ENTITIES</a>
+        </div>
+        <div class="item">
+            <a class="nav-link text-secondary" href="#">WATER</a>
+        </div>
+        <div class="item">
+            <a class="nav-link text-secondary" href="#">CAFFEINE</a>
+        </div>
+        <div class="item">
+            <a class="nav-link text-secondary" href="#">SHRUG</a>
+        </div>
       </div>
       <a class="left carousel-control" href="#carousel-1" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span class="sr-only">Previous</span></a>
       <a class="right carousel-control" href="#carousel-1" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">Next</span></a>
@@ -69,51 +88,13 @@
 
     <div class="row d-flex py-3"></div>
 
-
-<!--CALL TO ACTION, DESKTOP-->
-
-  <div id="call-to-action-desktop" class="row bg-light">
-      <div class="col">
-        <img class="img-fluid" src="./images/welldonesteak.jpg">
-      </div>
-      <div class="col py-5">
-        <h1>Never miss a story</h1>
-        <p class="text-secondary">Sign up for Welldone’s Daily Digest and get the best of Welldone, tailored for you. Yum!</p>
-        <form>
-            <div class="form-group row d-flex">
-              <input type="email" class="email-line" placeholder="Email Address">
-              <button class="btn btn-dark mx-5" type="submit">Sign Up</button>
-            </div>
-        </form>
-      </div>
-  </div>
-
-<!--CALL TO ACTION, MOBILE-->
-
-<div id="call-to-action-mobile" class="row bg-light">
-    <div class="col">
-      <img class="img-fluid" src="./images/welldonesteak.jpg">
-      <h1>Never miss a story</h1>
-      <p class="text-secondary">Sign up for Welldone’s Daily Digest and get the best of Welldone, tailored for you. Yum!</p>
-      <form>
-          <div class="form-inline" id="email-row-mobile">
-            <input type="email" class="email-line" placeholder="Email Address">
-            <button class="btn btn-dark mb-2" type="submit">Sign Up</button>
-          </div>
-      </form>
-    </div>
-</div>
-
-<!--TECHNOLOGY-->
+<!--LATEST BLOGS-->
 
 <div class="row d-flex py-3"></div>
 
 <div class="row d-flex">
     <div id="articles-category" class="col-9">
-        <a class="text-body" href="#"><b>Technology</b></a>
-    </div>
-    <div class="col-3">
-        <a class="text-secondary" href="#">More ></a>
+        <a class="text-body" href="#"><b>{{Latest Blogs}}</b></a>
     </div>
 </div>
 <div class="row d-flex">
@@ -172,19 +153,57 @@
 
 <div class="row d-flex py-3"></div>
 
-<!--STARTUPS-->
+<div class="row d-flex">
+    <div class="col-8">
+        <p class="post-title-text">
+            {{Post Title}}
+        </p>
+        <p class="text-secondary post-secondary-text">
+            {{Post Opener}}
+        </p>
+        <div class="row d-flex">
+            <div class="col-10">
+                <p class="author-category-text">
+                    {{Author}} in {{Category}}
+                </p>
+                <p class="post-secondary-text text-secondary">
+                    {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <img src="./images/pcImage.jpg">
+    </div>
+</div>
+
+<div class="row d-flex py-3"></div>
 
 <div class="row d-flex">
-    <div id="articles-category" class="col-9">
-        <a class="text-body" href="#"><b>Startups</b></a>
+    <div class="col-8">
+        <p class="post-title-text">
+            {{Post Title}}
+        </p>
+        <p class="text-secondary post-secondary-text">
+            {{Post Opener}}
+        </p>
+        <div class="row d-flex">
+            <div class="col-10">
+                <p class="author-category-text">
+                    {{Author}} in {{Category}}
+                </p>
+                <p class="post-secondary-text text-secondary">
+                    {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
+                </p>
+            </div>
+        </div>
     </div>
-    <div class="col-3">
-        <a class="text-secondary" href="#">More ></a>
+    <div class="col-4">
+        <img src="./images/pcImage.jpg">
     </div>
 </div>
-<div class="row d-flex">
-    <hr class="article-hr">
-</div>
+
+<div class="row d-flex py-3"></div>
 
 <div class="row d-flex">
     <div class="col-8">
@@ -238,20 +257,6 @@
 
 <div class="row d-flex py-3"></div>
 
-<!--CREATIVITY-->
-
-<div class="row d-flex">
-    <div id="articles-category" class="col-9">
-        <a class="text-body" href="#"><b>Creativity</b></a>
-    </div>
-    <div class="col-3">
-        <a class="text-secondary" href="#">More ></a>
-    </div>
-</div>
-<div class="row d-flex">
-    <hr class="article-hr">
-</div>
-
 <div class="row d-flex">
     <div class="col-8">
         <p class="post-title-text">
@@ -304,71 +309,28 @@
 
 <div class="row d-flex py-3"></div>
 
-<!--CULTURE-->
-
-<div class="row d-flex">
-    <div id="articles-category" class="col-9">
-        <a class="text-body" href="#"><b>Culture</b></a>
-    </div>
-    <div class="col-3">
-        <a class="text-secondary" href="#">More ></a>
-    </div>
-</div>
-<div class="row d-flex">
-    <hr class="article-hr">
+<div id="footer" class="row d-flex py-3">
+    <p id="with-love">
+        Made with <span id="footer-heart">&hearts;</span> by Jackie, JB, Eric, Angelo, and Collin
+    </p>
 </div>
 
-<div class="row d-flex">
-    <div class="col-8">
-        <p class="post-title-text">
-            {{Post Title}}
-        </p>
-        <p class="text-secondary post-secondary-text">
-            {{Post Opener}}
-        </p>
-        <div class="row d-flex">
-            <div class="col-10">
-                <p class="author-category-text">
-                    {{Author}} in {{Category}}
-                </p>
-                <p class="post-secondary-text text-secondary">
-                    {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-4">
-        <img src="./images/pcImage.jpg">
-    </div>
+
+
+
+
+
 </div>
-
-<div class="row d-flex py-3"></div>
-
-<div class="row d-flex">
-    <div class="col-8">
-        <p class="post-title-text">
-            {{Post Title}}
-        </p>
-        <p class="text-secondary post-secondary-text">
-            {{Post Opener}}
-        </p>
-        <div class="row d-flex">
-            <div class="col-10">
-                <p class="author-category-text">
-                    {{Author}} in {{Category}}
-                </p>
-                <p class="post-secondary-text text-secondary">
-                    {{createdAt}} - 8 min read <span class="favortie-article-heart">&hearts;</span>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-4">
-        <img src="./images/pcImage.jpg">
-    </div>
 </div>
+</div>
+    </body>
+    <script src="./bootstrap-scripts/jquery.js"></script>
+    <script src="./bootstrap-scripts/popper.js"></script>
+    <script src="./bootstrap-scripts/bootstrap.js"></script>
 
-<div class="row d-flex py-3"></div>
-
-
-{{footer}}
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</html>

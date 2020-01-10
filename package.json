@@ -2,7 +2,7 @@
   "name": "11-2019-backend-project",
   "version": "1.0.0",
   "description": "Backend group project - 11/2019 Full Stack Development Cohort",
-  "main": "account.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
