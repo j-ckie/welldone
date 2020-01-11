@@ -21,12 +21,14 @@ margin: 0 auto;
 max-width: 100%;
 }
 
+
 .nav-button {
 transition: all .2s ease-in-out;
+color:red;
 }
 .nav-button:hover {
 transform: scale(1.2);
-color: #9E9E9E;
+color: rgb(172, 15, 15);
 }
 
 #carousel {
@@ -67,6 +69,22 @@ header div a:nth-child(2),header div a:nth-child(3){
 .post-image {
     text-align: end;
 }
+.post-image img{
+  width:20rem;
+  }
+.post-title-text{
+  font-size: 1.3rem;
+}
+.post-secondary-text{
+  font-size: .7rem;
+}
+.author-text{
+  font-size: .9rem;
+  margin-bottom:.1rem ;
+}
+.category-text{
+  font-size: .9rem;
+}
 #blog-column{
   margin: 0 75px;
 }
@@ -80,6 +98,9 @@ header div a:nth-child(2),header div a:nth-child(3){
 .popular-posts {
     text-align: center;
 }
+.popular-posts img{
+  padding-bottom: 15px;
+}
 
 .popular-title-text {
     font-size: medium;
@@ -88,14 +109,30 @@ header div a:nth-child(2),header div a:nth-child(3){
 #popular-column {
     margin: 0 10px;
 }
-
-@media only screen and (min-width: 768px){
-
-.navbar-expand-lg .navbar-nav .nav-link{
-  padding-left: 2rem;
-
+a.text-light:hover,a.text-light:focus{
+  color:rgba(165, 143, 143) !important
+}
+#category{
+  padding:20px 70px;
+  font-size: 30px;
+  color:whitesmoke;
+}
+.heart {
+  padding:5px 0 0 10px;
+  font-size: 20px;
+	color:red;
+}
+#desktop-container-outer-space{
+  padding:0 15px;
+}
+.container-fluid{
+  padding:0;
 }
 
+@media only screen and (max-width:1400px){
+  .post-image img{
+    width:24vw;
+    }
 }
 
 @media only screen and (max-width: 768px){
@@ -122,8 +159,15 @@ header div a:nth-child(2),header div a:nth-child(3){
   #most-popular {
       display: none !important;  
   }
+  .post-image img{
+  width:30vw;
+  }
 
 }
+@media only screen and (max-width:590px){
+  .post-image img{
+    width:40vw;
+  }
 
 @media only screen and (max-height:670px){
 

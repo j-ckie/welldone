@@ -11,10 +11,12 @@ const path = require("path");
 const VIEWS_PATH = path.join(__dirname, "/views")
 const mustacheExpress = require("mustache-express");
 const bcrypt = require("bcrypt");
-
 app.use(express.urlencoded({ extended: true }))
 
+var $ = require("jquery")
 
+  
+  
 
 //======== registration ========
 const registrationRouter = require('./handlers/register');
@@ -43,7 +45,7 @@ app.get('/account',(req,res)=>{
     res.render('account')
   })
 //blogpage page
-app.get('/blogpage',(req,res)=>{
+app.get('/blogpage',(req,res)=>{  
     res.render('blogpage')
   })
 app.get('/index',(req,res)=>{
