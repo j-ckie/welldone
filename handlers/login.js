@@ -36,7 +36,7 @@ router.post("/", (req, res) => {
                             req.session.email = persistedUser.email
                             req.session.name = persistedUser.name
                         }
-                        res.redirect("/");
+                        res.redirect("/home");
                     } else {
                         res.render("login", { message: "invalid information" })
                     }
