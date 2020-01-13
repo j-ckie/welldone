@@ -1,15 +1,36 @@
-<!doctype html>
-<html>
-    {{> head}}
-    {{> navbar}}
-    <body>
-        <div class="container">
-            <form method="POST" action="/login">
-                <input type="text" name="email" placeholder="Email" />
-                <input type="password" name="password" placeholder="Password" />
-                <button>Login</button>
-            </form>
-        </div>
-    {{>footer}}
-    </body>
-</html>
+{{> head}}
+<header class="header">
+        <div>
+        <a href='#'><b>WellDone</b></a> 
+        </div>    
+</header>
+
+<div class="row d-flex py-1"></div>
+
+<div class="row d-flex justify-content-end py-3">
+    <div class="col-6">
+        <form method="POST" action="/login">
+            <input class="login-textboxes" type="text" name="email" placeholder="Email" />
+            <input class="login-textboxes" type="password" name="password" placeholder="Password" />
+            <button id="login-button">Login</button>
+        </form>
+    </div>
+</div>
+
+<div class="row d-flex py-3"></div>
+
+<div class="row d-flex justify-content-center py-3">
+    <div class="col-9">
+        <h1 class="text-light">First time here? <span id="join-welldone-text">Join Welldone</span></h1>
+        <p>
+            Create an account to receive great stories in your inbox, personalize your homepage, and follow authors and topics that you love.
+        </p>
+        <form method="POST" action="/register">
+            <input class="login-textboxes" type="text" name="email" placeholder="Email" />
+            <input class="login-textboxes" type="password" name="password" placeholder="Password" />
+            <button id="login-button">Sign Up</button>
+        </form>
+    </div>
+</div>
+
+{{>footer}}

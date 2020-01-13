@@ -51,16 +51,37 @@ max-width: 100%;
     font-size: 1.2rem;
 }
 
-#article-like {
-    font-size: 18px;
-    padding: 5px;
-    color: red;
-    border: 1px solid gray;
-    border-radius: 50%;
-}
-
 #article-image {
     width: 30rem;
+}
+
+/************************************************* LOGIN PAGE *************************************************/
+#login-button {
+    color: rgba(255, 215, 189, 0.9);
+    border: 1px solid rgba(255, 215, 189, 0.9);
+    padding: 0.3rem;
+    background: none;
+}
+
+#login-button-div {
+    text-align: end;
+}
+
+.login-textboxes {
+    margin-bottom: 1rem;
+}
+
+#no-account-text {
+    font-size: small;
+    margin-top: 0.6rem;
+}
+
+#create-one-link-text {
+    color: rgba(255, 215, 189, 0.9);
+}
+
+#join-welldone-text {
+    color: rgba(255, 215, 189, 0.9);
 }
 
 /*************************************************  *************************************************/
