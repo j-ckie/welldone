@@ -70,10 +70,6 @@ transform: scale(1.2);
 color: rgb(172, 15, 15);
 }
 
-#carousel {
-    border: 1px solid gray;
-}
-
 header{
   z-index: 2;
   background-color: rgb(65, 65, 65);
@@ -159,9 +155,7 @@ a.text-light:hover,a.text-light:focus{
   font-size: 20px;
 	color:red;
 }
-#desktop-container-outer-space{
-  padding:0 15px;
-}
+
 .container-fluid{
   padding:0;
 }

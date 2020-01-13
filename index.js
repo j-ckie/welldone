@@ -15,9 +15,6 @@ app.use(express.urlencoded({ extended: true }))
 
 var $ = require("jquery")
 
-  
-  
-
 //======== registration ========
 const registrationRouter = require('./handlers/register');
 app.use("/register", registrationRouter);
