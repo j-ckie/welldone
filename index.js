@@ -70,7 +70,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 //account page
-app.get('/account', (req, res) => {
+app.get('/account', authenticate, (req, res) => {
     res.render('account')
 })
 //blogpage page
