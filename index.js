@@ -12,6 +12,12 @@ const VIEWS_PATH = path.join(__dirname, "/views")
 const mustacheExpress = require("mustache-express");
 const bcrypt = require("bcrypt");
 
+//file upload
+const crypto = require('crypto')
+const multer = require("multer")
+const morgan = require('morgan')
+app.use(morgan('dev'))
+
 //========== express-session ========
 const session = require("express-session");
 app.set("trust proxy", 1)
@@ -25,7 +31,7 @@ app.use(session({
 
 //========== authentication middleware ==========
 const authenticate = require("./util/auth");
-/* 
+/*
 To add authentication to route:
 
 ex: app.get("/private-info", authenticate, (req, res) => {<CODE HERE>})
@@ -67,7 +73,7 @@ app.set("view engine", "mustache");
 
 //Parser
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 //account page
 app.get('/account', (req, res) => {
