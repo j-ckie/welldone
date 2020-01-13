@@ -12,12 +12,44 @@ const VIEWS_PATH = path.join(__dirname, "/views")
 const mustacheExpress = require("mustache-express");
 const bcrypt = require("bcrypt");
 
+//========== express-session ========
+const session = require("express-session");
+app.set("trust proxy", 1)
+app.use(session({
+    secret: "everyth_ing is perfectly fine",
+    resave: false,
+    saveUninitialized: false // true - always have cookie (tasty), false - have to do something with session first before you can get cookie
+}))
+//===================================
+
+
+//========== authentication middleware ==========
+const authenticate = require("./util/auth");
+/* 
+To add authentication to route:
+
+ex: app.get("/private-info", authenticate, (req, res) => {<CODE HERE>})
+
+Ask Jackie for more information
+*/
+//===============================================
+
+
 app.use(express.urlencoded({ extended: true }))
 
 
 //======== registration ========
 const registrationRouter = require('./handlers/register');
 app.use("/register", registrationRouter);
+//==============================
+
+//======== login ========
+const loginRouter = require("./handlers/login")
+app.use("/login", loginRouter)
+
+//testing stuff
+app.get("/test", authenticate, (req, res) => res.render("test"));
+//=======================
 
 //Routes
 const postRouter = require('./routes/post')
@@ -38,14 +70,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 //account page
-app.get('/account',(req,res)=>{
+app.get('/account', (req, res) => {
     res.render('account')
-  })
+})
 //blogpage page
-app.get('/blogpage',(req,res)=>{
+app.get('/blogpage', (req, res) => {
     res.render('blogpage')
-  })
-app.get('/index',(req,res)=>{
+})
+app.get('/', (req, res) => { // change to "/" instead of index
     res.render('index')
 })
 //Server Connection
