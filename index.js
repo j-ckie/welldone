@@ -46,7 +46,6 @@ app.use("/register", registrationRouter);
 //======== login ========
 const loginRouter = require("./handlers/login")
 app.use("/login", loginRouter)
-//app.get("/login", (req, res) => res.render("login"));
 
 //testing stuff
 app.get("/test", authenticate, (req, res) => res.render("test"));
