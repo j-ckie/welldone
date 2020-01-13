@@ -166,6 +166,9 @@ a.text-light:hover,a.text-light:focus{
 img{
   border-radius: 10px;
 }
+.row{
+  margin:0;
+}
 
 @media only screen and (max-width:1400px){
   .post-image img{
@@ -174,11 +177,10 @@ img{
 }
 
 @media only screen and (max-width: 768px){
- body{
-    overflow: scroll !important;
+   body{
+    overflow-y: scroll !important;
   }
-  
-/* 
+  /*
   .container-fluid{
     padding:0
   }
@@ -203,7 +205,9 @@ img{
   .post-image img{
   width:30vw;
   }
-
+p.text-light.post-secondary-text{
+  display:none;
+}
 }
 @media only screen and (max-width:590px){
   .post-image img{
