@@ -1,5 +1,5 @@
 
-/* carousel code */
+/************************************************* CAROUSEL CODE *************************************************/
 .abreast .carousel-inner {
 overflow-x: auto;
 white-space: nowrap;
@@ -21,6 +21,46 @@ margin: 0 auto;
 max-width: 100%;
 }
 
+/************************************************* HOME PAGE *************************************************/
+
+.popular-posts {
+    text-align: center;
+}
+
+.popular-title-text {
+    font-size: medium;
+}
+
+#popular-column {
+    margin: 0 10px;
+}
+
+#desktop-container-outer-space {
+    max-width: 1100px;
+    border: 1px solid gray;
+    padding: 0px;
+}
+
+/************************************************* CATEGORY PAGE *************************************************/
+#articles-category {
+    text-align: center;
+}
+
+/************************************************* ARTICLE PAGE *************************************************/
+#article-secondary-text {
+    font-size: 1.2rem;
+}
+
+#article-like {
+    font-size: 18px;
+    padding: 5px;
+    color: red;
+    border: 1px solid gray;
+    border-radius: 50%;
+}
+
+/*************************************************  *************************************************/
+
 .nav-button {
 transition: all .2s ease-in-out;
 }
@@ -30,14 +70,12 @@ color: #9E9E9E;
 }
 
 #carousel {
-    border: 2px solid black;
-    border-radius: 0 0 10px 10px;
+    border: 1px solid gray;
 }
-/*end carousel code*/
 
 header{
   z-index: 2;
-  background-color: black;
+  background-color: rgb(65, 65, 65);
   height: 3.5rem;
 }
 
@@ -67,6 +105,7 @@ header div a:nth-child(2),header div a:nth-child(3){
 .post-image {
     text-align: end;
 }
+
 #blog-column{
   margin: 0 75px;
 }
@@ -75,18 +114,6 @@ header div a:nth-child(2),header div a:nth-child(3){
 }
 .navbar-nav{
   width:76.5vw;
-}
-
-.popular-posts {
-    text-align: center;
-}
-
-.popular-title-text {
-    font-size: medium;
-}
-
-#popular-column {
-    margin: 0 10px;
 }
 
 @media only screen and (min-width: 768px){

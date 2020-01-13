@@ -46,9 +46,21 @@ app.get('/account',(req,res)=>{
 app.get('/blogpage',(req,res)=>{
     res.render('blogpage')
   })
+
+//home page
 app.get('/index',(req,res)=>{
     res.render('index')
 })
+
+//category page
+app.get('/category', (req, res) => {
+  res.render('category')
+})
+
+app.get('/article', (req, res) => {
+  res.render('article')
+})
+
 //Server Connection
 app.listen(3000, () => {
     console.log("Server is live on http://localhost:3000 at " + Date.now());
