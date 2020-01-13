@@ -15,12 +15,6 @@ margin: 6px 4px 0 0;
 display: none;
 }
 
-.carousel-inner img {
-height: auto;
-margin: 0 auto;
-max-width: 100%;
-}
-
 /************************************************* HOME PAGE *************************************************/
 
 .popular-posts {
@@ -82,6 +76,10 @@ max-width: 100%;
 
 #join-welldone-text {
     color: rgba(255, 215, 189, 0.9);
+}
+
+#login-form {
+    text-align: end;
 }
 
 /*************************************************  *************************************************/
