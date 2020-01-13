@@ -15,9 +15,6 @@ app.use(express.urlencoded({ extended: true }))
 
 var $ = require("jquery")
 
-  
-  
-
 //======== registration ========
 const registrationRouter = require('./handlers/register');
 app.use("/register", registrationRouter);
@@ -57,11 +54,20 @@ app.get('/account', (req, res) => {
 //blogpage page
 app.get('/blogpage',(req,res)=>{  
     res.render('blogpage')
-})
+  })
 
 //home page
-app.get('/', (req, res) => { // change to "/" instead of index
+app.get('/index',(req,res)=>{
     res.render('index')
+})
+
+//category page
+app.get('/category', (req, res) => {
+  res.render('category')
+})
+
+app.get('/article', (req, res) => {
+  res.render('article')
 })
 
 //Server Connection
