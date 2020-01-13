@@ -37,6 +37,7 @@ Ask Jackie for more information
 
 app.use(express.urlencoded({ extended: true }))
 
+var $ = require("jquery")
 
 //======== registration ========
 const registrationRouter = require('./handlers/register');
@@ -81,13 +82,25 @@ app.use(cors())
 app.get('/account', authenticate, (req, res) => {
     res.render('account')
 })
-//blogpage page
-app.get('/blogpage', (req, res) => {
-    res.render('blogpage')
+//layoutpage  
+app.get('/',(req,res)=>{
+    res.render('layoutpage')
 })
-app.get('/', (req, res) => { // change to "/" instead of index
+//home
+app.get('/home', (req, res) => { // change to "/" instead of index
     res.render('index')
 })
+
+//category page
+app.get('/category', (req, res) => {
+  res.render('category')
+})
+
+//article page
+app.get('/article', (req, res) => {
+  res.render('article')
+})
+
 //Server Connection
 app.listen(3000, () => {
     console.log("Server is live on http://localhost:3000 at " + Date.now());

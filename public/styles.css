@@ -1,7 +1,6 @@
 
 /* ----------------------------- GLOBAL STYLING ----------------------------- */
 
-
   body {
     background-color: rgb(65, 65, 65);
   }
@@ -13,6 +12,7 @@
   a {
     color: #f8f9fa;
   }
+  
 
   #searchbar {
     display: none;
@@ -41,8 +41,13 @@
   }
 
   .article-hr {
-    width: 90%;
-    color: #f8f9fa;
+    width: 50%;
+    margin: auto;
+    border-top: 1px solid gray;
+  }
+
+  .post-title-text {
+    font-size: large;
   }
 
   .post-secondary-text {
@@ -93,6 +98,7 @@
 body{
   background-color: rgb(65, 65, 65);
   font-family:sans-serif;
+ 
 }
 ::-webkit-scrollbar{
   -webkit-appearance: none;
@@ -107,8 +113,8 @@ body{
 
 /* ////////////////////////////////////////////////////////////////// */
 @media only screen and (min-width: 768px){
- 
-.navbar-nav{
+  
+/* .navbar-nav{
   margin: 155px auto 0 auto;
   overflow: scroll;
   width: 50vw;
@@ -129,7 +135,7 @@ body{
 
 .navbar-collapse ul li{
   border: none;
-}
+} */
 header{
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
   position: sticky;
