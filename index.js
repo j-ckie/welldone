@@ -26,9 +26,9 @@ app.use(session({
 //========== authentication middleware ==========
 const authenticate = require("./util/auth");
 /* 
-To add authentication to routes, add the following:
-req.session.email = persistedUser.email
-req.session.name = persistedUser.name
+To add authentication to route:
+
+ex: app.get("/private-info", authenticate, (req, res) => {<CODE HERE>})
 
 Ask Jackie for more information
 */
