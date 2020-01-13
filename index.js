@@ -11,33 +11,6 @@ const path = require("path");
 const VIEWS_PATH = path.join(__dirname, "/views")
 const mustacheExpress = require("mustache-express");
 const bcrypt = require("bcrypt");
-<<<<<<< HEAD
-
-//========== express-session ========
-const session = require("express-session");
-app.set("trust proxy", 1)
-app.use(session({
-    secret: "everyth_ing is perfectly fine",
-    resave: false,
-    saveUninitialized: false // true - always have cookie (tasty), false - have to do something with session first before you can get cookie
-}))
-//===================================
-
-
-//========== authentication middleware ==========
-const authenticate = require("./util/auth");
-/* 
-To add authentication to route:
-
-ex: app.get("/private-info", authenticate, (req, res) => {<CODE HERE>})
-
-Ask Jackie for more information
-*/
-//===============================================
-
-
-=======
->>>>>>> a21348827eba833bcfa9ca3825a84d6cff11cc73
 app.use(express.urlencoded({ extended: true }))
 
 var $ = require("jquery")
@@ -82,11 +55,7 @@ app.get('/account', (req, res) => {
 })
 
 //blogpage page
-<<<<<<< HEAD
-app.get('/blogpage', (req, res) => {
-=======
 app.get('/blogpage',(req,res)=>{  
->>>>>>> a21348827eba833bcfa9ca3825a84d6cff11cc73
     res.render('blogpage')
 })
 
