@@ -11,8 +11,6 @@ const path = require("path");
 const VIEWS_PATH = path.join(__dirname, "/views")
 const mustacheExpress = require("mustache-express");
 const bcrypt = require("bcrypt");
-<<<<<<< HEAD
-=======
 
 //========== express-session ========
 const session = require("express-session");
@@ -37,7 +35,6 @@ Ask Jackie for more information
 //===============================================
 
 
->>>>>>> 9bd2b7161b6d5a81ba94ec9d40c433e9f16f4247
 app.use(express.urlencoded({ extended: true }))
 
 var $ = require("jquery")
@@ -77,22 +74,11 @@ app.use(cors())
 app.get('/account', (req, res) => {
     res.render('account')
 })
-<<<<<<< HEAD
-
-//blogpage page
-app.get('/blogpage',(req,res)=>{  
-    res.render('blogpage')
-  })
-
-//home page
-app.get('/index',(req,res)=>{
-=======
 //blogpage page
 app.get('/blogpage', (req, res) => {
     res.render('blogpage')
 })
 app.get('/', (req, res) => { // change to "/" instead of index
->>>>>>> 9bd2b7161b6d5a81ba94ec9d40c433e9f16f4247
     res.render('index')
 })
 
