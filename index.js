@@ -74,10 +74,8 @@ app.use(cors())
 app.get('/account', (req, res) => {
     res.render('account')
 })
-//blogpage page
-app.get('/blogpage', (req, res) => {
-    res.render('blogpage')
-})
+
+//home
 app.get('/', (req, res) => { // change to "/" instead of index
     res.render('index')
 })

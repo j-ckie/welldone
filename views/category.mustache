@@ -5,31 +5,28 @@
         <link rel="stylesheet" type="text/css" href="./bootstrap.css">
         <link rel="stylesheet" type="text/css" href="./styles.css">
         <link rel="stylesheet" type="text/css" href="./mastercss.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
     </head>
     <body>
 
 <div class="container-fluid">
 <div class="row d-flex justify-content-center">
-<div id="desktop-container-outer-space" class="col">
+<div id="desktop-container-outer-space" class="col-12 col-md-10">
 
 <!--HEADER-->
 
 <header class="header">
         <div>
         <a href='#'><b>WellDone</b></a> 
-        <a href='#' class="logout" style='vertical-align:sub'>Sign In</a>
-        <a href='#' class="logout" style='vertical-align:sub'>Login</a>
+        <a href='#' class="logout" style='vertical-align:sub'><i>Sign In</i></a>
+        <a href='#' class="logout" style='vertical-align:sub'><i>Login</i></a>
         </div>    
 </header>
 
-<div class="container">
-    <div id="carousel-1" class="carousel slide abreast" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-1" data-slide-to="1"></li>
-        <li data-target="#carousel-1" data-slide-to="2"></li>
-      </ol> 
+<div id="carousel">
+
+    <div class="carousel slide abreast" data-ride="carousel">
       <ul class="carousel-inner" role="listbox" >
         <div class="item active">
             <a class="nav-link nav-button text-light" href="#">ONEZERO</a>
@@ -82,22 +79,12 @@
     </div>
 </div>
 
-<!--CATEGORY NAME-->
-
-<div class="row d-flex py-3"></div>
-
-<div class="row d-flex">
-    <div id="articles-category" class="col">
-        <h1 id="category-title-text" class="text-light"><b>{Category}</b></h1>
-    </div>
-</div>
-
-<div class="row d-flex py-3"></div>
+<div id="category">Category</div>
 
 <!--HORIZONTAL LINE-->
 
-<div class="row d-flex">
-    <hr class="article-hr">
+<div class="row d-flex py-3">
+    <hr class="article-hr text-light">
 </div>
 
 <!--BLOG LIST START-->
@@ -106,7 +93,7 @@
 <div id="blog-column" class="col">
 
 <div class="row d-flex">
-    <div class="col-8">
+    <div class="col-6">
         <p class="post-title-text">
             {What Your Body Is Saying Says The Most About You}
         </p>
@@ -115,24 +102,26 @@
         </p>
         <div class="row d-flex">
             <div class="col-10">
-                <p class="author-category-text">
-                    {JB Wilson}
-                </p>
+                <p class="author-text">
+                    {JB Wilson}<span> 
+                in<span class="category-text"> {Category}</span></span>
                 <p class="post-secondary-text text-light">
-                    {Jan 5, 2020} - 8 min read <span class="favortie-article-heart">&hearts;</span>
+                    {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o" >
+</i><span></span>
+
                 </p>
             </div>
         </div>
     </div>
-     <div class="col-4 post-image">
-        <img class="img-fluid" src="./images/pcImage.jpg">
+     <div class="col-6 post-image">
+        <img src="./images/pcImage.jpg">
     </div>
 </div>
 
 <div class="row d-flex py-3"></div>
 
 <div class="row d-flex">
-    <div class="col-8">
+    <div class="col-6">
         <p class="post-title-text">
             {Post Title}
         </p>
@@ -141,24 +130,26 @@
         </p>
         <div class="row d-flex">
             <div class="col-10">
-                <p class="author-category-text">
-                    {Author}
-                </p>
+                <p class="author-text">
+                    {JB Wilson}<span> 
+                in<span class="category-text"> {Category}</span></span>
                 <p class="post-secondary-text text-light">
-                    {createdAt} - 8 min read <span class="favortie-article-heart">&hearts;</span>
+                    {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o" >
+</i><span></span>
                 </p>
             </div>
         </div>
     </div>
-    <div class="col-4 post-image">
-        <img class="img-fluid" src="./images/pcImage.jpg">
+    <div class="col-6 post-image">
+        <img src="./images/pcImage.jpg">
     </div>
 </div>
+
 
 <div class="row d-flex py-3"></div>
 
 <div class="row d-flex">
-    <div class="col-8">
+    <div class="col-6">
         <p class="post-title-text">
             {Post Title}
         </p>
@@ -167,24 +158,25 @@
         </p>
         <div class="row d-flex">
             <div class="col-10">
-                <p class="author-category-text">
-                    {Author}
-                </p>
+                <p class="author-text">
+                    {JB Wilson}<span> 
+                in<span class="category-text"> {Category}</span></span>
                 <p class="post-secondary-text text-light">
-                    {createdAt} - 8 min read <span class="favortie-article-heart">&hearts;</span>
+                    {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o" >
+</i><span></span>
                 </p>
             </div>
         </div>
     </div>
-    <div class="col-4 post-image">
-        <img class="img-fluid" src="./images/pcImage.jpg">
+    <div class="col-6 post-image">
+        <img src="./images/pcImage.jpg">
     </div>
 </div>
 
 <div class="row d-flex py-3"></div>
 
 <div class="row d-flex">
-    <div class="col-8">
+    <div class="col-6">
         <p class="post-title-text">
             {Post Title}
         </p>
@@ -193,24 +185,25 @@
         </p>
         <div class="row d-flex">
             <div class="col-10">
-                <p class="author-category-text">
-                    {Author}
-                </p>
+                <p class="author-text">
+                    {JB Wilson}<span> 
+                in<span class="category-text"> {Category}</span></span>
                 <p class="post-secondary-text text-light">
-                    {createdAt} - 8 min read <span class="favortie-article-heart">&hearts;</span>
+                    {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o" >
+</i><span></span>
                 </p>
             </div>
         </div>
     </div>
-    <div class="col-4 post-image">
-        <img class="img-fluid" src="./images/pcImage.jpg">
+    <div class="col-6 post-image">
+        <img src="./images/pcImage.jpg">
     </div>
 </div>
 
 <div class="row d-flex py-3"></div>
 
 <div class="row d-flex">
-    <div class="col-8">
+    <div class="col-6">
         <p class="post-title-text">
             {Post Title}
         </p>
@@ -219,24 +212,25 @@
         </p>
         <div class="row d-flex">
             <div class="col-10">
-                <p class="author-category-text">
-                    {Author}
-                </p>
+                <p class="author-text">
+                    {JB Wilson}<span> 
+                in<span class="category-text"> {Category}</span></span>
                 <p class="post-secondary-text text-light">
-                    {createdAt} - 8 min read <span class="favortie-article-heart">&hearts;</span>
+                    {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o" >
+</i><span></span>
                 </p>
             </div>
         </div>
     </div>
-    <div class="col-4 post-image">
-        <img class="img-fluid" src="./images/pcImage.jpg">
+    <div class="col-6 post-image">
+        <img src="./images/pcImage.jpg">
     </div>
 </div>
 
 <div class="row d-flex py-3"></div>
 
 <div class="row d-flex">
-    <div class="col-8">
+    <div class="col-6">
         <p class="post-title-text">
             {Post Title}
         </p>
@@ -245,24 +239,25 @@
         </p>
         <div class="row d-flex">
             <div class="col-10">
-                <p class="author-category-text">
-                    {Author}
-                </p>
+                <p class="author-text">
+                    {JB Wilson}<span> 
+                in<span class="category-text"> {Category}</span></span>
                 <p class="post-secondary-text text-light">
-                    {createdAt} - 8 min read <span class="favortie-article-heart">&hearts;</span>
+                    {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o" >
+</i><span></span>
                 </p>
             </div>
         </div>
     </div>
-    <div class="col-4 post-image">
-        <img class="img-fluid" src="./images/pcImage.jpg">
+    <div class="col-6 post-image">
+        <img src="./images/pcImage.jpg">
     </div>
 </div>
 
 <div class="row d-flex py-3"></div>
 
 <div class="row d-flex">
-    <div class="col-8">
+    <div class="col-6">
         <p class="post-title-text">
             {Post Title}
         </p>
@@ -271,24 +266,25 @@
         </p>
         <div class="row d-flex">
             <div class="col-10">
-                <p class="author-category-text">
-                    {Author}
-                </p>
+                <p class="author-text">
+                    {JB Wilson}<span> 
+                in<span class="category-text"> {Category}</span></span>
                 <p class="post-secondary-text text-light">
-                    {createdAt} - 8 min read <span class="favortie-article-heart">&hearts;</span>
+                    {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o" >
+</i><span></span>
                 </p>
             </div>
         </div>
     </div>
-    <div class="col-4 post-image">
-        <img class="img-fluid" src="./images/pcImage.jpg">
+    <div class="col-6 post-image">
+        <img src="./images/pcImage.jpg">
     </div>
 </div>
 
 <div class="row d-flex py-3"></div>
 
 <div class="row d-flex">
-    <div class="col-8">
+    <div class="col-6">
         <p class="post-title-text">
             {Post Title}
         </p>
@@ -297,17 +293,18 @@
         </p>
         <div class="row d-flex">
             <div class="col-10">
-                <p class="author-category-text">
-                    {Author}
-                </p>
+                <p class="author-text">
+                    {JB Wilson}<span> 
+                in<span class="category-text"> {Category}</span></span>
                 <p class="post-secondary-text text-light">
-                    {createdAt} - 8 min read <span class="favortie-article-heart">&hearts;</span>
+                    {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o" >
+</i><span></span>
                 </p>
             </div>
         </div>
     </div>
-    <div class="col-4 post-image">
-        <img class="img-fluid" src="./images/pcImage.jpg">
+    <div class="col-6 post-image">
+        <img src="./images/pcImage.jpg">
     </div>
 </div>
 
@@ -338,7 +335,9 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="heart.js"></script>
 </html>
