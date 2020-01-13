@@ -12,6 +12,7 @@
   a {
     color: #f8f9fa;
   }
+  
 
   #searchbar {
     display: none;
@@ -99,20 +100,20 @@ body{
   font-family:sans-serif;
  
 }
-
+::-webkit-scrollbar{
+  -webkit-appearance: none;
+ width:0;
+}
+::-webkit-scrollbar-thumb:horizontal{
+  border-radius: 10px;
+  border: 3.5px solid transparent;
+  background-color: rgba(172, 168, 168, 0.863);
+  background-clip: content-box;
+}
 
 /* ////////////////////////////////////////////////////////////////// */
 @media only screen and (min-width: 768px){
-  ::-webkit-scrollbar{
-    -webkit-appearance: none;
-   width:0;
-  }
-  ::-webkit-scrollbar-thumb:horizontal{
-    border-radius: 10px;
-    border: 3.5px solid transparent;
-    background-color: rgba(172, 168, 168, 0.863);
-    background-clip: content-box;
-  }
+  
 /* .navbar-nav{
   margin: 155px auto 0 auto;
   overflow: scroll;
