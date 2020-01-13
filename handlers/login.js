@@ -1,20 +1,13 @@
 const models = require("../models");
 const express = require("express");
-const bcrypt = require("bcrypt");
 const router = express.Router();
-const jwt = require("jsonwebtoken");
-const generateToken = require("./generateToken");
 
-const cookieParser = require("cookie-parser");
-require("dotenv").config();
 
 const {
     validateLogin
 } = require("../util/validators");
 
 router.use(express.urlencoded());
-
-router.use(cookieParser());
 
 router.get("/", (req, res) => res.render("login"));
 
@@ -39,10 +32,11 @@ router.post("/", (req, res) => {
             bcrypt.compare(password, persistedUser.password)
                 .then(success => {
                     if (success) {
-                        let userToken = generateToken(res, persistedUser.id, persistedUser.email);
-
-
-                        res.redirect("/test");
+                        // let userToken = generateToken(res, persistedUser.id, persistedUser.email);
+                        // console.log(userToken)
+                        // console.log("FOO")
+                        // router.header("x-authorization", "Bearer " + userToken)
+                        // //res.redirect("/test");
                     } else {
                         res.render("login", { message: "invalid information" })
                     }
