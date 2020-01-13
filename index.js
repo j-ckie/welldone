@@ -18,6 +18,15 @@ var $ = require("jquery")
 //======== registration ========
 const registrationRouter = require('./handlers/register');
 app.use("/register", registrationRouter);
+//==============================
+
+//======== login ========
+const loginRouter = require("./handlers/login")
+app.use("/login", loginRouter)
+
+//testing stuff
+app.get("/test", authenticate, (req, res) => res.render("test"));
+//=======================
 
 //Routes
 const postRouter = require('./routes/post')
@@ -38,9 +47,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 //account page
-app.get('/account',(req,res)=>{
+app.get('/account', (req, res) => {
     res.render('account')
-  })
+})
+
 //blogpage page
 app.get('/blogpage',(req,res)=>{  
     res.render('blogpage')
