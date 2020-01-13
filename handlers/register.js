@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const SALT_ROUNDS = 10;
+const session = require("express-session");
 
 router.use(express.urlencoded());
 
@@ -50,7 +51,10 @@ router.post("/", (req, res) => {
                             name: persistedName,
                             password: hash
                         })
-
+                        if (req.session) {
+                            req.session.email = email
+                            req.session.name = name
+                        }
                         newUser.save().then(() => res.redirect("/login")).catch(err => console.error(err))
                     })
 

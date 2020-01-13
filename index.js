@@ -12,6 +12,15 @@ const VIEWS_PATH = path.join(__dirname, "/views")
 const mustacheExpress = require("mustache-express");
 const bcrypt = require("bcrypt");
 
+//======= express-session ========
+const session = require("express-session");
+app.set("trust proxy", 1)
+app.use(session({
+    secret: "everyth_ing is perfectly fine",
+    resave: false,
+    saveUninitialized: false // true - always have cookie (tasty), false - have to do something with session first before you can get cookie
+}))
+
 
 app.use(express.urlencoded({ extended: true }))
 
@@ -31,7 +40,7 @@ app.get("/test", (req, res) => res.render("test"));
 //=======================
 
 //========== account page route ==========
-app.get('/account', checkToken, (req, res) => {
+app.get('/account', (req, res) => {
     res.render('account')
 })
 
