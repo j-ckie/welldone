@@ -11,6 +11,7 @@ const path = require("path");
 const VIEWS_PATH = path.join(__dirname, "/views")
 const mustacheExpress = require("mustache-express");
 const bcrypt = require("bcrypt");
+<<<<<<< HEAD
 
 //========== express-session ========
 const session = require("express-session");
@@ -35,9 +36,14 @@ Ask Jackie for more information
 //===============================================
 
 
+=======
+>>>>>>> a21348827eba833bcfa9ca3825a84d6cff11cc73
 app.use(express.urlencoded({ extended: true }))
 
+var $ = require("jquery")
 
+  
+  
 
 //======== registration ========
 const registrationRouter = require('./handlers/register');
@@ -76,7 +82,11 @@ app.get('/account', (req, res) => {
 })
 
 //blogpage page
+<<<<<<< HEAD
 app.get('/blogpage', (req, res) => {
+=======
+app.get('/blogpage',(req,res)=>{  
+>>>>>>> a21348827eba833bcfa9ca3825a84d6cff11cc73
     res.render('blogpage')
 })
 

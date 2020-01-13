@@ -39,6 +39,7 @@ nav{
   vertical-align: sub;
   list-style:none;
 }
+/* WellDONE */
 nav b{
   font-size: 1.8rem;
   color:whitesmoke;
@@ -47,6 +48,7 @@ nav b{
 nav a{
   text-decoration: none !important;
 }
+/* logout */
 nav i{
   color:whitesmoke;
   font-size: 1rem;
@@ -56,6 +58,7 @@ hr{
   margin:10px auto 0px auto;
   width:650px;
 }
+/* Title of Blog */
 section a{ 
   color:rgba(255, 215, 189, 0.9);
   text-decoration: none;
@@ -68,18 +71,20 @@ section{
   width:650px;
   
 }
+/* Name */
 section h1{
  font-size: 40px;
  font-family: 'Catamaran', sans-serif;
  color:white;
 }
-section h1 a{
+/* edit profile name */
+section h1 a{   
   color:rgb(212, 199, 199);
 }
 section h1 a:hover{
   color:rgb(150, 248, 166);
 }
-
+/* border for edit profile */
 section h1 span{
   font-size: small;
   font-weight:400;
@@ -97,11 +102,11 @@ section:nth-child(2){
   margin:70px auto 10px auto;
   font-weight: 400px;
 }
+/* profile and claps name */
 section:nth-child(2) a{
   padding:0px;
   color:rgb(241, 223, 223);
 }
-
 section:nth-child(2) a:hover{
   color:rgb(165, 143, 143);
 }
@@ -112,13 +117,14 @@ section:nth-child(2) a:active{
 section:nth-child(2) span{
   padding:15px;
 }
+/* "Claps for {whoevers name}" */
 section:nth-child(4){
   color:rgb(241, 223, 223);
   text-shadow: -1px -1px grey;
   font-style: italic;
   margin: 40px auto 20px auto;
 }
-
+/* top border of all post */
 section:nth-child(5){
   margin:20px auto 10px auto;
   font-size: 14px;
@@ -127,6 +133,7 @@ section:nth-child(5){
   width:650px;
   overflow: scroll;
 }
+/* other borders of all post */
 section:nth-child(5) div{
   padding: 20px 10px 25px 10px;
   border-bottom: 1px ridge rgba(121, 114, 114, 0.515);;
@@ -137,6 +144,7 @@ section:nth-child(5) div{
 section:nth-child(5) div a:hover{
   text-decoration: underline;
 }
+/* author name */
 section:nth-child(5) p a{
   color: rgb(155, 153, 153);
   font-size: 14px; 
