@@ -66,6 +66,7 @@ app.get('/category', (req, res) => {
   res.render('category')
 })
 
+//article page
 app.get('/article', (req, res) => {
   res.render('article')
 })
