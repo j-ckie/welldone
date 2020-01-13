@@ -1,56 +1,49 @@
 const models = require('../models')
+const sequelize = require("sequelize");
 
 //Grabs Users Posts and sends them to Page
-module.exports.getYourPostsandFavourites = (req,res,next) => {
-  models.Users.findByPk(1, {
-    include: [
-      {
-        model: models.Posts,
-        as: 'post'
-      }
-    ]
-  }).then(user => {
-    if(user != null){
-      //if user does exist
-      let usersPosts = user.post
-      res.render('acct', {userPosts: usersPosts/*, favouritePosts: usersFavourites*/})
-
-    } else {
-      //If the user does not exist
-      res.redirect('/login')
-    }
-  })
-}
-
-/*
-let usersFavourites = []
-models.Users.findByPk(1, {
-  include: [
-    {
-      model: models.Favourites,
-      as: 'favourite'
-    }
-  ]
-}).then(user => {
-  //Grabs Favourites and sends them to the page
-  let favourites = user.favourite
-  for(let i = 0; i < favourites.length; i++) {
-    models.Posts.findByPk(1,{
+module.exports.getYourPostsandFavourites = async function (req,res){
+    let transaction = await models.sequelize.transaction({autocommit:false});
+    let userPage = await models.Users.findByPk(1,{
       include: [
         {
-          model: models.Comments,
-          as: 'comment'
+          model: models.Favourite,
+          include: [
+            {
+              model: models.Posts,
+              as: 'post'
+            }
+          ],
+          as: 'favourite'
+        }, {
+          model: models.Posts,
+          include: [
+            {
+              model: models.PostsWithCategories,
+              include: [
+                {
+                  model: models.Categories,
+                  as: 'category'
+                }
+              ],
+              as: 'postswithcategories'
+            }
+          ],
+          as: 'post'
         }
-      ]
-    }).then(post => {
-      let comments = post.comment
-      post.comments = parseInt(comments.length)
-      usersFavourites.push(post)
-    })
-  }
-})
-*/
+      ],
+      transaction:transaction
+    });
+    let categories = await models.Categories.findAll()
 
+    userPage.post.sort(function (a, b) {
+      return a.id - b.id;
+    })
+    //res.json(userPage)
+
+    res.render('acct',{userPosts:userPage.post, favouritePosts: userPage.favourite, categories:categories});
+    await transaction.commit();
+}
 
 //Creates Post and sends it to database
 module.exports.postToYourPosts = (req,res,next) => {
@@ -59,7 +52,16 @@ module.exports.postToYourPosts = (req,res,next) => {
     body: req.body.body,
     user_id: req.body.user_id
   })
-  post.save().then(() => res.redirect('/acct'))
+  post.save().then(newpost => {
+    for(let i = 0; i < req.body.categories.length; i++) {
+      let addCatToPost = models.PostsWithCategories.build({
+        post_id: newpost.id,
+        category_id: req.body.categories[i]
+      })
+      addCatToPost.save().then()
+    }
+    res.redirect('back')
+  })
 }
 
 //Grabs Post and Deletes it from database
@@ -68,7 +70,7 @@ module.exports.deleteFromYourPosts = (req,res,next) => {
     where: {
       id: req.body.post_id
     }
-  }).then(() => res.redirect('/acct'))
+  }).then(() => res.redirect('back'))
 }
 
 //Grabs Post and Updates it from database
@@ -81,14 +83,27 @@ module.exports.updateFromYourPosts = (req,res,next) => {
     where: {
       id: req.body.post_id
     }
-  }).then(() => res.redirect('/acct'))
+  }).then()
+  models.PostsWithCategories.destroy({
+    where: {
+      post_id: req.body.post_id
+    }
+  }).then()
+  for(let i = 0; i < req.body.categories.length; i++) {
+    let addCatToPost = models.PostsWithCategories.build({
+      post_id: req.body.post_id,
+      category_id: req.body.categories[i]
+    })
+    addCatToPost.save().then()
+  }
+  res.redirect('back')
 }
 
 //Grabs Favourite and Removes it from Your Favourites
 module.exports.removeFromYourFavourites = (req,res,next) => {
-  models.Favourites.destroy({
+  models.Favourite.destroy({
     where: {
-      id: req.body.favouriteId
+      id: req.body.favourite_id
     }
-  }).then(() => res.redirect('/acct'))
+  }).then(() => res.redirect('back'))
 }
