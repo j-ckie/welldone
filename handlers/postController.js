@@ -3,6 +3,7 @@ const models = require('../models')
 //Grabs post and sends it to page
 module.exports.getPost = (req,res,next) => {
   models.Posts.findByPk(req.query.post_id,{
+    //include comments
     include: [
       {
         model: models.Comments,
@@ -10,11 +11,40 @@ module.exports.getPost = (req,res,next) => {
       }
     ]
   }).then(post => {
+    //crosscheck user with comments
     let comments = post.comment
-    res.render('post', {post: post, comments: comments})
+    for(let i = 0; i < comments.length; i++) {
+      //if user made comment show update comment
+      if(comments[i].user_id == 1) {
+        comments[i].hidden = ''
+      }
+      //if user did not make comment hide update comment
+      else {
+        comments[i].hidden = 'hidden'
+      }
+    }
+    //crosscheck users favourites with this post
+    models.Favourite.findAll({
+      where: {
+        post_id: req.query.post_id,
+        user_id: 1
+      }
+    }).then(result => {
+      //if user does not have post favourited show add favourite
+      if(result = null) {
+        post.hidden = ''
+      }
+      //if user does have post favourited hide add favourite
+      else {
+        post.hidden = 'hidden'
+      }
+      //res.json(post)
+      res.render('post', {post: post, comments: comments})
+    })
   })
 }
 
+//add favourite button
 module.exports.addFavourite = (req,res,next) => {
   let favourite = models.Favourite.build({
     isFavourite: 'TRUE',
@@ -24,6 +54,7 @@ module.exports.addFavourite = (req,res,next) => {
   favourite.save().then(() => res.redirect('back'))
 }
 
+//add comment button
 module.exports.addComment = (req,res,next) => {
   let comment = models.Comments.build({
     body: req.body.body,
@@ -33,6 +64,7 @@ module.exports.addComment = (req,res,next) => {
   comment.save().then(() => res.redirect('back'))
 }
 
+//update comment button
 module.exports.updateComment = (req,res,next) => {
   models.Comments.update({
     body: req.body.body
@@ -43,6 +75,7 @@ module.exports.updateComment = (req,res,next) => {
   }).then(() => res.redirect('back'))
 }
 
+//delete comment button
 module.exports.deleteComment = (req,res,next) => {
   models.Comments.destroy({
     where: {

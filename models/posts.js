@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         models.Posts.belongsTo(models.Users, {as: 'user',foreignKey: 'user_id'})
         models.Posts.hasMany(models.Comments, {as: 'comment',foreignKey: 'post_id'})
         models.Posts.hasMany(models.PostsWithCategories, {as: 'postswithcategories',foreignKey: 'post_id'})
+        models.Posts.hasMany(models.PostImage, {as: 'postImage',foreignKey: 'post_id'})
     };
     return Posts;
 };

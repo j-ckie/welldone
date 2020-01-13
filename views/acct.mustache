@@ -5,9 +5,16 @@
     <title></title>
   </head>
   <body>
+    Change profile pic:
+    <form action="acct/user_image" method="post" enctype="multipart/form-data">
+      <input type="file" name="user_image" accept="image/jpeg, image/jpg, image/png">
+      <button name="button">submit</button>
+    </form>
+    <img src="{{userPage.user_image}}" alt="missing"><br>
     Create Post
-    <form action="/acct/addPost" method="post">
+    <form action="/acct/addPost" method="post" enctype="multipart/form-data">
       <input type="hidden" name="user_id" value="1">
+      <input type="file" name="post_image" accept="image/jpeg, image/jpg, image/png">
       {{#categories}}
       <div>
         <input type="checkbox" name="categories" value="{{id}}">
@@ -22,12 +29,19 @@
       Your Posts
       {{#userPosts}}
       <li>
+        {{#postImage}}
+        <img src="{{imageURL}}">
+        {{/postImage}}
+        {{^postimage}}
+        {{/postimage}}
         <h2>{{title}}</h2>
         {{#postswithcategories}}
         <p>{{category.category}}</p>
         {{/postswithcategories}}
         <p>{{body}}</p>
-        <form action="/acct/updatePost" method="post">
+        <p>Comments: {{comment.length}}</p>
+        <form action="/acct/updatePost" method="post" enctype="multipart/form-data">
+          <input type="file" name="post_image" accept="image/jpeg, image/jpg, image/png">
           <input type="hidden" name="post_id" value="{{id}}">
           <input type="hidden" name="user_id" value="1">
           {{#categories}}
@@ -59,6 +73,7 @@
       {{#favouritePosts}}
       <li>
         <h2>{{post.title}}</h2>
+        <p>Comments: {{post.comment.length}}</p>
         <form action="/post" method="post">
           <input type="hidden" name="post_id" value="{{post.id}}">
           <button>Post Page</button>
