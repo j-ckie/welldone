@@ -51,6 +51,14 @@ app.use("/login", loginRouter)
 app.get("/test", authenticate, (req, res) => res.render("test"));
 //=======================
 
+//========== notifications ==========
+const notificationOnLike = require("./handlers/notificationOnLike");
+// const notificationOnComment = require("./handlers/notificationOnComment");
+
+app.use("/notification", authenticate, notificationOnLike);
+// app.use("notification/comment", authenticate, notificationOnComment);
+
+
 //Routes
 const postRouter = require('./routes/post')
 app.use('/post', postRouter)
