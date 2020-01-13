@@ -74,9 +74,12 @@ app.use(cors())
 app.get('/account', (req, res) => {
     res.render('account')
 })
-
+//layoutpage  
+app.get('/',(req,res)=>{
+    res.render('layoutpage')
+})
 //home
-app.get('/', (req, res) => { // change to "/" instead of index
+app.get('/home', (req, res) => { // change to "/" instead of index
     res.render('index')
 })
 
