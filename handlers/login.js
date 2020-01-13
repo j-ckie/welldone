@@ -1,7 +1,7 @@
 const models = require("../models");
 const express = require("express");
 const router = express.Router();
-
+const bcrypt = require("bcrypt");
 
 const {
     validateLogin
@@ -32,11 +32,11 @@ router.post("/", (req, res) => {
             bcrypt.compare(password, persistedUser.password)
                 .then(success => {
                     if (success) {
-                        // let userToken = generateToken(res, persistedUser.id, persistedUser.email);
-                        // console.log(userToken)
-                        // console.log("FOO")
-                        // router.header("x-authorization", "Bearer " + userToken)
-                        // //res.redirect("/test");
+                        if (req.session) {
+                            req.session.email = persistedUser.email
+                            req.session.name = persistedUser.name
+                        }
+                        res.redirect("/");
                     } else {
                         res.render("login", { message: "invalid information" })
                     }

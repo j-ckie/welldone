@@ -12,7 +12,7 @@ const VIEWS_PATH = path.join(__dirname, "/views")
 const mustacheExpress = require("mustache-express");
 const bcrypt = require("bcrypt");
 
-//======= express-session ========
+//========== express-session ========
 const session = require("express-session");
 app.set("trust proxy", 1)
 app.use(session({
@@ -20,6 +20,19 @@ app.use(session({
     resave: false,
     saveUninitialized: false // true - always have cookie (tasty), false - have to do something with session first before you can get cookie
 }))
+//===================================
+
+
+//========== authentication middleware ==========
+const authenticate = require("./util/auth");
+/* 
+To add authentication to routes, add the following:
+req.session.email = persistedUser.email
+req.session.name = persistedUser.name
+
+Ask Jackie for more information
+*/
+//===============================================
 
 
 app.use(express.urlencoded({ extended: true }))
@@ -36,19 +49,8 @@ app.use("/login", loginRouter)
 //app.get("/login", (req, res) => res.render("login"));
 
 //testing stuff
-app.get("/test", (req, res) => res.render("test"));
+app.get("/test", authenticate, (req, res) => res.render("test"));
 //=======================
-
-//========== account page route ==========
-app.get('/account', (req, res) => {
-    res.render('account')
-})
-
-//========== blog page route ==========
-app.get('/blogpage', (req, res) => {
-    res.render('blogpage')
-})
-//=====================================
 
 //Routes
 const postRouter = require('./routes/post')
@@ -69,14 +71,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 //account page
-app.get('/account',(req,res)=>{
+app.get('/account', (req, res) => {
     res.render('account')
-  })
+})
 //blogpage page
-app.get('/blogpage',(req,res)=>{
+app.get('/blogpage', (req, res) => {
     res.render('blogpage')
-  })
-app.get('/index',(req,res)=>{
+})
+app.get('/', (req, res) => { // change to "/" instead of index
     res.render('index')
 })
 //Server Connection

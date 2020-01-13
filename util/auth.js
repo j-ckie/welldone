@@ -1,15 +1,13 @@
+const authenticate = (req, res, next) => {
+    if (req.session) {
+        if (req.session.email) {
+            next()
+        } else {
+            res.redirect("/login")
+        }
+    } else {
+        res.redirect("/login")
+    }
+}
 
-const config = require("./config");
-
-dotenv.config();
-
-
-// const checkToken = expressjwt({
-//     secret: config.secret
-// });
-
-// const auth = (req, res) => {
-//     if (!checkToken)
-// }
-
-module.exports = checkToken;
+module.exports = authenticate;
