@@ -132,7 +132,7 @@ header div a:nth-child(2),header div a:nth-child(3){
     text-align: center;
 }
 .popular-posts img{
-  padding-bottom: 15px;
+  margin-bottom:15px;
 }
 
 .popular-title-text {
