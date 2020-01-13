@@ -59,6 +59,10 @@ max-width: 100%;
     border-radius: 50%;
 }
 
+#article-image {
+    width: 30rem;
+}
+
 /*************************************************  *************************************************/
 
 .nav-button {
@@ -170,9 +174,11 @@ img{
 }
 
 @media only screen and (max-width: 768px){
-  /* body{
+ body{
     overflow: scroll !important;
   }
+  
+/* 
   .container-fluid{
     padding:0
   }
@@ -187,6 +193,7 @@ img{
     transform: scale(1.5);  
     color: #9E9E9E;
     } */
+
   #blog-column {
     margin: 0 20px;
   }
@@ -214,4 +221,5 @@ img{
 
 
 
+}
 }
