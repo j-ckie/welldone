@@ -4,7 +4,11 @@
     {{> navbar}}
     <body>
         <div class="container">
-            
+            <form method="POST" action="/login">
+                <input type="text" name="email" placeholder="Email" />
+                <input type="password" name="password" placeholder="Password" />
+                <button>Login</button>
+            </form>
         </div>
     {{>footer}}
     </body>

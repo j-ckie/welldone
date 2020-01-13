@@ -29,3 +29,20 @@ exports.validateRegistration = data => {
         valid: Object.keys(errors).length === 0 ? true : false
     };
 }
+
+exports.validateLogin = data => {
+    let errors = {}
+
+    if (data.email === "") {
+        errors.email = emptyError;
+    } else if (!isEmail(data.email)) {
+        errors.email = invalidEmail;
+    }
+
+    if (data.password === "") errors.name = emptyError;
+
+    return {
+        errors,
+        valid: Object.keys(errors).length === 0 ? true : false
+    };
+}
