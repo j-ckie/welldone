@@ -57,10 +57,6 @@ display: none;
     background: none;
 }
 
-#login-button-div {
-    text-align: end;
-}
-
 .login-textboxes {
     margin-bottom: 1rem;
 }
@@ -78,9 +74,11 @@ display: none;
     color: rgba(255, 215, 189, 0.9);
 }
 
-#login-form {
-    text-align: end;
+#login-div {
 }
+
+/*************************************************  *************************************************/
+
 
 /*************************************************  *************************************************/
 
