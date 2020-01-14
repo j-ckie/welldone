@@ -1,4 +1,5 @@
 {
+
   "name": "11-2019-backend-project",
   "version": "1.0.0",
   "description": "Backend group project - 11/2019 Full Stack Development Cohort",
@@ -24,8 +25,6 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
-    "jquery": "^3.4.1",
-    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "multer": "^1.4.2",
     "mustache": "^3.2.1",
@@ -33,8 +32,47 @@
     "node": "^13.5.0",
     "pg": "^7.17.0",
     "sequelize": "^5.21.3",
-    "session": "^0.1.0",
     "sessions": "0.0.2-7"
   },
   "devDependencies": {}
+
+    "name": "11-2019-backend-project",
+    "version": "1.0.0",
+    "description": "Backend group project - 11/2019 Full Stack Development Cohort",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/j-ckie/11-2019-backend-project.git"
+    },
+    "author": "Jaclyn Legacion, Collin Barlow, JB Wilson, Eric Jimenez",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/j-ckie/11-2019-backend-project/issues"
+    },
+    "homepage": "https://github.com/j-ckie/11-2019-backend-project#readme",
+    "dependencies": {
+        "bcrypt": "^3.0.7",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "crypto": "^1.0.1",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "express-session": "^1.17.0",
+        "jquery": "^3.4.1",
+        "jsonwebtoken": "^8.5.1",
+        "morgan": "^1.9.1",
+        "multer": "^1.4.2",
+        "mustache": "^3.2.1",
+        "mustache-express": "^1.3.0",
+        "node": "^13.5.0",
+        "pg": "^7.17.0",
+        "sequelize": "^5.21.3",
+        "sessions": "0.0.2-7",
+        "web-push": "^3.4.3"
+    },
+    "devDependencies": {}
+
 }

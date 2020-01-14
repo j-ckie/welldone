@@ -14,6 +14,7 @@ router.get("/", (req, res) => res.render("login"));
 router.post("/", (req, res) => {
     let email = req.body.email,
         password = req.body.password;
+    // id = req.body.id;
 
     let loginData = {
         email: email,
@@ -35,6 +36,7 @@ router.post("/", (req, res) => {
                         if (req.session) {
                             req.session.email = persistedUser.email
                             req.session.name = persistedUser.name
+                            req.session.id = persistedUser.id
                         }
                         res.redirect("/home");
                     } else {
