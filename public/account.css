@@ -5,7 +5,7 @@
 
 }
 body{
-  background-color: rgba(166, 176, 219, 0.623);
+  background-color: rgb(65, 65, 65);
   font-family:sans-serif;
   overflow: hidden;
 }
@@ -14,10 +14,10 @@ body{
 
 @media only screen and (min-width: 728px){
 header{
-  box-shadow: 0px 3px 10px rgba(53, 49, 49, 0.3);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
   position: sticky;
   top: 0px;
-  background-color: rgba(56, 63, 68, 0.521);
+  background-color: rgba(65,65,65);
   
 }
 nav{
@@ -28,33 +28,39 @@ nav{
   align-items: center;
   justify-content: space-between;
 }
-nav {
- font-size: 1.1rem;
- flex:1;
- vertical-align: sub;
- list-style:none;
- display: flex;
- justify-content: space-between;
+nav{
+  height: 75px;
+  margin:auto;
+  width:90%;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  vertical-align: sub;
+  list-style:none;
 }
+/* WellDONE */
 nav b{
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  color:whitesmoke;
 }
 
 nav a{
-  color:black;
-  text-decoration: none;
+  text-decoration: none !important;
 }
+/* logout */
 nav i{
-  color: rgba(230, 223, 223, 0.705);
-  font-size: 16px;
+  color:whitesmoke;
+  font-size: 1rem;
 }
 
 hr{
   margin:10px auto 0px auto;
   width:650px;
 }
+/* Title of Blog */
 section a{ 
-  color:rgba(22, 21, 21, 0.9);
+  color:rgba(255, 215, 189, 0.9);
   text-decoration: none;
   padding:10px;
   font-family: Arial, Helvetica, sans-serif;
@@ -65,42 +71,44 @@ section{
   width:650px;
   
 }
+/* Name */
 section h1{
-  font-size: 40px;
- font-family: 'Catamaran', sans-serif;;
+ font-size: 40px;
+ font-family: 'Catamaran', sans-serif;
+ color:white;
 }
-section h1 a{
-  color:rgb(100, 95, 95);
+/* edit profile name */
+section h1 a{   
+  color:rgb(212, 199, 199);
 }
 section h1 a:hover{
-  color:black;
+  color:rgb(150, 248, 166);
 }
-
+/* border for edit profile */
 section h1 span{
   font-size: small;
   font-weight:400;
-  border: 1px solid rgb(90, 87, 87);
+  border: 1px solid rgb(214, 201, 201);
   border-radius: 4px;
   vertical-align: middle;
   margin:30px;
   padding:.1px 2px;
 }
 section h1 span:hover{
-  border: 1px solid black;
+  border: 1px solid rgb(190, 247, 157);
 }
 
 section:nth-child(2){
   margin:70px auto 10px auto;
-  /* width:720px; */
   font-weight: 400px;
 }
+/* profile and claps name */
 section:nth-child(2) a{
   padding:0px;
-  color:grey;
+  color:rgb(241, 223, 223);
 }
-
 section:nth-child(2) a:hover{
-  color:rgb(58, 54, 54);
+  color:rgb(165, 143, 143);
 }
 section:nth-child(2) a:active{
   color:blue;
@@ -109,33 +117,36 @@ section:nth-child(2) a:active{
 section:nth-child(2) span{
   padding:15px;
 }
+/* "Claps for {whoevers name}" */
 section:nth-child(4){
-  color:rgb(44, 42, 42);
+  color:rgb(241, 223, 223);
   text-shadow: -1px -1px grey;
   font-style: italic;
   margin: 40px auto 20px auto;
 }
-
+/* top border of all post */
 section:nth-child(5){
   margin:20px auto 10px auto;
   font-size: 14px;
-  border-top: 1px ridge rgba(121, 114, 114, 0.315);
+  border-top: 1px ridge rgba(121, 114, 114, 0.515);
   height: 370px;
   width:650px;
   overflow: scroll;
 }
+/* other borders of all post */
 section:nth-child(5) div{
   padding: 20px 10px 25px 10px;
-  border-bottom: 1px ridge rgba(121, 114, 114, 0.315);;
-  border-left: 1px ridge rgba(121, 114, 114, 0.315);
-  border-right: 1px ridge rgba(121, 114, 114, 0.315);
+  border-bottom: 1px ridge rgba(121, 114, 114, 0.515);;
+  border-left: 1px ridge rgba(121, 114, 114, 0.515);
+  border-right: 1px ridge rgba(121, 114, 114, 0.515);
  
 }
 section:nth-child(5) div a:hover{
   text-decoration: underline;
 }
+/* author name */
 section:nth-child(5) p a{
-  color: grey;
+  color: rgb(155, 153, 153);
   font-size: 14px; 
 }
 }

@@ -1,7 +1,6 @@
 
 /* ----------------------------- GLOBAL STYLING ----------------------------- */
 
-
   body {
     background-color: rgb(65, 65, 65);
   }
@@ -14,35 +13,14 @@
     color: #f8f9fa;
   }
 
-  #searchbar {
-    display: none;
-    border: none;
-    background: none;
-  }
-
-  #searchglass {
-    opacity: 60%;
-    margin-top: 9px;
-    height: 17px;
-    width: auto;
-  }
-
-  #search-glass-button {
-    border: none;
-    background: none;
-  }
-
-  #get-started-button {
-    border: 1px solid #28a745;
-    border-radius: 5px;
-    padding: 5px;
-    margin-right: 30px;
-    display: inline-table;
-  }
-
   .article-hr {
-    width: 90%;
-    color: #f8f9fa;
+    width: 80%;
+    margin: auto;
+    border-top: 1px solid gray;
+  }
+
+  .post-title-text {
+    font-size: large;
   }
 
   .post-secondary-text {
@@ -53,10 +31,7 @@
     font-size: 0.8rem;
   }
 
-  .bookmark {
-    margin-top: 8px;
-    padding: 0;
-  }
+  /************************************************* FOOTER *************************************************/
 
   #footer-heart {
     color: red;
@@ -68,7 +43,7 @@
   }
 
   #footer {
-    justify-content: center;
+    text-align: center;
   }
 
   .favortie-article-heart {
@@ -93,6 +68,7 @@
 body{
   background-color: rgb(65, 65, 65);
   font-family:sans-serif;
+ 
 }
 ::-webkit-scrollbar{
   -webkit-appearance: none;
@@ -107,8 +83,8 @@ body{
 
 /* ////////////////////////////////////////////////////////////////// */
 @media only screen and (min-width: 768px){
- 
-.navbar-nav{
+  
+/* .navbar-nav{
   margin: 155px auto 0 auto;
   overflow: scroll;
   width: 50vw;
@@ -129,7 +105,7 @@ body{
 
 .navbar-collapse ul li{
   border: none;
-}
+} */
 header{
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
   position: sticky;
