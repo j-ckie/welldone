@@ -8,10 +8,10 @@ const session = require("express-session");
 router.use(express.urlencoded());
 
 const {
-    validateRegistration
+  validateRegistration
 } = require("../util/validators");
 
-router.get("/", (req, res) => res.render("register"));
+router.get("/",(req, res) => res.render("register"));
 
 // registration
 router.post("/", (req, res) => {
@@ -46,10 +46,12 @@ router.post("/", (req, res) => {
 
                 bcrypt.hash(persistedPassword, SALT_ROUNDS)
                     .then(hash => {
+                      default_user_image = './profile_images/defaultimage.png'
                         let newUser = models.Users.build({
                             email: persistedEmail,
                             name: persistedName,
-                            password: hash
+                            password: hash,
+                            user_image: default_user_image
                         })
                         // if (req.session) {
                         //     req.session.email = email
