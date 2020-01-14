@@ -14,7 +14,7 @@ const bcrypt = require("bcrypt");
 
 //file upload
 const crypto = require('crypto')
-const multer = require("multer")
+// crsonst multer = require("multer")
 const morgan = require('morgan')
 app.use(morgan('dev'))
 
