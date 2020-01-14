@@ -27,7 +27,21 @@ app.use(session({
     saveUninitialized: false // true - always have cookie (tasty), false - have to do something with session first before you can get cookie
 }))
 //===================================
-
+//  module.exports.getCategories = (req,res,next) => {
+models.Categories.findAll().then((data)=>{ 
+    // let cat={},anew=[], cats={}
+    // for(x=0;x<(data.length);x++){
+    //     let all = data[x].category
+    //     cat.category = all 
+    //     anew.push(cat)  
+    // }
+    // cats.category = anew
+    // console.log(cats)
+    console.log(data)
+  }).catch((err)=>{
+    console.log(err)
+  })
+// }
 
 //========== authentication middleware ==========
 const authenticate = require("./util/auth");
@@ -76,6 +90,7 @@ app.set("view engine", "mustache");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
+
 //account page
 app.get('/account', (req, res) => {
     res.render('account')
@@ -85,16 +100,14 @@ app.get('/',(req,res)=>{
     res.render('layoutpage')
 })
 //home
-app.get('/home',async(req, res) => {
+app.get('/home', (req, res) => {
  // change to "/" instead of indexrs
     res.render('index')
 })
-
 //category page
 app.get('/category', (req, res) => {
   res.render('category')
 })
-
 //article page
 app.get('/article', (req, res) => {
   res.render('article')
