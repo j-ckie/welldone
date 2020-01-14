@@ -70,11 +70,14 @@ app.post("/logout", authenticate, (req, res) => {
 
 
 //Routes
-const postRouter = require('./routes/post')
-app.use('/post', postRouter)
+const articleRouter = require('./routes/article')
+app.use('/article', articleRouter)
 
 const acctRouter = require('./routes/acct')
-app.use('/acct', authenticate, acctRouter)
+app.use('/acct', acctRouter)
+
+const homeRouter = require('./routes/home')
+app.use('/', homeRouter)
 
 //Mustache
 app.use(express.static(path.join(__dirname, "partials")));
@@ -87,20 +90,6 @@ app.set("view engine", "mustache");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
-//account page
-
-app.get('/account', authenticate,(req, res) => {
-    res.render('account')
-})
-//blogpage page
-app.get('/blogpage', authenticate,(req, res) => {
-    res.render('blogpage')
-})
-
-app.get('/', authenticate,(req, res) => { // change to "/" instead of index
-
-    res.render('index')
-})
 
 // edit profile mustache page
 app.get("/editprofile", (req, res) => res.render("editprofile"))
@@ -110,12 +99,8 @@ app.get('/category', (req, res) => {
     res.render('category')
 })
 
-//article page
-app.get('/article', (req, res) => {
-    res.render('article')
-})
-
 // API fetch request - not route
+
 app.post('/notification', (req, res) => {
     // const subscription = req.body;
     // res.status(201).json({});
@@ -129,7 +114,6 @@ app.post('/notification', (req, res) => {
     // webpush.sendNotification(subscription, payload).catch(error => {
     //     console.error(error.stack);
     // })
-
 })
 //Server Connection
 app.listen(3000, () => {

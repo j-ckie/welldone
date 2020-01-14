@@ -9,7 +9,7 @@
 
 <header class="header">
   <nav>
-      <a href='/home'><b>WellDone</b></a> 
+      <a href='/home'><b>WellDone</b></a>
       <div>
         <a href='/' class="logout" style='vertical-align:sub'><i>logout</i></a>
       </div>
@@ -25,62 +25,25 @@
 </section>
 
 <section>
-<h4><a href='#'>Profile</a><span><a href='#'>Claps</a></span></h4>
+<h4><a href='/acct?c=Profile'>Profile</a><span><a href='/acct?c=Posts'>Posts</a></span><span><a href='/acct?c=Claps'>Claps</a></span></h4>
 </section>
 <hr/>
 
-<section>
-<h3>Claps from Eric Jimenez</h3>
-</section>
 <section class="noscroll">
+  <h3>Claps from Eric Jimenez</h3>
+  {{#favouritePosts}}
   <div>
-    <h3><a href="#">Title of Blog</a></h3>
-    <p><a href="#">Author</a></p>
+    <h3><a href="#">{{post.title}}</a></h3>
+    <p><a href="#">{{post.user.name}}</a></p>
   </div>
-  <div>
-    <h3><a href="#">Title of Blog</a></h3>
-    <p><a href="#">Author</a></p>
-  </div>
-  <div>
-    <h3><a href="#">Title of Blog</a></h3>
-    <p><a href="#">Author</a></p>
-  </div>
-   <div>
-    <h3><a href="#">Title of Blog</a></h3>
-    <p><a href="#">Author</a></p>
-  </div>
-   <div>
-    <h3><a href="#">Title of Blog</a></h3>
-    <p><a href="#">Author</a></p>
-  </div>
-  <div>
-    <h3><a href="#">Title of Blog</a></h3>
-    <p><a href="#">Author</a></p>
-  </div>
-  <div>
-    <h3><a href="#">Title of Blog</a></h3>
-    <p><a href="#">Author</a></p>
-  </div>
-   <div>
-    <h3><a href="#">Title of Blog</a></h3>
-    <p><a href="#">Author</a></p>
-  </div>
-  <div>
-    <h3><a href="#">Title of Blog</a></h3>
-    <p><a href="#">Author</a></p>
-  </div>
-  <div>
-    <h3><a href="#">Title of Blog</a></h3>
-    <p><a href="#">Author</a></p>
-  </div>
-   <div>
-    <h3><a href="#">Title of Blog</a></h3>
-    <p><a href="#">Author</a></p>
-  </div>
-  <div>
-    <h3><a href="#">Title of Blog</a></h3>
-    <p><a href="#">Author</a></p>
-  </div>
+  {{/favouritePosts}}
+  <h3>Posts from Eric Jimenez</h3>
+    {{#userPosts}}
+    <div>
+      <h3><a href="#">{{title}}</a></h3>
+      <p><a href="#">{{user.name}}</a></p>
+    </div>
+    {{/userPosts}}
 </section>
 </div>
 </body>
