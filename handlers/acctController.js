@@ -34,6 +34,9 @@ module.exports.getYourPostsandFavourites = async function (req,res){
                 {
                   model: models.Comments,
                   as: 'comment'
+                },{
+                  model: models.Users,
+                  as: 'user'
                 }
               ],
               as: 'post'
@@ -64,6 +67,9 @@ module.exports.getYourPostsandFavourites = async function (req,res){
             {
               model: models.PostImage,
               as: 'postImage'
+            },{
+              model: models.Users,
+              as: 'user'
             }
           ],
           as: 'post'
@@ -79,8 +85,8 @@ module.exports.getYourPostsandFavourites = async function (req,res){
       return a.id - b.id;
     })
 
-    res.render('acct',{userPage: userPage, userPosts:userPage.post, favouritePosts: userPage.favourite, categories:categories});
-
+    res.render('account',{userPage: userPage, userPosts:userPage.post, favouritePosts: userPage.favourite, categories:categories});
+    //res.json(userPage)
     await transaction.commit();
 }
 

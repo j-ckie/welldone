@@ -75,7 +75,10 @@ const postRouter = require('./routes/post')
 app.use('/post', postRouter)
 
 const acctRouter = require('./routes/acct')
-app.use('/acct', authenticate, acctRouter)
+app.use('/acct', acctRouter)
+
+const homeRouter = require('./routes/home')
+app.use('/', homeRouter)
 
 //Mustache
 app.use(express.static(path.join(__dirname, "partials")));
@@ -97,10 +100,6 @@ app.get('/account', authenticate,(req, res) => {
 app.get('/blogpage', authenticate,(req, res) => {
     res.render('blogpage')
 })
-app.get('/', authenticate,(req, res) => { // change to "/" instead of index
-
-    res.render('index')
-})
 
 //category page
 app.get('/category', (req, res) => {
@@ -117,7 +116,7 @@ app.post('/notification/like', (req, res) => {
     // create likenotification entry on table
     let likedPostId = req.query.post_id,
         postOwnerId = req.query.users_id;
-    
+
     let newLikeNotification = models.LikesNotifications.build({
         type: "like",
         recipient_id: postOwnerId,
