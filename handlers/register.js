@@ -55,11 +55,11 @@ router.post("/", (req, res) => {
                             password: hash,
                             user_image: default_user_image
                         })
-                        if (req.session) {
-                            req.session.email = persistedUser.email
-                            req.session.name = persistedUser.name
-                            req.session.id = persistedUser.id
-                        }
+                        // if (req.session) {
+                        //     req.session.email = persistedUser.email
+                        //     req.session.name = persistedUser.name
+                        //     req.session.id = persistedUser.id
+                        // }
                         newUser.save().then(() => res.redirect("/")).catch(err => console.error(err))
                     })
 
