@@ -2,14 +2,19 @@ const express = require('express')
 const router = express.Router()
 const PostController = require('../handlers/postController')
 
-router.get('/',PostController.getPost)
+//=============login/authenticate=============
+const authenticate = require("../util/auth");
+const bcrypt = require("bcrypt");
+//============================================
 
-router.post('/addFavourite',PostController.addFavourite)
+router.get('/',authenticate,PostController.getPost)
 
-router.post('/addComment',PostController.addComment)
+router.post('/addFavourite',authenticate,PostController.addFavourite)
 
-router.post('/updateComment',PostController.updateComment)
+router.post('/addComment',authenticate,PostController.addComment)
 
-router.post('/deleteComment',PostController.deleteComment)
+router.post('/updateComment',authenticate,PostController.updateComment)
+
+router.post('/deleteComment',authenticate,PostController.deleteComment)
 
 module.exports = router

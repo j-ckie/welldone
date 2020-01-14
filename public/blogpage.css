@@ -13,25 +13,6 @@ a {
   color: #f8f9fa;
 }
 
-
-#searchbar {
-  display: none;
-  border: none;
-  background: none;
-}
-
-#searchglass {
-  opacity: 60%;
-  margin-top: 9px;
-  height: 17px;
-  width: auto;
-}
-
-#search-glass-button {
-  border: none;
-  background: none;
-}
-
 #get-started-button {
   border: 1px solid #28a745;
   border-radius: 5px;
