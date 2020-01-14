@@ -1,97 +1,28 @@
-
-/************************************************* CAROUSEL CODE *************************************************/
-.abreast .carousel-inner {
-overflow-x: auto;
-white-space: nowrap;
-margin:0;
-}
-.abreast .item {
-display: inline-block;
-margin: 6px 4px 0 0;
-}
-
-.abreast .carousel-control, 
-.abreast .carousel-indicators {
-display: none;
-}
-
-/************************************************* HOME PAGE *************************************************/
-
-.popular-posts {
-    text-align: center;
-}
-
-.popular-title-text {
-    font-size: medium;
-}
-
-#popular-column {
-    margin: 0 10px;
-}
+/************************************************* GLOBAL CODE *************************************************/
 
 #desktop-container-outer-space {
-    max-width: 1100px;
-    border: 1px solid gray;
-    padding: 0px;
+  max-width: 1100px;
+  border: 1px solid gray;
+  padding: 0px;
 }
 
-/************************************************* CATEGORY PAGE *************************************************/
-#articles-category {
-    text-align: center;
+.container-fluid{
+  padding:0;
 }
 
-/************************************************* ARTICLE PAGE *************************************************/
-#article-secondary-text {
-    font-size: 1.2rem;
+body {
+  background-color: rgb(65, 65, 65);
 }
 
-#article-image {
-    width: 30rem;
+p {
+  color: #f8f9fa;
 }
 
-/************************************************* LOGIN PAGE *************************************************/
-#login-button {
-    color: rgba(255, 215, 189, 0.9);
-    border: 1px solid rgba(255, 215, 189, 0.9);
-    padding: 0.3rem;
-    background: none;
+a {
+  color: #f8f9fa;
 }
 
-#login-button-div {
-    text-align: end;
-}
-
-.login-textboxes {
-    margin-bottom: 1rem;
-}
-
-#no-account-text {
-    font-size: small;
-    margin-top: 0.6rem;
-}
-
-#create-one-link-text {
-    color: rgba(255, 215, 189, 0.9);
-}
-
-#join-welldone-text {
-    color: rgba(255, 215, 189, 0.9);
-}
-
-#login-form {
-    text-align: end;
-}
-
-/*************************************************  *************************************************/
-
-.nav-button {
-transition: all .2s ease-in-out;
-color:red;
-}
-.nav-button:hover {
-transform: scale(1.2);
-color: rgb(172, 15, 15);
-}
+/************************************************* HEADER CODE *************************************************/
 
 header{
   z-index: 2;
@@ -122,66 +53,215 @@ header div a:nth-child(1):hover,header div a:nth-child(2):hover,header div a:nth
 header div a:nth-child(2),header div a:nth-child(3){
   padding-top: 18px;
 }
-.post-image {
-    text-align: end;
+
+/************************************************* FOOTER *************************************************/
+
+#footer-heart {
+  color: red;
+  font-size: 20px;
 }
-.post-image img{
-  width:20rem;
-  }
-.post-title-text{
-  font-size: 1.3rem;
+
+#with-love {
+  font-family: monospace;
 }
-.post-secondary-text{
-  font-size: .7rem;
+
+#footer {
+  text-align: center;
 }
-.author-text{
-  font-size: .9rem;
-  margin-bottom:.1rem ;
+
+.favortie-article-heart {
+  font-size: 18px;
+  color: red;
 }
-.category-text{
-  font-size: .9rem;
+
+/************************************************* CAROUSEL CODE *************************************************/
+.abreast .carousel-inner {
+    overflow-x: auto;
+    white-space: nowrap;
+    margin:0;
 }
-#blog-column{
-  margin: 0 75px;
+.abreast .item {
+    display: inline-block;
+    margin: 6px 4px 0 0;
 }
-/* #navbarTogglerDemo02{
-  width:98vw;
+
+.abreast .carousel-control, 
+.abreast .carousel-indicators {
+    display: none;
 }
-.navbar-nav{
-  width:76.5vw;
-} */
+
+.nav-button {
+    transition: all .2s ease-in-out;
+    color:#f8f9fa;
+}
+  
+.nav-button:hover {
+    transform: scale(1.2);
+    color: rgba(255, 215, 189, 0.9);
+}
+
+/************************************************* HOME PAGE and CATEGORY PAGE *************************************************/
 
 .popular-posts {
     text-align: center;
 }
+
+.popular-title-text {
+    font-size: medium;
+}
+
+#popular-column {
+    margin: 0 10px;
+}
+
 .popular-posts img{
-  margin-bottom:15px;
+margin-bottom:15px;
+}
+
+.heart {
+  padding:5px 0 0 10px;
+  font-size: 20px;
+  color:red;
+  transition: all .2s ease-in-out;
+}
+
+.heart:hover {
+  transform: scale(1.2);
+}
+
+.post-image {
+  text-align: end;
+}
+
+.post-image img{
+width:20rem;
+}
+
+.post-title-text{
+font-size: 1.3rem;
+}
+
+.post-secondary-text{
+font-size: .7rem;
+}
+
+.author-text{
+font-size: .9rem;
+margin-bottom:.1rem ;
+}
+
+.category-text{
+font-size: .9rem;
+}
+
+#articles-category {
+    text-align: center;
+}
+
+#category{
+  padding:20px 70px;
+  font-size: 30px;
+  color:whitesmoke;
+}
+
+/************************************************* ARTICLE PAGE *************************************************/
+
+#article-secondary-text {
+    font-size: 1.2rem;
+}
+
+#article-image {
+    width: 30rem;
+}
+
+/************************************************* LOGIN PAGE *************************************************/
+
+#login-button {
+    color: rgba(255, 215, 189, 0.9);
+    border: 1px solid rgba(255, 215, 189, 0.9);
+    padding: 0.3rem;
+    background: none;
+}
+
+.login-textboxes {
+    margin-bottom: 1rem;
+}
+
+#no-account-text {
+    font-size: small;
+    margin-top: 0.6rem;
+}
+
+#create-one-link-text {
+    color: rgba(255, 215, 189, 0.9);
+}
+
+#join-welldone-text {
+    color: rgba(255, 215, 189, 0.9);
+}
+
+#header-login-div {
+  justify-content: start;
+  margin-left: 1rem;
+}
+
+#create-account-link {
+  font-size: large;
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+}
+
+#create-account-link:hover {
+  text-decoration: none;
+}
+
+/************************************************* REGISTER PAGE *************************************************/
+
+#header-reg-div {
+  justify-content: start;
+  margin-left: 1rem;
+}
+
+#login-account-link {
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+}
+
+#login-account-link:hover {
+  text-decoration: none;
+}
+
+#login-account-button {
+  background: none;
+  border: none;
+}
+
+.reg-textboxes {
+  margin-bottom: 1rem;
+}
+
+/************************************************* LAYOUT PAGE *************************************************/
+
+
+
+/*************************************************  *************************************************/
+
+#blog-column{
+  margin: 0 75px;
 }
 
 .popular-title-text {
     font-size: 1.3rem;
 }
 
-#popular-column {
-    margin: 0 10px;
-}
 a.text-light:hover,a.text-light:focus{
   color:rgba(165, 143, 143) !important
 }
-#category{
-  padding:20px 70px;
-  font-size: 30px;
-  color:whitesmoke;
-}
-.heart {
-  padding:5px 0 0 10px;
-  font-size: 20px;
-	color:red;
-}
 
-.container-fluid{
-  padding:0;
-}
 img{
   border-radius: 10px;
 }
@@ -192,49 +272,50 @@ img{
   padding-left:0;
 }
 
+/************************************************* MEDIA QUERIES *************************************************/
+
 @media only screen and (max-width:1400px){
-  .post-image img{
+
+  .post-image img {
     width:24vw;
-    }
+  }
+
 }
 
+/*************************************************/
+
 @media only screen and (max-width: 768px){
+
    body{
-    overflow-y: scroll !important;
+      overflow-y: scroll !important;
   }
-  /*
-  .container-fluid{
-    padding:0
-  }
-  #blog-column{
-    margin: 0 20px;
-  }
-  .nav-button {
-    transition: all .2s ease-in-out;
-    text-align:center;
-    }
-    .nav-button:hover {
-    transform: scale(1.5);  
-    color: #9E9E9E;
-    } */
 
   #blog-column {
-    margin: 0 20px;
+      margin: 0 20px;
   }
   #most-popular {
       display: none !important;  
   }
-  .post-image img{
-  width:30vw;
+  .post-image img {
+      width:30vw;
   }
-p.text-light.post-secondary-text{
-  display:none;
+  p.text-light.post-secondary-text {
+      display:none;
+  }
+
 }
-}
+
+/*************************************************/
+
 @media only screen and (max-width:590px){
-  .post-image img{
-    width:40vw;
+
+  .post-image img {
+      width:40vw;
   }
+
+}
+
+/*************************************************/
 
 @media only screen and (max-height:670px){
 
@@ -243,9 +324,11 @@ p.text-light.post-secondary-text{
 
 }
 
+/*************************************************/
+
 @media only screen and (max-height:600px){
 
 
 
-}
+
 }

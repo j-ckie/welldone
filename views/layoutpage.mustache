@@ -1,13 +1,9 @@
-<html>
-    {{>head}}
-    {{! removed redundant code and replaced with <HEAD> partial to reduce code lines}}
-    <body>
-      Welcome!
-      <header class="header">
-        <div>
-        <a href='/login' class="logout" style='vertical-align:sub'>Login</a>
-        <a href='/register' class="logout" style='vertical-align:sub'>Register</a>
-        </div>    
+{{>head}}
+<header class="header">
+  <div>
+  <a href='/login' class="logout" style='vertical-align:sub'>Login</a>
+  <a href='/register' class="logout" style='vertical-align:sub'>Register</a>
+  </div>    
 </header>
 
 
@@ -20,10 +16,8 @@
 
 
 
-    </body>
+
 
 <!--SCRIPTS-->
 
-{{! removed redundent code and replaced with <FOOTER> partial to reduce code lines}}
 {{>footer}}
-</html>
