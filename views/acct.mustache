@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Catamaran:200&display=swap" rel="stylesheet">
+<link rel='stylesheet' type='text/css' href='/account.css'/>
+<link rel='stylesheet' type='text/css' href='/master.css'/>
+</head>
   <body>
+  <header class="header">
+  <nav>
+      <a href='/home'><b>WellDone</b></a> 
+      <div>
+        <a href='/' class="logout" style='vertical-align:sub'><i>logout</i></a>
+      </div>
+  </nav>
+</header>
+
+<div>
+    <section>
+    {{#userPage}}
+        <h1>TEST{{userPage.name}}</h1>
+    {{/userPage}}
     Change profile pic:
     <form action="acct/user_image" method="post" enctype="multipart/form-data">
       <input type="file" name="user_image" accept="image/jpeg, image/jpg, image/png">
