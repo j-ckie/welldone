@@ -85,7 +85,8 @@ app.get('/',(req,res)=>{
     res.render('layoutpage')
 })
 //home
-app.get('/home', (req, res) => { // change to "/" instead of index
+app.get('/home',async(req, res) => {
+ // change to "/" instead of indexrs
     res.render('index')
 })
 
