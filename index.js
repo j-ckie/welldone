@@ -71,8 +71,8 @@ app.get("/test", authenticate, (req, res) => res.render("test"));
 
 
 //Routes
-const postRouter = require('./routes/post')
-app.use('/post', postRouter)
+const articleRouter = require('./routes/article')
+app.use('/article', articleRouter)
 
 const acctRouter = require('./routes/acct')
 app.use('/acct', acctRouter)
@@ -91,24 +91,10 @@ app.set("view engine", "mustache");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
-//account page
-
-app.get('/account', authenticate,(req, res) => {
-    res.render('account')
-})
-//blogpage page
-app.get('/blogpage', authenticate,(req, res) => {
-    res.render('blogpage')
-})
 
 //category page
 app.get('/category', (req, res) => {
     res.render('category')
-})
-
-//article page
-app.get('/article', (req, res) => {
-    res.render('article')
 })
 
 // API fetch request - not route
