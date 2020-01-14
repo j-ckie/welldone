@@ -14,7 +14,7 @@ const bcrypt = require("bcrypt");
 
 //file upload
 const crypto = require('crypto')
-// crsonst multer = require("multer")
+const multer = require("multer")
 const morgan = require('morgan')
 app.use(morgan('dev'))
 
@@ -85,7 +85,8 @@ app.get('/',(req,res)=>{
     res.render('layoutpage')
 })
 //home
-app.get('/home', (req, res) => { // change to "/" instead of index
+app.get('/home',async(req, res) => {
+ // change to "/" instead of indexrs
     res.render('index')
 })
 
