@@ -8,7 +8,7 @@
     Change profile pic:
     <form action="acct/user_image" method="post" enctype="multipart/form-data">
       <input type="file" name="user_image" accept="image/jpeg, image/jpg, image/png">
-      <button name="button">submit</button>
+      <button>submit</button>
     </form>
     <img src="{{userPage.user_image}}" alt="missing"><br>
     Create Post
@@ -61,6 +61,13 @@
         <form action="/post" method="get">
           <input type="hidden" name="post_id" value="{{id}}">
           <button>Post Page</button>
+        </form>
+        <form action="/acct/removePostImage" method="post">
+          {{#postImage}}
+          <input type="hidden" name="file_path" value="{{imageURL}}">
+          {{/postImage}}
+          <input type="hidden" name="post_id" value="{{id}}">
+          <button>Delete Image</button>
         </form>
       </li>
       {{/userPosts}}

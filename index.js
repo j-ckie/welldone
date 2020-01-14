@@ -89,16 +89,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 //account page
-app.get('/account', authenticate, (req, res) => {
+
+app.get('/account', authenticate,(req, res) => {
     res.render('account')
 })
-//layoutpage  
-app.get('/', (req, res) => {
-    res.render('layoutpage')
+//blogpage page
+app.get('/blogpage', authenticate,(req, res) => {
+    res.render('blogpage')
 })
-//home
-app.get('/home',async(req, res) => {
- // change to "/" instead of indexrs
+app.get('/', authenticate,(req, res) => { // change to "/" instead of index
+
     res.render('index')
 })
 

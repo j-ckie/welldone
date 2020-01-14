@@ -1,12 +1,23 @@
 const models = require('../models')
 const sequelize = require("sequelize");
+const bcrypt = require("bcrypt");
+const fs = require('fs')
+
 
 //Grabs Users Posts and Favourites then sends them to Page
 module.exports.getYourPostsandFavourites = async function (req,res){
-  //if User is not Logged in Sends the User to Register Page
-  //if(user != null) {
+
     let transaction = await models.sequelize.transaction({autocommit:false});
-    let userPage = await models.Users.findByPk(1,{
+
+    let user_id = await models.Users.findOne({
+      where: {
+        email: req.session.email
+      },
+      transaction: transaction
+    }).then()
+
+
+    let userPage = await models.Users.findByPk(user_id.id,{
       //include users favourites
       include: [
         {
@@ -61,21 +72,28 @@ module.exports.getYourPostsandFavourites = async function (req,res){
     userPage.post.sort(function (a, b) {
       return a.id - b.id;
     })
-    //res.json(userPage)
+    res.json(userPage)
 
     res.render('acct',{userPage: userPage, userPosts:userPage.post, favouritePosts: userPage.favourite, categories:categories});
     await transaction.commit();
-    /*} else {
-    res.redirect('/register')
-  } */
 }
 
 //Creates Post and sends it to database
-module.exports.postToYourPosts = (req,res,next) => {
+module.exports.postToYourPosts = async function (req,res){
+
+  let transaction = await models.sequelize.transaction({autocommit:false});
+
+  let user_id = await models.Users.findOne({
+    where: {
+      email: req.session.email
+    },
+    transaction: transaction
+  }).then()
+
   let post = models.Posts.build({
     title: req.body.title,
     body: req.body.body,
-    user_id: req.body.user_id
+    user_id: user_id.id
   })
   post.save().then(newpost => {
     //adds categories to post
@@ -91,7 +109,7 @@ module.exports.postToYourPosts = (req,res,next) => {
     console.log(req.file)
     if(req.file != null) {
       const host = req.hostname;
-      const filePath = './profile_images/' + req.file.filename;
+      const filePath = './post_images/' + req.file.filename;
       let post_image = models.PostImage.build({
         imageURL: filePath,
         post_id: newpost.id
@@ -162,7 +180,7 @@ module.exports.updateFromYourPosts = (req,res,next) => {
   //adds new image to Post
   if(req.file != undefined) {
     const host = req.hostname;
-    const filePath = './profile_images/' + req.file.filename;
+    const filePath = './post_images/' + req.file.filename;
     models.PostImage.update({
       imageURL: filePath
     },{
@@ -183,15 +201,38 @@ module.exports.removeFromYourFavourites = (req,res,next) => {
   }).then(() => res.redirect('/acct'))
 }
 
-//add Profile image
-module.exports.addProfileImage = (req,res,next) => {
+//add Profile Picture
+module.exports.addProfileImage = async function (req,res){
+  let transaction = await models.sequelize.transaction({autocommit:false});
+
+  let user_id = await models.Users.findOne({
+    where: {
+      email: req.session.email
+    },
+    transaction: transaction
+  }).then()
+
   const host = req.hostname;
-  const filePath = './profile_images/' + req.file.filename;
+  const filePath = './profile_pictures/' + req.file.filename;
   models.Users.update({
     user_image: filePath
   },{
     where: {
-      id: 1
+      id: user_id.id
     }
   }).then(res.redirect('/acct'))
+}
+
+module.exports.removeFromPostImage = (req,res,next) => {
+  let path = './public' + req.body.file_path.slice(1)
+  fs.unlink(path, (err) => {
+    console.log(req.body.file_path + 'was deleted');
+  })
+  models.PostImage.update({
+    imageURL: null
+  },{
+    where: {
+      post_id: req.body.post_id
+    }
+  }).then(() => res.redirect('/acct'))
 }
