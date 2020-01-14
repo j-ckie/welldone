@@ -1,6 +1,7 @@
 const models = require('../models')
 
 //Grabs post and sends it to page
+
 module.exports.getPost = (req,res,next) => {
 
   models.Posts.findByPk(req.query.post_id,{
