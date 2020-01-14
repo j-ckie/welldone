@@ -22,6 +22,12 @@ a {
   color: #f8f9fa;
 }
 
+.article-hr {
+  width: 80%;
+  margin: auto;
+  border-top: 1px solid gray;
+}
+
 /************************************************* HEADER CODE *************************************************/
 
 header{
@@ -172,6 +178,40 @@ font-size: .9rem;
 
 #article-image {
     width: 30rem;
+}
+
+/* comments */
+
+#comment-textbox {
+  background-color: rgba(255, 215, 189, 0.9);
+
+}
+
+#comments-text {
+  color: #f8f9fa;
+}
+
+#add-comment-button-div {
+  text-align: end;
+  margin-top: 0.5rem;
+}
+
+.comment-buttons-div {
+  text-align: start;
+}
+
+#add-comment-button {
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+}
+
+.comment-buttons {
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
 }
 
 /************************************************* LOGIN PAGE *************************************************/

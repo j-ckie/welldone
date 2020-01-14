@@ -1,18 +1,8 @@
 
 /* ----------------------------- GLOBAL STYLING ----------------------------- */
 
-  .article-hr {
-    width: 80%;
-    margin: auto;
-    border-top: 1px solid gray;
-  }
-
   .post-title-text {
     font-size: large;
-  }
-
-  .post-secondary-text {
-    font-size: 0.8rem;
   }
 
   .author-category-text {
