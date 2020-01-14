@@ -89,14 +89,14 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 //account page
 
-app.get('/account', authenticate,(req, res) => {
+app.get('/account', authenticate, (req, res) => {
     res.render('account')
 })
 //blogpage page
-app.get('/blogpage', authenticate,(req, res) => {
+app.get('/blogpage', authenticate, (req, res) => {
     res.render('blogpage')
 })
-app.get('/', authenticate,(req, res) => { // change to "/" instead of index
+app.get('/', authenticate, (req, res) => { // change to "/" instead of index
 
     res.render('index')
 })
@@ -114,22 +114,69 @@ app.get('/article', (req, res) => {
     res.render('article')
 })
 
+
 // API fetch request - not route
-app.post('/notification', (req, res) => {
-    // const subscription = req.body;
-    // res.status(201).json({});
-    // const payload = JSON.stringify({
-    //     title: 'you have a new like'
-    // });
+// app.post('/notification', (req, res) => {
+// let subscription = req.body;
+// // === create likenotification entry on table ===
+// let likedPostId = req.query.post_id,
+//     postOwnerId = req.query.users_id
 
-    // // console.log(subscription);
+// let newLikeNotification = models.LikesNotifications.build({
+//     type: "like",
+//     recipient_id: postOwnerId, // post owner
+//     sender_id: req.session.id, // who clicked like
+//     post_id: likedPostId
+// });
+
+// newLikeNotification.save().then(() => {
+//     res.status(201).json({ message: "Post successfully liked!" })
+// }).catch(err => console.error(err))
+// // ======
+
+// // === send push notification to endpoint ===
+
+// let endpointPayload = models.Endpoints.build({
+//     user_id: postOwnerId,
+//     endpoint_data: subscription
+// })
+
+// endpointPayload.save().then(() => res.redirect("/")).catch(err => console.error(err))
+
+// models.Endpoints.findAll({
+//     where: {
+//         user_id: postOwnerId
+//     }
+// })
+//     .then(data => {
+//         // title for push notification
+//         const pushTitle = JSON.stringify({
+//             title: `${req.sesssion.name} has liked your post.`
+//         });
+
+//         data.forEach(endpoint => {
+//             webpush.sendNotification(endpoint.endpoint_data, pushTitle).catch(err => console.error(err))
+//         })
+//     })
+//     .catch(err => console.error(err));
 
 
-    // webpush.sendNotification(subscription, payload).catch(error => {
-    //     console.error(error.stack);
-    // })
+// ============= example of push notification =============
+// const subscription = req.body;
+// res.status(201).json({});
+// const payload = JSON.stringify({
+//     title: 'you have a new like'
+// });
 
-})
+// // console.log(subscription);
+
+
+// webpush.sendNotification(subscription, payload).catch(error => {
+//     console.error(error.stack);
+// })
+
+// })
+
 //Server Connection
 app.listen(3000, () => {
     console.log("Server is live on http://localhost:3000 at " + Date.now());
