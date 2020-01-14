@@ -96,6 +96,7 @@ app.get('/account', authenticate, (req, res) => {
 app.get('/blogpage', authenticate, (req, res) => {
     res.render('blogpage')
 })
+
 app.get('/', authenticate, (req, res) => { // change to "/" instead of index
 
     res.render('index')
