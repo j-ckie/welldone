@@ -36,21 +36,6 @@ app.use(session({
     saveUninitialized: false // true - always have cookie (tasty), false - have to do something with session first before you can get cookie
 }))
 //===================================
-//  module.exports.getCategories = (req,res,next) => {
-models.Categories.findAll().then((data)=>{ 
-    // let cat={},anew=[], cats={}
-    // for(x=0;x<(data.length);x++){
-    //     let all = data[x].category
-    //     cat.category = all 
-    //     anew.push(cat)  
-    // }
-    // cats.category = anew
-    // console.log(cats)
-    console.log(data)
-  }).catch((err)=>{
-    console.log(err)
-  })
-// }
 
 //========== authentication middleware ==========
 const authenticate = require("./util/auth");
@@ -109,18 +94,11 @@ app.get('/account', authenticate,(req, res) => {
     res.render('account')
 })
 //blogpage page
-app.get('/blogpage', authenticate,(req, res) => {
-    res.render('blogpage')
-})
-<<<<<<< HEAD
-//home
-app.get('/home', (req, res) => {
- // change to "/" instead of indexrs
-=======
-app.get('/', authenticate,(req, res) => { // change to "/" instead of index
-
->>>>>>> 9b288992384ecd169aff535158d16fd1f6e24208
+app.get('/home', authenticate,(req, res) => {
     res.render('index')
+})
+app.get('/', authenticate,(req, res) => { // change to "/" instead of index
+    res.render('layoutpage')
 })
 //category page
 app.get('/category', (req, res) => {
