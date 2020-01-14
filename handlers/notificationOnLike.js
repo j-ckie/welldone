@@ -1,13 +1,13 @@
 const models = require("../models");
 const express = require("express");
 const router = express.Router();
-
-require("dotenv").config()
+const path = require("path");
+require("dotenv").config({ path: '../.env' })
 
 const webpush = require("web-push");
 
-const publicVapidKey = "BB9cTa531zVr4vy5_uHSK9e07xnM_2jBTnjIFvN0jzmQlNyOn5U1568NpId82jAh1R91SBkgP886-jF6mk4BKgo";
-const privateVapidKey = "vOzZHwK7uQj56vDxAXW96d6FGBw4SGsfqCHxsz0YqYU";
+const publicVapidKey = process.env.PUBLIC_VAPID_KEY;
+const privateVapidKey = process.env.PRIVATE_VAPID_KEY;
 
 webpush.setVapidDetails(`mailto:test@email.com`, publicVapidKey, privateVapidKey);
 
@@ -28,5 +28,6 @@ router.post("/", (req, res) => {
     // pass object into sendNotification
     webpush.sendNotification(likeNotification, payload).catch(err => console.error(err));
 });
+
 
 module.exports = router;

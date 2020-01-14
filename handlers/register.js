@@ -51,10 +51,11 @@ router.post("/", (req, res) => {
                             name: persistedName,
                             password: hash
                         })
-                        if (req.session) {
-                            req.session.email = email
-                            req.session.name = name
-                        }
+                        // if (req.session) {
+                        //     req.session.email = email
+                        //     req.session.name = name
+                        //     req.session.id = id
+                        // }
                         newUser.save().then(() => res.redirect("/login")).catch(err => console.error(err))
                     })
 
