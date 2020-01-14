@@ -4,5 +4,5 @@ const models = require("../models")
    
    let categories = await models.Categories.findAll().then()
    
-    res.render('/',{categories:categories})
+    res.render('index',{categories:categories})
  }

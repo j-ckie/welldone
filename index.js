@@ -21,12 +21,6 @@ const privateVapidKey = process.env.PRIVATE_VAPID_KEY;
 
 webpush.setVapidDetails(`mailto:test@email.com`, publicVapidKey, privateVapidKey);
 
-//file upload
-const crypto = require('crypto')
-const multer = require("multer")
-const morgan = require('morgan')
-app.use(morgan('dev'))
-
 //========== express-session ========
 const session = require("express-session");
 app.set("trust proxy", 1)
@@ -39,7 +33,7 @@ app.use(session({
 
 //========== authentication middleware ==========
 const authenticate = require("./util/auth");
-/*
+/* 
 To add authentication to route:
 
 ex: app.get("/private-info", authenticate, (req, res) => {<CODE HERE>})
@@ -66,15 +60,23 @@ app.use("/login", loginRouter)
 app.get("/test", authenticate, (req, res) => res.render("test"));
 //=======================
 
+//======== logout ========
+app.post("/logout", authenticate, (req, res) => {
+    req.session.destroy();
+    res.redirect("/")
+})
 
 
 
 //Routes
-const postRouter = require('./routes/post')
-app.use('/post', postRouter)
+const articleRouter = require('./routes/article')
+app.use('/article', articleRouter)
 
 const acctRouter = require('./routes/acct')
-app.use('/acct', authenticate, acctRouter)
+app.use('/acct', acctRouter)
+
+const homeRouter = require('./routes/home')
+app.use('/', homeRouter)
 
 //Mustache
 app.use(express.static(path.join(__dirname, "partials")));
@@ -85,7 +87,7 @@ app.set("view engine", "mustache");
 
 //Parser
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 
 //account page
@@ -96,6 +98,9 @@ app.get('/account', authenticate,(req, res) => {
 app.get('/', authenticate,(req, res) => {
     res.render('index')
 })
+// edit profile mustache page
+app.get("/editprofile", (req, res) => res.render("editprofile"))
+
 //category page
 app.get('/category', (req, res) => {
     res.render('category')
@@ -106,39 +111,20 @@ app.get('/article', (req, res) => {
 })
 
 // API fetch request - not route
-app.post('/notification/like', (req, res) => {
-    // create likenotification entry on table
-    let likedPostId = req.query.post_id,
-        postOwnerId = req.query.users_id;
-    
-    let newLikeNotification = models.LikesNotifications.build({
-        type: "like",
-        recipient_id: postOwnerId,
-        sender_id: req.session.id,
-        post_id: likedPostId
-    });
 
-    newLikeNotification.save().then(() => {
-        res.status(201).json({ message: "Post successfully liked!" })
-    }).catch(err => console.error(err))
+app.post('/notification', (req, res) => {
+    // const subscription = req.body;
+    // res.status(201).json({});
+    // const payload = JSON.stringify({
+    //     title: 'you have a new like'
+    // });
 
-    // send push notification to endpoint
-    models.Endpoints.findAll({
-        where: {
-            user_id: postOwnerId
-        }
-    })
-        .then(data => {
-            // title for push notification
-            const pushTitle = JSON.stringify({
-                title: `${req.session.name} has liked your post.`
-            });
+    // // console.log(subscription);
 
-            data.forEach(endpoint => {
-                webpush.sendNotification(endpoint.endpoint_data, pushTitle).catch(err => console.error(err))
-            })
-        })
-            .catch(err => console.error(err))
+
+    // webpush.sendNotification(subscription, payload).catch(error => {
+    //     console.error(error.stack);
+    // })
 })
 //Server Connection
 app.listen(3000, () => {
