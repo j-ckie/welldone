@@ -5,6 +5,7 @@ const fs = require('fs')
 
 //Grabs Users Posts and Favourites then sends them to Page
 
+
 module.exports.getYourPostsandFavourites = async function (req,res){
 
     let transaction = await models.sequelize.transaction({autocommit:false});
@@ -76,7 +77,7 @@ module.exports.getYourPostsandFavourites = async function (req,res){
 
     //sort posts by post id
     userPage.post.sort(function (a, b) {
-      return a.id - b.id;
+        return a.id - b.id;
     })
 
     res.render('acct',{userPage: userPage, userPosts:userPage.post, favouritePosts: userPage.favourite, categories:categories});
@@ -85,6 +86,7 @@ module.exports.getYourPostsandFavourites = async function (req,res){
 }
 
 //Creates Post and sends it to database
+
 module.exports.postToYourPosts = async function (req,res){
 
   let transaction = await models.sequelize.transaction({autocommit:false});
