@@ -47,7 +47,7 @@
         <p id="write-post-text" class="text-light">Write a post:</p>
         <p class="write-post-textarea-name-text">Upload an image:</p>
         <form action="/acct/addPost" method="post" enctype="multipart/form-data">
-          <input type="hidden" name="user_id" value="1">
+          <input type="hidden" name="user_id" value="{{user_id.id}}">
           <input class="choose-file-text" type="file" name="post_image" accept="image/jpeg, image/jpg, image/png">
 
           <p class="write-post-textarea-name-text">Choose a category:</p>
@@ -96,6 +96,7 @@
         {{/postswithcategories}}
         <p>{{body}}</p>
         <p>Comments: {{comment.length}}</p>
+        <a href="/article/{{id}}">Post Page</a>
         <form action="/acct/updatePost" method="post" enctype="multipart/form-data">
           <input type="file" name="post_image" accept="image/jpeg, image/jpg, image/png">
           <input type="hidden" name="post_id" value="{{id}}">
@@ -113,10 +114,6 @@
         <form action="/acct/deletePost" method="post">
           <input type="hidden" name="post_id" value="{{id}}">
           <button>Delete Post</button>
-        </form>
-        <form action="/post" method="get">
-          <input type="hidden" name="post_id" value="{{id}}">
-          <button>Post Page</button>
         </form>
         <form action="/acct/removePostImage" method="post">
           {{#postImage}}
