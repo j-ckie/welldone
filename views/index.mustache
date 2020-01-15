@@ -75,11 +75,9 @@
                 <p class="post-secondary-text text-light">
                 <div class="datesplit">
                     {{createdAt}}</div>                 
-                    <i class="heart fa fa-heart-o" >
-                                    </i><span></span>
-                    {Jan 5, 2020}<span> - 8 min read <span>
+                    <span>
                         <form method="POST" action="/notification">
-                            <input type="hidden" 
+                            <input type="hidden">
                             <i class="heart fa fa-heart-o" ></i>
                         </form>
                     <span></span>
@@ -102,5 +100,8 @@
 <!--FOOTER-->
 
 {{> footer}}
-
+<script src="./heart.js"></script>
+<script src="./category.js"></script>
+<script src="./datesplit.js"></script>
+<script src="./opener.js"></script> 
 <script src="client.js"></script>
