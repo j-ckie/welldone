@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('LikesNotifications', {
+    return queryInterface.createTable('Notifications', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,13 +11,13 @@ module.exports = {
       type: {
         type: Sequelize.STRING
       },
-      recipient_id: {
+      post_id: {
+        type: Sequelize.INTEGER
+      },
+      owner_id: {
         type: Sequelize.INTEGER
       },
       sender_id: {
-        type: Sequelize.INTEGER
-      },
-      post_id: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -31,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('LikesNotifications');
+    return queryInterface.dropTable('Notifications');
   }
 };

@@ -3,12 +3,12 @@
 module.exports = {
     up: (queryInterface, Sequelize) => {
         return queryInterface.addConstraint(
-            'CommentsNotifications',
-            ['post_id'], {
+            'Notifications',
+            ['owner_id'], {
             type: 'FOREIGN KEY',
             references: {
-                name: 'post_id-fk-in-commentsnotifications',
-                table: 'Posts',
+                name: 'owner_id-in-notifications-table',
+                table: 'Users',
                 field: 'id'
             }
         }
@@ -17,8 +17,8 @@ module.exports = {
 
     down: (queryInterface, Sequelize) => {
         return queryInterface.removeConstraint(
-            'CommentsNotifications',
-            'post_id-fk-in-commentsnotifications'
+            'Notifications',
+            'owner_id-in-notifications-table'
         )
     }
 };

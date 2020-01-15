@@ -1,27 +1,18 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('CommentsNotifications', {
+    return queryInterface.createTable('Endpoints', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      type: {
-        type: Sequelize.STRING
-      },
-      recipient_id: {
+      user_id: {
         type: Sequelize.INTEGER
       },
-      sender_id: {
-        type: Sequelize.INTEGER
-      },
-      post_id: {
-        type: Sequelize.INTEGER
-      },
-      comment_id: {
-        type: Sequelize.INTEGER
+      endpoint_data: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
@@ -34,6 +25,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('CommentsNotifications');
+    return queryInterface.dropTable('Endpoints');
   }
 };
