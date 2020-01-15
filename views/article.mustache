@@ -70,54 +70,30 @@
     <form action="/article/addComment" method="post">
       <input type="hidden" name="user_id" value="{{sessionUser.id}}">
       <input type="hidden" name="post_id" value="{{post.id}}">
-      <input type="hidden" name="user_name" value="{{req.session.name}}">
+      <input type="hidden" name="user_name" value="{{sessionUser.name}}">
       <textarea class="form-control comment-textbox" name="body" rows="4" cols="80"></textarea>
       <div id="add-comment-button-div">
         <button id="add-comment-button">Comment</button>
       </div>
     </form>
-<<<<<<< HEAD
-    Comments
-    {{#comment}}
-    <li>
-      <p>{{body}}</p>
-      <p>{{user.name}}</p>
-      <p>{{createdAt}}</p>
-      <form action="/post/updateComment" method="post" {{hidden}}>
-        <input type="hidden" name="comment_id" value="{{id}}">
-        <input type="hidden" name="user_id" value="{{user_id}}">
-        <textarea name="body" rows="8" cols="40"></textarea><br>
-        <button>Update Comment</button>
-      </form>
-      <form action="/post/deleteComment" method="post" {{hidden}}>
-        <input type="hidden" name="comment_id" value="{{id}}">
-        <button>Delete Comment</button>
-      </form>
-    </li>
-    {{/comment}}
-    {{^comment}}
-    <li>This Post Has No Comments</li>
-    {{/comment}}
-</div>
-=======
   </div>
 
 <!--COMMENTS START-->
 
       {{#comment}}
         <div>
-          <p><span class="username-comment"><b>{{user_name}}</b></span>, on <span class="date-comment">{{createdAt}}</span></p>
+          <p><span class="username-comment"><b>{{user.name}}</b></span>, on <span class="date-comment">{{createdAt}}</span></p>
           <p class="body-comment">{{body}}</p>
           <form action="/post/updateComment" method="post" {{hidden}}>
             <input type="hidden" name="comment_id" value="{{id}}">
-            <input type="hidden" name="user_id" value="1">
-            <input type="hidden" name="user_name" value="{{req.session.name}}">
+            <input type="hidden" name="user_id" value="{{user_id}}">
+            <input type="hidden" name="user_name" value="{{user.name}}">
             <textarea name="body" rows="8" cols="40"></textarea>
             <div class="comment-buttons-div">
               <button class="comment-buttons">Edit</button>
             </div>
           </form>
-          <form action="/post/deleteComment" method="post">
+          <form action="/post/deleteComment" method="post" {{hidden}}>
             <input type="hidden" name="comment_id" value="{{id}}">
             <div class="comment-buttons-div pb-5">
               <button class="comment-buttons">Remove</button>

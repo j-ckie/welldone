@@ -1,16 +1,17 @@
 const models = require('../models')
+const sequelize = require("sequelize");
 
 //Grabs post and sends it to page
 
 module.exports.getPost = async function(req,res){
-
+  console.log(req.params)
   let user_id = await models.Users.findOne({
     where: {
       email: req.session.email
     }
   })
 
-  models.Posts.findByPk(req.params.postId,{
+  let post = await models.Posts.findByPk(req.params.postId,{
 
     //include comments
     include: [
@@ -31,51 +32,49 @@ module.exports.getPost = async function(req,res){
         as: 'postImage'
       }
     ]
-  }).then(post => {
+  })
 
-    //crosscheck user with comments
-    for(let i = 0; i < post.comment.length; i++) {
+  //crosscheck users favourites with this post
+  models.Notifications.findAll({
+    where: {
+      post_id: req.params.postId,
+      user_id: user_id.id
+    }
+  }).then(result => {
 
-      if(post.comment[i].user_id == user_id.id) {
+    if(result = null) {
 
-        //if user made comment show update comment
-        post.comment[i].hidden = ''
+      //if user does not have post favourited show add favourite
+      post.hidden = ''
 
-      } else {
+    } else {
 
-        //if user did not make comment hide update comment
-        post.comment[i].hidden = 'hidden'
-
-      }
+      //if user does have post favourited hide add favourite
+      post.hidden = 'hidden'
 
     }
 
-    //crosscheck users favourites with this post
-    models.Notifications.findAll({
-      where: {
-        post_id: req.params.postId,
-        user_id: user_id.id
-      }
-    }).then(result => {
-
-      if(result = null) {
-
-        //if user does not have post favourited show add favourite
-        post.hidden = ''
-
-      } else {
-
-        //if user does have post favourited hide add favourite
-        post.hidden = 'hidden'
-
-      }
-
-      //res.json(post)
-      res.render('article', {post: post, sessionUser: user_id})
-
-    })
-
   })
+
+
+  //crosscheck user with comments
+  for(let i = 0; i < post.comment.length; i++) {
+
+    if(post.comment[i].user_id == user_id.id) {
+
+      //if user made comment show update comment
+      post.comment[i].hidden = ''
+
+    } else {
+
+      //if user did not make comment hide update comment
+      post.comment[i].hidden = 'hidden'
+
+    }
+  }
+
+  //res.json(post)
+  res.render('article', {post: post, sessionUser: user_id})
 
 }
 
