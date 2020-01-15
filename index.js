@@ -11,7 +11,7 @@ const path = require("path");
 const VIEWS_PATH = path.join(__dirname, "/views")
 const mustacheExpress = require("mustache-express");
 const bcrypt = require("bcrypt");
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 8080;
 require("dotenv").config();
 
 //========= web push ===========
