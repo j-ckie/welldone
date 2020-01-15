@@ -99,6 +99,10 @@ app.get('/category', (req, res) => {
     res.render('category')
 })
 
+//====== notifications page ======
+const notificationsRouter = require("./handlers/notifications");
+app.use("/notifications", authenticate, notificationsRouter)
+
 // API fetch request - not route MUST STAY ON INDEX.JS
 // initial registration of endpoint per user per browser
 app.post("/endpoint", (req, res) => {
@@ -134,6 +138,55 @@ app.post("/endpoint", (req, res) => {
     // webpush.sendNotification(subscription, payload).catch(error => {
     //     console.error(error.stack);
     // })
+})
+
+
+// test if post_id will populate correctly
+app.post("/notify", (req, res) => {
+    let postId = req.body.postId,
+        ownerId = req.body.ownerId,
+        type = req.body.type
+    // console.log(postId)
+    // console.log(ownerId)
+
+    // find name of likeR
+    models.Users.findOne({
+        where: {
+            email: req.session.email
+        }
+    })
+        .then(persistedUser => {
+            let name = persistedUser.name,
+                senderId = persistedUser.id;
+
+            // build entry on Notifications table
+            let newNotification = models.Notifications.build({
+                type: type,
+                owner_id: ownerId,
+                sender_id: senderId,
+                post_id: postId
+            });
+
+            newNotification.save().then(() => res.status(201)).catch(err => console.error(err))
+
+            // look for endpoints table to find user specific endpoints
+
+            models.Endpoints.findAll({
+                where: {
+                    user_id: ownerId
+                }
+            })
+                .then(data => {
+                    data.forEach(endpoint => {
+                        const payload = JSON.stringify({
+                            title: `${name} has liked your post.`
+                        });
+                        let remote = JSON.parse(endpoint.endpoint_data) // remote endpoint
+                        console.log("pushing to" + remote)
+                        webpush.sendNotification(remote, payload)
+                    })
+                }).catch(err => console.error(err))
+        }).catch(err => console.error(err))
 })
 
 //Server Connection

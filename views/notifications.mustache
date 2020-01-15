@@ -1,9 +1,13 @@
 <html>
-    <head>
-    </head>
-    <body>
-        <h1>test</h1>
-    </body>
-</html>
+<body>
 
+<h1> All Notifications </h1>
+{{#notification}}
+    <p>Type:  {{type}}</p>
+    <p>Who dun it:  {{sender}}</p>
+    <p>Post:  {{post}}</p>
+{{/notification}}
 {{! view all notifications }}
+</body>
+
+</html>
