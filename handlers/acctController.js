@@ -11,7 +11,7 @@ module.exports.getThePostsandFavourites = async function (req, res) {
             email: req.params.userEmail
         }
     })
-
+    console.log(user_id)
       let userPage = await models.Users.findByPk(user_id.id, {
         //include users favourites
         include: [
@@ -58,7 +58,6 @@ module.exports.getThePostsandFavourites = async function (req, res) {
       })
 
   let categories = await models.Categories.findAll()
-
 
   res.render('account', { userPage: userPage, categories: categories });
   //res.json(userPage)
@@ -262,6 +261,12 @@ module.exports.addProfileImage = async function (req, res) {
 
     }
 
+}
+
+module.exports.editprofile = async function(req, res) {
+    let categories = await models.Categories.findAll()
+
+    res.render('editprofile', {categories: categories})
 }
 
 //delete post image
