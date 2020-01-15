@@ -5,5 +5,6 @@ module.exports.getHomePage = async function (req,res) {
 
   let categories = await models.Categories.findAll().then()
 
-  res.render('index', {categories: categories})
+  //res.json()
+  res.render('index', {categories: categories, user: req.session})
 }
