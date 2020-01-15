@@ -59,7 +59,7 @@
       {{#categories}}
       <div>
         <input type="checkbox" name="categories" value="{{id}}">
-        <label for="huey">{{category}}</label>
+        <label>{{category}}</label>
       </div>
       {{/categories}}
       <input type="text" name="title"><br>
@@ -70,7 +70,7 @@
       <input type="hidden" name="post_id" value="{{id}}">
       <button>Delete Post</button>
     </form>
-    <form action="/post" method="get">
+    <form action="/article" method="get">
       <input type="hidden" name="post_id" value="{{id}}">
       <button>Post Page</button>
     </form>
@@ -95,10 +95,7 @@
     {{#userPage.notification}}
     <li>
       <h2>{{post.title}}</h2>
-      <form action="/post" method="post">
-        <input type="hidden" name="post_id" value="{{post.id}}">
-        <button>Post Page</button>
-      </form>
+      <a href="/article/{{post.id}}">Post Page</a>
       <form action="/acct/removeFavourite" method="post">
         <input type="hidden" name="favourite_id" value="{{id}}">
         <button>Remove Favourite</button>
