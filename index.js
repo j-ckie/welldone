@@ -92,7 +92,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 
 //account page
-app.get('/account', authenticate,(req, res) => {
+app.get('/acct', authenticate,(req, res) => {
     res.render('account')
 })
 // edit profile mustache page
