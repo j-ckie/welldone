@@ -78,6 +78,9 @@ app.use('/acct', acctRouter)
 const homeRouter = require('./routes/home')
 app.use('/', homeRouter)
 
+const categoryRouter = require('./routes/category')
+app.use('/category', categoryRouter)
+
 //Mustache
 app.use(express.static(path.join(__dirname, "partials")));
 app.use(express.static(path.join(__dirname, '/public')))
@@ -94,20 +97,21 @@ app.use(cors())
 app.get('/account', authenticate,(req, res) => {
     res.render('account')
 })
-//home
-app.get('/', authenticate,(req, res) => {
-    res.render('index')
-})
 // edit profile mustache page
 app.get("/editprofile", (req, res) => res.render("editprofile"))
 
 //category page
 app.get('/category', (req, res) => {
+    // console.log(req.paramas.Categories)
     res.render('category')
 })
 //article page
 app.get('/article', (req, res) => {
     res.render('article')
+})
+//home
+app.get('/', authenticate,(req, res) => {
+    res.render('index')
 })
 
 // API fetch request - not route

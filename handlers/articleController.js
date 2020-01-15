@@ -8,7 +8,8 @@ module.exports.getPost = async function(req,res){
     where: {
       email: req.session.email
     }
-  }).then()
+  })  
+  let categories = await models.Categories.findAll().then()
 
   models.Posts.findByPk(30,{
 
@@ -65,7 +66,7 @@ module.exports.getPost = async function(req,res){
       }
 
       //res.json(post)
-      res.render('article', {post: post})
+      res.render('article', {post: post,categories:categories})
 
     })
 

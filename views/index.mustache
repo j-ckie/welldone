@@ -48,24 +48,30 @@
 </div>
 
 <!--BLOG LIST START-->
-
 <div class="row d-flex">
 <div id="blog-column" class="col">
 
+{{#aPost}}
 <div class="row d-flex">
     <div class="col-6">
-        <p class="popular-title-text"><a href='article?art=1'>
-                    {What Your Body Is Saying Says The Most About You}</a>
+   
+        <p class="popular-title-text"><a href='article?art={{id}}'>
+                    {{title}}</a>
         </p>
+    
         <p class="text-light post-secondary-text">
             {One of the best life hacks for making yourself more likeable is showing your hands at all times. Why is this? Well back before the internet, when humans were evolving...}
         </p>
         <div class="row d-flex">
             <div class="col-10">
-                <p class="author-text"><a href="/author?a=JB_Wilson">
-                    {JB Wilson}</a><span>
-                in<span class="category-text"><a href="/category?c=ONEZERO"> {ONEZERO}</a></span></span>
-                </p>
+           
+           
+                <p class="author-text"><a href="/author?a={{user.name}}">
+                    {{user.name}}</a><span>
+                in<span class="category-text"><a href="/category?c={{category.category}}"> {{category.category}}</a></span></span></p>
+
+        
+          
                 <p class="post-secondary-text text-light">
                     {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o" >
                                     </i><span></span>
@@ -79,205 +85,10 @@
 </div>
 
 <div class="row d-flex py-3"></div>
-
-<div class="row d-flex">
-    <div class="col-6">
-        <p class="post-title-text"><a href='article?art=11'>
-            {Post Title 11}</a>
-        </p>
-        <p class="text-light post-secondary-text">
-            {Post Opener}
-        </p>
-        <div class="row d-flex">
-            <div class="col-10">
-                <p class="author-text"><a href="/author?a=JB_Wilson">
-                    {JB Wilson}</a><span>
-                in<span class="category-text"><a href="/category?c=ELEMENTAL"> {ELEMENTAL}</a></span></span>
-                </p>
-                <p class="post-secondary-text text-light">
-                    {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o" >
-</i><span></span>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-6 post-image">
-        <img src="./images/pcImage.jpg">
-    </div>
-</div>
-
-<div class="row d-flex py-3"></div>
-
-<div class="row d-flex">
-    <div class="col-6">
-        <p class="post-title-text"><a href='article?art=12'>
-            {Post Title 12}
-        </p>
-        <p class="text-light post-secondary-text">
-            {Post Opener}
-        </p>
-        <div class="row d-flex">
-            <div class="col-10">
-                <p class="author-text"><a href="/author?a=JB_Wilson">
-                    {JB Wilson}</a><span>
-                in<span class="category-text"><a href="/category?c=HEATED"> {HEATED}</a></span></span>
-                </p>
-                <p class="post-secondary-text text-light">
-                    {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o" >
-</i><span></span>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-6 post-image">
-        <img src="./images/pcImage.jpg">
-    </div>
-</div>
-
-<div class="row d-flex py-3"></div>
-
-<div class="row d-flex">
-    <div class="col-6">
-        <p class="post-title-text"><a href='article?art=13'>
-            {Post Title 13}
-        </p>
-        <p class="text-light post-secondary-text">
-            {Post Opener}
-        </p>
-        <div class="row d-flex">
-            <div class="col-10">
-                <p class="author-text"><a href="/author?a=JB_Wilson">
-                    {JB Wilson}</a><span>
-                in<span class="category-text"><a href="/category?c=FORGE"> {FORGE}</a></span></span>
-                </p>
-                <p class="post-secondary-text text-light">
-                    {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o" >
-</i><span></span>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-6 post-image">
-        <img src="./images/pcImage.jpg">
-    </div>
-</div>
-
-<div class="row d-flex py-3"></div>
-
-<div class="row d-flex">
-    <div class="col-6">
-        <p class="post-title-text"><a href='article?art=14'>
-            {Post Title 14}
-        </p>
-        <p class="text-light post-secondary-text">
-            {Post Opener}
-        </p>
-        <div class="row d-flex">
-            <div class="col-10">
-                <p class="author-text"><a href="/author?a=JB_Wilson">
-                    {JB Wilson}</a><span>
-                in<span class="category-text"><a href="/category?c=ZORA"> {ZORA}</a></span></span>
-                </p>
-                <p class="post-secondary-text text-light">
-                    {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o" >
-</i><span></span>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-6 post-image">
-        <img src="./images/pcImage.jpg">
-    </div>
-</div>
-
-<div class="row d-flex py-3"></div>
-
-<div class="row d-flex">
-    <div class="col-6">
-        <p class="post-title-text"><a href='article?art=15'>
-            {Post Title 15}
-        </p>
-        <p class="text-light post-secondary-text">
-            {Post Opener}
-        </p>
-        <div class="row d-flex">
-            <div class="col-10">
-                <p class="author-text"><a href="/author?a=JB_Wilson">
-                    {JB Wilson}</a><span>
-                in<span class="category-text"><a href="/category?c=ZEN"> {ZEN}</a></span></span>
-                </p>
-                <p class="post-secondary-text text-light">
-                    {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o" >
-</i><span></span>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-6 post-image">
-        <img src="./images/pcImage.jpg">
-    </div>
-</div>
-
-<div class="row d-flex py-3"></div>
-
-<div class="row d-flex">
-    <div class="col-6">
-        <p class="post-title-text"><a href='article?art=16'>
-            {Post Title 16}
-        </p>
-        <p class="text-light post-secondary-text">
-            {Post Opener}
-        </p>
-        <div class="row d-flex">
-            <div class="col-10">
-                <p class="author-text"><a href="/author?a=JB_Wilson">
-                    {JB Wilson}</a><span>
-                in<span class="category-text"><a href="/category?c=WALLETS"> {WALLETS}</a></span></span>
-                </p>
-                <p class="post-secondary-text text-light">
-                    {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o" >
-</i><span></span>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-6 post-image">
-        <img src="./images/pcImage.jpg">
-    </div>
-</div>
-
-<div class="row d-flex py-3"></div>
-
-<div class="row d-flex">
-    <div class="col-6">
-        <p class="post-title-text"><a href='article?art=17'>
-            {Post Title 17}
-        </p>
-        <p class="text-light post-secondary-text">
-            {Post Opener}
-        </p>
-        <div class="row d-flex">
-            <div class="col-10">
-                <p class="author-text"><a href="/author?a=JB_Wilson">
-                    {JB Wilson}</a><span>
-                in<span class="category-text"><a href="/category?c=MODUS"> {MODUS}</a></span></span>
-                </p>
-                <p class="post-secondary-text text-light">
-                    {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o" >
-</i><span></span>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-6 post-image">
-        <img src="./images/pcImage.jpg">
-    </div>
-</div>
-
+{{/aPost}}
 </div>
 </div>
 
-<div class="row d-flex py-3"></div>
 
 <!--FOOTER-->
 
