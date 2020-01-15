@@ -34,7 +34,7 @@ app.use(session({
 
 //========== authentication middleware ==========
 const authenticate = require("./util/auth");
-/* 
+/*
 To add authentication to route:
 
 ex: app.get("/private-info", authenticate, (req, res) => {<CODE HERE>})
@@ -66,8 +66,6 @@ app.post("/logout", authenticate, (req, res) => {
     req.session.destroy();
     res.redirect("/")
 })
-
-
 
 //Routes
 const articleRouter = require('./routes/article')

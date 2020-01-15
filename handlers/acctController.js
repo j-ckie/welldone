@@ -4,104 +4,84 @@ const fs = require('fs')
 
 
 //Grabs Users Posts and Favourites then sends them to Page
-
-
-module.exports.getYourPostsandFavourites = async function (req, res) {
-
-    let transaction = await models.sequelize.transaction({ autocommit: false });
+module.exports.getThePostsandFavourites = async function (req, res) {
 
     let user_id = await models.Users.findOne({
         where: {
-            email: req.session.email
-        },
-        transaction: transaction
+            email: req.params.userEmail.slice(1)
+        }
     }).then()
 
-
-    let userPage = await models.Users.findByPk(user_id.id, {
-
+      let userPage = await models.Users.findByPk(user_id.id, {
         //include users favourites
         include: [
-            {
-                model: models.Favourite,
-
-                //include posts in favourites
-                include: [
-                    {
-                        model: models.Posts,
-
-                        //include comments in favourites
-                        include: [
-                            {
-                                model: models.Comments,
-                                as: 'comment'
-                            }, {
-                                model: models.Users,
-                                as: 'user'
-                            }
-                        ],
-                        as: 'post'
-                    }
-                ],
-                as: 'favourite'
-            }, {
+          {
+            model: models.Favourite,
+            //include posts in favourites
+            include: [
+              {
                 model: models.Posts,
+                //include comments in favourites
                 include: [
-
-                    //include categories through table in posts
-                    {
-                        model: models.PostsWithCategories,
-                        include: [
-                            {
-                                model: models.Categories,
-                                as: 'category'
-                            }
-                        ],
-                        as: 'postswithcategories'
-                    },
-
-                    //include comments in post
-                    {
-                        model: models.Comments,
-                        as: 'comment'
-                    },
-                    {
-                        model: models.PostImage,
-                        as: 'postImage'
-                    }, {
-                        model: models.Users,
-                        as: 'user'
-                    }
+                  {
+                    model: models.Comments,
+                    as: 'comment'
+                  }, {
+                    model: models.Users,
+                    as: 'user'
+                  }
                 ],
                 as: 'post'
-            }
-        ],
-        transaction: transaction
-    });
+              }
+            ],
+            as: 'favourite'
+          },{
+            model: models.Posts,
+            include: [
+              //include categories through table in posts
+              {
+                model: models.PostsWithCategories,
+                include: [
+                  {
+                    model: models.Categories,
+                    as: 'category'
+                  }
+                ],
+                as: 'postswithcategories'
+              },
+              //include comments in post
+              {
+                model: models.Comments,
+                as: 'comment'
+              },
+              {
+                model: models.PostImage,
+                as: 'postImage'
+              },{
+                model: models.Users,
+                as: 'user'
+              }
+            ],
+            as: 'post'
+          }
+        ]
+      }).then()
 
-    let categories = await models.Categories.findAll()
+  let categories = await models.Categories.findAll()
 
-    //sort posts by post id
-    userPage.post.sort(function (a, b) {
-        return a.id - b.id;
-    })
 
-    res.render('account', { userPage: userPage, userPosts: userPage.post, favouritePosts: userPage.favourite, categories: categories });
-    //res.json(userPage)
-    await transaction.commit();
+  res.render('account', { userPage: userPage, categories: categories });
+  //res.json(userPage)
 }
 
 //Creates Post and sends it to database
 
 module.exports.postToYourPosts = async function (req, res) {
 
-    let transaction = await models.sequelize.transaction({ autocommit: false });
-
     let user_id = await models.Users.findOne({
         where: {
             email: req.session.email
-        },
-        transaction: transaction
+        }
     }).then()
 
     let post = models.Posts.build({
@@ -258,13 +238,10 @@ module.exports.addProfileImage = async function (req, res) {
 
     if (req.file != null) {
 
-        let transaction = await models.sequelize.transaction({ autocommit: false });
-
         let user_id = await models.Users.findOne({
             where: {
                 email: req.session.email
-            },
-            transaction: transaction
+            }
         }).then()
 
         models.Users.findOne({
@@ -320,4 +297,10 @@ module.exports.removeFromPostImage = (req, res, next) => {
         }
     }).then(() => res.redirect('/acct'))
 
+}
+
+module.exports.editProfile = async function(req,res) {
+  let categories = await models.Categories.findAll()
+  
+  res.render('editprofile',{categories: categories})
 }
