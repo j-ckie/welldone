@@ -76,30 +76,6 @@
         <button id="add-comment-button">Comment</button>
       </div>
     </form>
-<<<<<<< HEAD
-    Comments
-    {{#comment}}
-    <li>
-      <p>{{body}}</p>
-      <p>{{user.name}}</p>
-      <p>{{createdAt}}</p>
-      <form action="/post/updateComment" method="post" {{hidden}}>
-        <input type="hidden" name="comment_id" value="{{id}}">
-        <input type="hidden" name="user_id" value="{{user_id}}">
-        <textarea name="body" rows="8" cols="40"></textarea><br>
-        <button>Update Comment</button>
-      </form>
-      <form action="/post/deleteComment" method="post" {{hidden}}>
-        <input type="hidden" name="comment_id" value="{{id}}">
-        <button>Delete Comment</button>
-      </form>
-    </li>
-    {{/comment}}
-    {{^comment}}
-    <li>This Post Has No Comments</li>
-    {{/comment}}
-</div>
-=======
   </div>
 
 <!--COMMENTS START-->
@@ -131,7 +107,6 @@
       {{/comment}}
 
   </div>
->>>>>>> ef66dde91fbe9fdab6fe17e2ba2a93d2a4722716
 </div>
 
 {{/post}}
