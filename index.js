@@ -11,7 +11,7 @@ const path = require("path");
 const VIEWS_PATH = path.join(__dirname, "/views")
 const mustacheExpress = require("mustache-express");
 const bcrypt = require("bcrypt");
-const PORT = process.envPORT || 8080
+const PORT = process.env.PORT || 8080
 require("dotenv").config();
 
 //========= web push ===========
@@ -191,6 +191,6 @@ app.post("/notify", (req, res) => {
 })
 
 //Server Connection
-app.listen(3000, () => {
-    console.log("Server is live on http://localhost:3000 at " + Date.now());
+app.listen(PORT, () => {
+    console.log(`Server is live on http://localhost:${PORT} at ` + Date.now());
 });
