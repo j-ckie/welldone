@@ -162,7 +162,7 @@ app.post("/notify", (req, res) => {
             let newNotification = models.Notifications.build({
                 type: type,
                 owner_id: ownerId,
-                sender_id: senderId,
+                user_id: senderId,
                 post_id: postId
             });
 
@@ -189,6 +189,6 @@ app.post("/notify", (req, res) => {
 })
 
 //Server Connection
-app.listen(PORT, () => {
+app.listen(3000, () => {
     console.log(`Server is live on http://localhost:${PORT} at ` + Date.now());
 });

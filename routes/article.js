@@ -9,8 +9,6 @@ const bcrypt = require("bcrypt");
 
 router.get('/:postId',authenticate,ArticleController.getPost)
 
-router.post('/addFavourite',authenticate,ArticleController.addFavourite)
-
 router.post('/addComment',authenticate,ArticleController.addComment)
 
 router.post('/updateComment',authenticate,ArticleController.updateComment)

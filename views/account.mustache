@@ -47,7 +47,7 @@
         <p id="write-post-text" class="text-light">Write a post:</p>
         <p class="write-post-textarea-name-text">Upload an image:</p>
         <form action="/acct/addPost" method="post" enctype="multipart/form-data">
-          <input type="hidden" name="user_id" value="1">
+          <input type="hidden" name="user_id" value="{{user_id.id}}">
           <input class="choose-file-text" type="file" name="post_image" accept="image/jpeg, image/jpg, image/png">
 
           <p class="write-post-textarea-name-text">Choose a category:</p>
@@ -69,21 +69,21 @@
 
 <!-- PROFILE TAB -->
 
-    <div id="Profile" class="tab">
+    <div id="Profile" class="tab" style="display:none">
       <p class="text-light">Your profile:</p>
-      <img src="{{Page.user_image}}" alt="Profile picture">
-      <p><b>Name:</b> {{Page.name}}</p>
-      <p><b>Email:</b> {{Page.email}}</p>
+      <img src="{{userPage.user_image}}" alt="Profile picture">
+      <p><b>Name:</b> {{userPage.name}}</p>
+      <p><b>Email:</b> {{userPage.email}}</p>
     </div>
 
 <!-- POSTS TAB -->
 
-    <div id="Posts" class="tab">
+    <div id="Posts" class="tab" style="display:none">
 
       <!-- published posts -->
 
       <p class="text-light">Your posts:</p>
-      {{#userPosts}}
+      {{#userPage.post}}
       <div>
         {{#postImage}}
         <img src="{{imageURL}}">
@@ -96,6 +96,7 @@
         {{/postswithcategories}}
         <p>{{body}}</p>
         <p>Comments: {{comment.length}}</p>
+        <a href="/article/{{id}}">Post Page</a>
         <form action="/acct/updatePost" method="post" enctype="multipart/form-data">
           <input type="file" name="post_image" accept="image/jpeg, image/jpg, image/png">
           <input type="hidden" name="post_id" value="{{id}}">
@@ -114,10 +115,6 @@
           <input type="hidden" name="post_id" value="{{id}}">
           <button>Delete Post</button>
         </form>
-        <form action="/post" method="get">
-          <input type="hidden" name="post_id" value="{{id}}">
-          <button>Post Page</button>
-        </form>
         <form action="/acct/removePostImage" method="post">
           {{#postImage}}
           <input type="hidden" name="file_path" value="{{imageURL}}">
@@ -126,34 +123,30 @@
           <button>Delete Image</button>
         </form>
       </div>
-      {{/userPosts}}
-      {{^userPosts}}
+      {{/userPage.post}}
+      {{^userPage.post}}
     <p class="text-light no-content-message">You haven't published anything yet!</p>
-      {{/userPosts}}
+      {{/userPage.post}}
     </div>
 
 <!-- FAVOURITES TAB -->
 
-    <div id="Favourites" class="tab">
+    <div id="Favourites" class="tab" style="display:none">
         <div>
         <p class="text-light">Your favourites:</p>
-          {{#favouritePosts}}
+          {{#userPage.notification}}
           <div>
             <h2>{{post.title}}</h2>
-            <p>Comments: {{post.comment.length}}</p>
-            <form action="/post" method="post">
-              <input type="hidden" name="post_id" value="{{post.id}}">
-              <button>Post Page</button>
-            </form>
+              <a href="/article/{{post.id}}">Post Page</a>
             <form action="/acct/removeFavourite" method="post">
               <input type="hidden" name="favourite_id" value="{{id}}">
               <button>Remove Favourite</button>
             </form>
           </div>
-          {{/favouritePosts}}
-          {{^favouritePosts}}
+          {{/userPage.notification}}
+          {{^userPage.notification}}
           <p class="text-light no-content-message">You don't have any favorites yet! Click on the heart at the end of an article to see it here.</p>
-          {{/favouritePosts}}
+          {{/userPage.notification}}
         </div>
     </div>
 
@@ -166,4 +159,3 @@
 <script src="/tabFunction.js"></script>
 
 {{>footer}}
-

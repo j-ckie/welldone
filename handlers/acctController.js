@@ -11,7 +11,7 @@ module.exports.getThePostsandFavourites = async function (req, res) {
             email: req.params.userEmail
         }
     })
-    console.log(user_id + "///////////////")
+    console.log(user_id)
       let userPage = await models.Users.findByPk(user_id.id, {
         //include users favourites
         include: [
@@ -59,8 +59,7 @@ module.exports.getThePostsandFavourites = async function (req, res) {
 
   let categories = await models.Categories.findAll()
 
-
-  res.render('account', { userPage: userPage, categories: categories });
+  res.render('account', { userPage: userPage, categories: categories, sessionId: user_id });
   //res.json(userPage)
 }
 
@@ -101,7 +100,7 @@ module.exports.postToYourPosts = async function (req, res) {
         if (req.file != null) {
 
             const host = req.hostname;
-            const filePath = './post_images/' + req.file.filename;
+            const filePath = '/post_images/' + req.file.filename;
 
             let post_image = models.PostImage.build({
                 imageURL: filePath,
@@ -121,7 +120,7 @@ module.exports.postToYourPosts = async function (req, res) {
 
         }
 
-        res.redirect('/acct')
+        res.redirect('back')
 
     })
 
@@ -134,7 +133,7 @@ module.exports.deleteFromYourPosts = (req, res, next) => {
         where: {
             id: req.body.post_id
         }
-    }).then(() => res.redirect('/acct'))
+    }).then(() => res.redirect('back'))
 
 }
 
@@ -208,7 +207,7 @@ module.exports.updateFromYourPosts = (req, res, next) => {
 
     }
 
-    res.redirect('/acct')
+    res.redirect('back')
 
 }
 
@@ -219,7 +218,7 @@ module.exports.removeFromYourFavourites = (req, res, next) => {
         where: {
             id: req.body.favourite_id
         }
-    }).then(() => res.redirect('/acct'))
+    }).then(() => res.redirect('back'))
 
 }
 
@@ -285,7 +284,7 @@ module.exports.removeFromPostImage = (req, res, next) => {
         where: {
             post_id: req.body.post_id
         }
-    }).then(() => res.redirect('/acct'))
+    }).then(() => res.redirect('back'))
 
 }
 
