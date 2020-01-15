@@ -2,33 +2,43 @@ const models = require('../models')
 
 //Grabs post and sends it to page
 
-module.exports.getPost = (req,res,next) => {
+module.exports.getPost = async function(req,res){
 
-  models.Posts.findByPk(req.query.post_id,{
+  let user_id = await models.Users.findOne({
+    where: {
+      email: req.session.email
+    }
+  }).then()
+
+  models.Posts.findByPk(30,{
 
     //include comments
     include: [
       {
         model: models.Comments,
         as: 'comment'
+      },{
+        model: models.Users,
+        as: 'user'
+      },{
+        model: models.PostImage,
+        as: 'postImage'
       }
     ]
   }).then(post => {
 
     //crosscheck user with comments
-    let comments = post.comment
+    for(let i = 0; i < post.comment.length; i++) {
 
-    for(let i = 0; i < comments.length; i++) {
-
-      if(comments[i].user_id == 1) {
+      if(post.comment[i].user_id == user_id) {
 
         //if user made comment show update comment
-        comments[i].hidden = ''
+        post.comment[i].hidden = ''
 
       } else {
 
         //if user did not make comment hide update comment
-        comments[i].hidden = 'hidden'
+        post.comment[i].hidden = 'hidden'
 
       }
 
@@ -37,7 +47,7 @@ module.exports.getPost = (req,res,next) => {
     //crosscheck users favourites with this post
     models.Favourite.findAll({
       where: {
-        post_id: req.query.post_id,
+        post_id: 30,
         user_id: 1
       }
     }).then(result => {
@@ -54,7 +64,8 @@ module.exports.getPost = (req,res,next) => {
 
       }
 
-      res.render('post', {post: post, comments: comments})
+      //res.json(post)
+      res.render('article', {post: post})
 
     })
 
@@ -108,5 +119,5 @@ module.exports.deleteComment = (req,res,next) => {
       id: req.body.comment_id
     }
   }).then(() => res.redirect('back'))
-  
+
 }

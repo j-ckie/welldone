@@ -9,8 +9,7 @@
 <div id='category'></div>
 {{> carousel}}
 <!--MOST POPULAR (DESKTOP ONLY)-->
-{{#cats}}
-{{/cats}}
+
 <div class="row d-flex py-3"></div>
 
 <div id="most-popular" class="row d-flex">
@@ -66,12 +65,16 @@
         <div class="row d-flex">
             <div class="col-10">
                 <p class="author-text"><a href="/author?a=JB_Wilson">
-                    {JB Wilson}</a><span> 
+                    {JB Wilson}</a><span>
                 in<span class="category-text"><a href="/category?c=ONEZERO"> {ONEZERO}</a></span></span>
                 </p>
                 <p class="post-secondary-text text-light">
-                    {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o" >
-                                    </i><span></span>
+                    {Jan 5, 2020}<span> - 8 min read <span>
+                        <form method="POST" action="/notification">
+                            <input type="hidden" 
+                            <i class="heart fa fa-heart-o" ></i>
+                        </form>
+                    <span></span>
                 </p>
             </div>
         </div>
@@ -94,7 +97,7 @@
         <div class="row d-flex">
             <div class="col-10">
                 <p class="author-text"><a href="/author?a=JB_Wilson">
-                    {JB Wilson}</a><span> 
+                    {JB Wilson}</a><span>
                 in<span class="category-text"><a href="/category?c=ELEMENTAL"> {ELEMENTAL}</a></span></span>
                 </p>
                 <p class="post-secondary-text text-light">
@@ -122,7 +125,7 @@
         <div class="row d-flex">
             <div class="col-10">
                 <p class="author-text"><a href="/author?a=JB_Wilson">
-                    {JB Wilson}</a><span> 
+                    {JB Wilson}</a><span>
                 in<span class="category-text"><a href="/category?c=HEATED"> {HEATED}</a></span></span>
                 </p>
                 <p class="post-secondary-text text-light">
@@ -150,7 +153,7 @@
         <div class="row d-flex">
             <div class="col-10">
                 <p class="author-text"><a href="/author?a=JB_Wilson">
-                    {JB Wilson}</a><span> 
+                    {JB Wilson}</a><span>
                 in<span class="category-text"><a href="/category?c=FORGE"> {FORGE}</a></span></span>
                 </p>
                 <p class="post-secondary-text text-light">
@@ -178,7 +181,7 @@
         <div class="row d-flex">
             <div class="col-10">
                 <p class="author-text"><a href="/author?a=JB_Wilson">
-                    {JB Wilson}</a><span> 
+                    {JB Wilson}</a><span>
                 in<span class="category-text"><a href="/category?c=ZORA"> {ZORA}</a></span></span>
                 </p>
                 <p class="post-secondary-text text-light">
@@ -206,7 +209,7 @@
         <div class="row d-flex">
             <div class="col-10">
                 <p class="author-text"><a href="/author?a=JB_Wilson">
-                    {JB Wilson}</a><span> 
+                    {JB Wilson}</a><span>
                 in<span class="category-text"><a href="/category?c=ZEN"> {ZEN}</a></span></span>
                 </p>
                 <p class="post-secondary-text text-light">
@@ -234,7 +237,7 @@
         <div class="row d-flex">
             <div class="col-10">
                 <p class="author-text"><a href="/author?a=JB_Wilson">
-                    {JB Wilson}</a><span> 
+                    {JB Wilson}</a><span>
                 in<span class="category-text"><a href="/category?c=WALLETS"> {WALLETS}</a></span></span>
                 </p>
                 <p class="post-secondary-text text-light">
@@ -262,7 +265,7 @@
         <div class="row d-flex">
             <div class="col-10">
                 <p class="author-text"><a href="/author?a=JB_Wilson">
-                    {JB Wilson}</a><span> 
+                    {JB Wilson}</a><span>
                 in<span class="category-text"><a href="/category?c=MODUS"> {MODUS}</a></span></span>
                 </p>
                 <p class="post-secondary-text text-light">
@@ -285,3 +288,5 @@
 <!--FOOTER-->
 
 {{> footer}}
+
+<script src="client.js"></script>

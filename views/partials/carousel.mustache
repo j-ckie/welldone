@@ -4,52 +4,15 @@
         <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-1" data-slide-to="1"></li>
         <li data-target="#carousel-1" data-slide-to="2"></li>
-      </ol> 
+      </ol>
       <ul class="carousel-inner" role="listbox" >
+        {{#categories}}
         <div class="item active">
-            <a class="nav-link nav-button" href="/category?c=ONEZERO">ONEZERO</a>
+            <a class="nav-link nav-button" href="/category?c={{category}}">{{category}}</a>
         </div>
-        <div class="item">
-            <a class="nav-link nav-button" href="/category?c=ELEMENTAL">ELEMENTAL</a>
-        </div>
-        <div class="item">
-            <a class="nav-link nav-button" href="/category?c=ZEN">ZEN</a>
-        </div>
-        <div class="item">
-            <a class="nav-link nav-button" href="/category?c=FORGE">FORGE</a>
-        </div>
-        <div class="item">
-            <a class="nav-link nav-button" href="/category?c=HUMAN_PARTS">HUMAN PARTS</a>
-        </div>
-        <div class="item">
-            <a class="nav-link nav-button" href="/category?c=HEATED">HEATED</a>
-        </div>
-        <div class="item">
-            <a class="nav-link nav-button" href="/category?c=MODUS">MODUS</a>
-        </div>
-        <div class="item">
-            <a class="nav-link nav-button" href="/category?c=ZORA">ZORA</a>
-        </div>
-        <div class="item">
-            <a class="nav-link nav-button" href="/category?c=WALLETS">WALLETS</a>
-        </div>
-        <div class="item">
-            <a class="nav-link nav-button" href="/category?c=ENTITIES">ENTITIES</a>
-        </div>
-        <div class="item">
-            <a class="nav-link nav-button" href="/category?c=WATER">WATER</a>
-        </div>
-        <div class="item">
-            <a class="nav-link nav-button" href="/category?c=CAFFEINE">CAFFEINE</a>
-        </div>
-        <div class="item">
-            <a class="nav-link nav-button" href="/category?POODLES">POODLES</a>
-        </div>
-        <div class="item">
-            <a class="nav-link nav-button" href="/category?c=TRIDENT">TRIDENT</a>
-        </div>
+        {{/categories}}
         {{! make new pages for more }}
-        <div class="item"> 
+        <div class="item">
             <a class="nav-link nav-button" href="">MORE</a>
         </div>
       </ul>

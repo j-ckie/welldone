@@ -1,19 +1,21 @@
 const publicVapidKey = "BB9cTa531zVr4vy5_uHSK9e07xnM_2jBTnjIFvN0jzmQlNyOn5U1568NpId82jAh1R91SBkgP886-jF6mk4BKgo";
 
-//check for service worker
-if ("serviceWorker" in navigator) {
-    console.log("FOO - service worker")
-    run().catch(err => console.error(err))
-}
-
 // service workers are promised base
 //console.log("FOO");
 
+//check for service worker
+if ("serviceWorker" in navigator) {
+    run().catch(err => console.error(err))
+}
+
+
+
 async function run() {
     console.log("Registering service worker...");
-    const register = await navigator.serviceWorker.register("/worker.js", {
+    const register = await navigator.serviceWorker.register("/serviceworker.js", { // installing service worker if it does not exist
         scope: "/"
     });
+
     console.log("Service Worker Registered");
 
     // register push
@@ -25,15 +27,15 @@ async function run() {
     console.log("Push registered");
 
     //send push notification
-    console.log("Sending push...");
-    await fetch("/notification", {
+    console.log("Sending endpoint payload to server to save");
+    await fetch("/endpoint", {
         method: "POST",
         body: JSON.stringify(notification),
         headers: {
             "content-type": "application/json"
         }
     })
-    console.log("Push sent")
+    console.log("Payload sent")
 }
 
 function urlBase64ToUint8Array(base64String) {
@@ -50,3 +52,5 @@ function urlBase64ToUint8Array(base64String) {
     }
     return outputArray;
 }
+
+

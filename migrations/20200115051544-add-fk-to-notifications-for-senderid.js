@@ -3,11 +3,11 @@
 module.exports = {
     up: (queryInterface, Sequelize) => {
         return queryInterface.addConstraint(
-            'LikesNotifications',
-            ['recipient_id'], {
+            'Notifications',
+            ['sender_id'], {
             type: 'FOREIGN KEY',
             references: {
-                name: 'recipient_id-fk-in-likesnotifications',
+                name: 'sender_id-fk-in-notifications',
                 table: 'Users',
                 field: 'id'
             }
@@ -17,8 +17,8 @@ module.exports = {
 
     down: (queryInterface, Sequelize) => {
         return queryInterface.removeConstraint(
-            'LikesNotifications',
-            'recipient_id-fk-in-likesnotifications'
+            'Notifications',
+            'sender_id-fk-in-notifications'
         )
     }
 };
