@@ -32,12 +32,13 @@
 </div>
 
 <div id="Profile" class="tab">
-  <img src="{{Page.user_image}}" alt="">
-  <h3>Name: {{Page.name}}</h3>
-  <h3>email: {{Page.email}}</h3>
+  <img src="{{userPage.user_image}}" alt="">
+  <h3>Name: {{userPage.name}}</h3>
+  <h3>email: {{userPage.email}}</h3>
 </div>
 
-<div id="Posts" class="tab">
+<div id="Posts" class="tab" style="display:none">
+  Your Posts
   {{#userPosts}}
   <li>
     {{#postImage}}
@@ -83,18 +84,17 @@
   </li>
   {{/userPosts}}
   {{^userPosts}}
-  <li>You Have No Posts</li>
+  You Have No Posts
   {{/userPosts}}
   </ul>
 </div>
 
-<div id="Claps" class="tab">
+<div id="Claps" class="tab" style="display:none">
   <ul>
     Your Favourites
-    {{#favouritePosts}}
+    {{#userPage.notification}}
     <li>
       <h2>{{post.title}}</h2>
-      <p>Comments: {{post.comment.length}}</p>
       <form action="/post" method="post">
         <input type="hidden" name="post_id" value="{{post.id}}">
         <button>Post Page</button>
@@ -104,10 +104,10 @@
         <button>Remove Favourite</button>
       </form>
     </li>
-    {{/favouritePosts}}
-    {{^favouritePosts}}
+    {{/userPage.notification}}
+    {{^userPage.notification}}
     <li>You Have No Favourites</li>
-    {{/favouritePosts}}
+    {{/userPage.notification}}
   </ul>
 </div>
 
