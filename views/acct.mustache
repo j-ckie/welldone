@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css?family=Catamaran:200&display=swap" rel="stylesheet">
-<link rel='stylesheet' type='text/css' href='/account.css'/>
-<link rel='stylesheet' type='text/css' href='/master.css'/>
-</head>
-  <body>
-  <header class="header">
+{{>head}}
+
+<header class="header">
   <nav>
       <a href='/home'><b>WellDone</b></a> 
       <div>
@@ -21,12 +14,14 @@
     {{#userPage}}
         <h1>TEST{{userPage.name}}</h1>
     {{/userPage}}
+
     Change profile pic:
     <form action="acct/user_image" method="post" enctype="multipart/form-data">
       <input type="file" name="user_image" accept="image/jpeg, image/jpg, image/png">
       <button>submit</button>
     </form>
     <img src="{{userPage.user_image}}" alt="missing"><br>
+
     Create Post
     <form action="/acct/addPost" method="post" enctype="multipart/form-data">
       <input type="hidden" name="user_id" value="1">
@@ -41,6 +36,7 @@
       <textarea name="body" rows="8" cols="40"></textarea><br>
       <button>Add Post</button>
     </form>
+
     <ul>
       Your Posts
       {{#userPosts}}
@@ -91,6 +87,7 @@
     <li>You Have No Posts</li>
       {{/userPosts}}
     </ul>
+    
     <ul>
       Your Favourites
       {{#favouritePosts}}
@@ -111,6 +108,6 @@
       <li>You Have No Favourites</li>
       {{/favouritePosts}}
     </ul>
-    {{>footer}}
-  </body>
-</html>
+
+{{>footer}}
+
