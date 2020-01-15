@@ -141,7 +141,7 @@ app.post("/endpoint", (req, res) => {
 })
 
 
-// test if post_id will populate correctly
+// API fetch - will run on "push" eventListener
 app.post("/notify", (req, res) => {
     let postId = req.body.postId,
         ownerId = req.body.ownerId,
@@ -177,7 +177,9 @@ app.post("/notify", (req, res) => {
                 }
             })
                 .then(data => {
+                    console.log("Found endpoint for user")
                     data.forEach(endpoint => {
+                        // todo: update endpoint if different user session is on same endpoint
                         const payload = JSON.stringify({
                             title: `${name} has liked your post.`
                         });
