@@ -16,6 +16,12 @@ module.exports.getPost = async function(req,res){
     include: [
       {
         model: models.Comments,
+        include: [
+          {
+            model: models.Users,
+            as: 'user'
+          }
+        ],
         as: 'comment'
       },{
         model: models.Users,
@@ -65,7 +71,7 @@ module.exports.getPost = async function(req,res){
       }
 
       //res.json(post)
-      res.render('article', {post: post})
+      res.render('article', {post: post, sessionUser: user_id})
 
     })
 

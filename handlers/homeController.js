@@ -5,5 +5,15 @@ module.exports.getHomePage = async function (req,res) {
 
   let categories = await models.Categories.findAll().then()
 
-  res.render('index', {categories: categories})
+  let popular = await models.Posts.findAll({
+    include: [
+      {
+        model: models.Favourite,
+        as: 'favourite'
+      }
+    ]
+  }).then()
+
+  res.json(popular)
+  //res.render('index', {categories: categories, popular: popular})
 }
