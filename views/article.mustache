@@ -13,6 +13,7 @@
 <!--ARTICLE TITLE-->
 
 {{#post}}
+
 <div class="row d-flex py-3"></div>
 
 <div class="row d-flex">
@@ -39,69 +40,68 @@
 <!--ARTICLE BODY START-->
 
 <div class="row d-flex">
-<div id="blog-column" class="col">
-    <p>
-        {{body}}
-    </p>
+  <div id="blog-column" class="col">
+      <p>
+          {{body}}
+      </p>
 
-    <p class="post-secondary-text text-light">
-        <span id="article-like">
-            <form method="POST" action="/notify">
-                <input type="hidden" name="postId" value={{post.id}} />
-                <input type="hidden" name="type" value="like" />
-                <input type="hidden" name="ownerId" value="{{post.user_id}}" />
-                <button><i class="heart fa fa-heart-o" ></i></button>
-            </form>
-        </span> {99} likes
-    </p>
+      <p class="post-secondary-text text-light">
+          <span id="article-like"><i class="heart fa fa-heart-o" ></i></span> {99} likes
+      </p>
+
+<!--ADD COMMENT-->
+
+  <div class="row d-flex">
+      <hr class="article-hr">
+  </div>
+
+  <div class="row d-flex py-3">
+    <h4 id="comments-text">Comments</h4>
+  </div>
+
+  <div id="comment-form-div" class="form-group">
+    <form action="/article/addComment" method="post">
+      <input type="hidden" name="user_id" value="1">
+      <input type="hidden" name="post_id" value="{{post.id}}">
+      <input type="hidden" name="user_name" value="{{req.session.name}}">
+      <textarea class="form-control comment-textbox" name="body" rows="4" cols="80"></textarea>
+      <div id="add-comment-button-div">
+        <button id="add-comment-button">Comment</button>
+      </div>
+    </form>
+  </div>
 
 <!--COMMENTS START-->
 
-<div class="row d-flex">
-    <hr class="article-hr">
+      {{#comment}}
+        <div>
+          <p><span class="username-comment"><b>{{user_name}}</b></span>, on <span class="date-comment">{{createdAt}}</span></p>
+          <p class="body-comment">{{body}}</p>
+          <form action="/post/updateComment" method="post" {{hidden}}>
+            <input type="hidden" name="comment_id" value="{{id}}">
+            <input type="hidden" name="user_id" value="1">
+            <input type="hidden" name="user_name" value="{{req.session.name}}">
+            <textarea name="body" rows="8" cols="40"></textarea>
+            <div class="comment-buttons-div">
+              <button class="comment-buttons">Edit</button>
+            </div>
+          </form>
+          <form action="/post/deleteComment" method="post">
+            <input type="hidden" name="comment_id" value="{{id}}">
+            <div class="comment-buttons-div pb-5">
+              <button class="comment-buttons">Remove</button>
+            </div>
+          </form>
+        </div>
+      {{/comment}}
+
+      {{^comment}}
+        <li>This Post Has No Comments</li>
+      {{/comment}}
+
+  </div>
 </div>
 
-<div class="row d-flex py-3">
-  <h4 id="comments-text">Comments</h4>
-</div>
-
-<div id="comment-form-div" class="form-group">
-  <form action="/article/addComment" method="post">
-    <input type="hidden" name="user_id" value="1">
-    <input type="hidden" name="post_id" value="{{post.id}}">
-    <input type="hidden" name="user_name" value="{{req.session.name}}">
-    <textarea class="form-control" id="comment-textbox" name="body" rows="4" cols="80"></textarea>
-    <div id="add-comment-button-div">
-      <button id="add-comment-button">Comment</button>
-    </div>
-  </form>
-</div>
-    {{#comment}}
-    <div>
-      <p class="username-comment"><b>{{user_name}}</b>, on <span class="date-comment">{{createdAt}}</span></p>
-      <p class="body-comment">{{body}}</p>
-      <form action="/post/updateComment" method="post" {{hidden}}>
-        <input type="hidden" name="comment_id" value="{{id}}">
-        <input type="hidden" name="user_id" value="1">
-        <input type="hidden" name="user_name" value="{{req.session.name}}">
-        <textarea name="body" rows="8" cols="40"></textarea>
-        <div class="comment-buttons-div">
-          <button class="comment-buttons">Edit</button>
-        </div>
-      </form>
-      <form action="/post/deleteComment" method="post">
-        <input type="hidden" name="comment_id" value="{{id}}">
-        <div class="comment-buttons-div pb-5">
-          <button class="comment-buttons">Remove</button>
-        </div>
-      </form>
-    </div>
-    {{/comment}}
-    {{^comment}}
-    <li>This Post Has No Comments</li>
-    {{/comment}}
-</div>
-</div>
 {{/post}}
 
 
