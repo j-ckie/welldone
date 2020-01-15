@@ -7,7 +7,7 @@ const authenticate = require("../util/auth");
 const bcrypt = require("bcrypt");
 //============================================
 
-router.get('/',authenticate,ArticleController.getPost)
+router.get('/:postId',authenticate,ArticleController.getPost)
 
 router.post('/addFavourite',authenticate,ArticleController.addFavourite)
 
