@@ -6,6 +6,10 @@
   padding: 0px;
 }
 
+input:focus {
+  outline: none !important;
+}
+
 .container-fluid{
   padding:0;
 }
@@ -168,6 +172,14 @@ margin-bottom:15px;
   font-size: 20px;
   color:red;
   transition: all .2s ease-in-out;
+  box-shadow: none;
+  outline: none;
+  background: none;
+  border: none;
+}
+
+.heart:focus {
+  outline: none;
 }
 
 .heart:hover {
@@ -345,6 +357,28 @@ font-size: .9rem;
   border: 1px solid rgba(255, 215, 189, 0.9);
   padding: 0.3rem;
   background: none;
+  margin-top: 0.3rem;
+}
+
+#save-photo-button {
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+  margin-top: 0.3rem;
+}
+
+.write-post-textarea-name-text {
+  margin-top: 1rem;
+  margin-bottom: 0.1rem;
+}
+
+#profile-pic-img {
+  margin-top: 1rem;
+}
+
+.no-content-message {
+  font-size: 0.7rem;
 }
 
 /************************************************* MEDIA QUERIES *************************************************/
@@ -474,12 +508,7 @@ font-size: 1rem;
 }
 }
 /* /////////////////////////////////////////////////////////////// */
-@media only screen and (max-width: 768px){
-button:focus{
-  box-shadow: none;
-  outline: none;
-  background-color: none;
-}
+@media only screen and (max-width: 768px) {
 
 body{
   overflow: hidden;

@@ -297,6 +297,12 @@ module.exports.addProfileImage = async function (req, res) {
 
 }
 
+module.exports.editprofile = async function(req, res) {
+    let categories = await models.Categories.findAll()
+
+    res.render('editprofile', {categories: categories})
+}
+
 //delete post image
 module.exports.removeFromPostImage = (req, res, next) => {
 

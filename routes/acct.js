@@ -36,6 +36,8 @@ var profile_picture_upload = multer({storage: profile_picture_storage})
 //===========================================================================
 
 //=====================================================methods=====================================================
+router.post('/editprofile', authenticate, AcctController.editprofile)
+
 router.get('/', authenticate,AcctController.getYourPostsandFavourites)
 
 router.post('/addPost', post_image_upload.single('post_image'), authenticate,AcctController.postToYourPosts)
