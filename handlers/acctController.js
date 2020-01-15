@@ -1,12 +1,11 @@
 const models = require('../models')
 const sequelize = require("sequelize");
+const Op = sequelize.Op;
 const fs = require('fs')
 
 
 //Grabs Users Posts and Favourites then sends them to Page
 module.exports.getThePostsandFavourites = async function (req, res) {
-  console.log("getThePostsandFavourites")
-  console.log(req.params)
     let user_id = await models.Users.findOne({
         where: {
             email: req.params.userEmail
@@ -17,25 +16,15 @@ module.exports.getThePostsandFavourites = async function (req, res) {
         //include users favourites
         include: [
           {
-            model: models.Favourite,
+            model: models.Notifications,
             //include posts in favourites
             include: [
               {
                 model: models.Posts,
-                //include comments in favourites
-                include: [
-                  {
-                    model: models.Comments,
-                    as: 'comment'
-                  }, {
-                    model: models.Users,
-                    as: 'user'
-                  }
-                ],
                 as: 'post'
               }
             ],
-            as: 'favourite'
+            as: 'notification'
           },{
             model: models.Posts,
             include: [
@@ -226,7 +215,7 @@ module.exports.updateFromYourPosts = (req, res, next) => {
 //Grabs Favourite and Removes it from Your Favourites
 module.exports.removeFromYourFavourites = (req, res, next) => {
 
-    models.Favourite.destroy({
+    models.Notifications.destroy({
         where: {
             id: req.body.favourite_id
         }
@@ -250,14 +239,14 @@ module.exports.addProfileImage = async function (req, res) {
                 id: user_id.id
             }
         }).then(data => {
-            if (data.user_image != './profile_pictures/defaultpicture.png')
-                fs.unlink('./public' + data.user_image.slice(1), (err) => {
+            if (data.user_image != '/profile_pictures/defaultpicture.png')
+                fs.unlink('./public' + data.user_image, (err) => {
                     console.log(req.body.file_path + 'was deleted');
                 })
         })
 
         const host = req.hostname;
-        const filePath = './profile_pictures/' + req.file.filename;
+        const filePath = '/profile_pictures/' + req.file.filename;
 
         models.Users.update({
             user_image: filePath
@@ -284,7 +273,7 @@ module.exports.editprofile = async function(req, res) {
 //delete post image
 module.exports.removeFromPostImage = (req, res, next) => {
 
-    let path = './public' + req.body.file_path.slice(1)
+    let path = './public' + req.body.file_path
 
     fs.unlink(path, (err) => {
         console.log(req.body.file_path + 'was deleted');

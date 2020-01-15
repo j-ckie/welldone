@@ -2,7 +2,7 @@
 
 <header class="header">
   <nav>
-      <a href='/home'><b>WellDone</b></a> 
+      <a href='/home'><b>WellDone</b></a>
       <div>
         <a href='/' class="logout" style='vertical-align:sub'><i>logout</i></a>
       </div>
@@ -70,10 +70,10 @@
           <input type="hidden" name="post_id" value="{{id}}">
           <button>Delete Post</button>
         </form>
-        <form action="/post" method="get">
+
           <input type="hidden" name="post_id" value="{{id}}">
           <button>Post Page</button>
-        </form>
+
         <form action="/acct/removePostImage" method="post">
           {{#postImage}}
           <input type="hidden" name="file_path" value="{{imageURL}}">
@@ -87,14 +87,14 @@
     <li>You Have No Posts</li>
       {{/userPosts}}
     </ul>
-    
+
     <ul>
       Your Favourites
       {{#favouritePosts}}
       <li>
         <h2>{{post.title}}</h2>
         <p>Comments: {{post.comment.length}}</p>
-        <form action="/post" method="post">
+        <form action="/article" method="post">
           <input type="hidden" name="post_id" value="{{post.id}}">
           <button>Post Page</button>
         </form>
@@ -110,4 +110,3 @@
     </ul>
 
 {{>footer}}
-
