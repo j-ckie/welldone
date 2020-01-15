@@ -346,6 +346,43 @@ font-size: .9rem;
   margin-bottom: 1rem;
 }
 
+/************************************************* ACCOUNT PAGE *************************************************/
+
+#edit-profile-button {
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+  font-size: 0.7rem;
+  margin: 1rem;
+}
+
+#tabs-div {
+  margin-top: 1rem;
+  justify-content: space-evenly;
+}
+
+.account-page-tabs {
+  transition: all .2s ease-in-out;
+  color:#f8f9fa;
+  background: none;
+  border: none;
+}
+
+.account-page-tabs:hover {
+  transform: scale(1.2);
+  color: rgba(255, 215, 189, 0.9);
+}
+
+#username-text {
+  color: #f8f9fa;
+  margin-top: 0.2rem;
+}
+
+#write-post-text {
+  font-size: 1.4rem;
+}
+
 /************************************************* EDIT PROFILE PAGE *************************************************/
 
 .choose-file-text {

@@ -12,7 +12,7 @@ module.exports.getThePostsandFavourites = async function (req, res) {
             email: req.params.userEmail
         }
     })
-
+    console.log(user_id + "///////////////")
       let userPage = await models.Users.findByPk(user_id.id, {
         //include users favourites
         include: [
