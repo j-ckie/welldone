@@ -1,30 +1,35 @@
-const models = require('../models')
+const models = require("../models");
 
-
-module.exports.getHomePage = async function (req,res) {
-
+module.exports.getHomePage = async function(req, res) {
   let categories = await models.Categories.findAll()
 
-  // let whichPost = await models.Posts.findAll({
-  //   where:{
-  //     id: [28,29,30]
-  //   }
-  // }).then()
-  
-  let aPost = await models.Posts.findAll({
-          include: 
-          [
-            {
-              model: models.Categories,
-              as: 'category'           
-            },
-            {
-              model:models.Users,
-              as: 'user'
-            }
-          ] 
-  }).then()
-  res.render('index', {categories: categories,aPost:aPost})
+//   let aPost = await models.Posts.findAll({
+//    include:[
+//      {
+//      model: models.PostsWithCategories,
+//     include: [
+//       {
+//         model: models.Categories,
+//         as: "category"
+//       }
+//     ],
+//       as:"postswithcategories"
+//     },
+//       {
+//         model: models.Users,
+//         as: "user"
+//       } 
+// ]
+//   })
 
-  
+  let popular = await models.Notifications.findAll().then()
+//     include:[
+//       {
+//       model: models.Posts,   
+//        as:"post"
+//      }
+//  ]
+  //  ).then();
+  res.json(popular);
+  // res.render('index', {categories:categories,aPost:aPost,popular:popular})
 }
