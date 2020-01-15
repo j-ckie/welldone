@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Users.associate = function(models) {
     models.Users.hasMany(models.Posts,{as: 'post', foreignKey: 'user_id'})
-    models.Users.hasMany(models.Favourite,{as: 'favourite', foreignKey: 'user_id'})
+    models.Users.hasMany(models.Notifications,{as: 'notification', foreignKey: 'user_id'})
+    models.Users.hasMany(models.Comments,{as: 'comment', foreignKey: 'user_id'})
     // associations can be defined here
   };
   return Users;

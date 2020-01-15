@@ -16,14 +16,20 @@ module.exports.getPost = async function (req, res) {
         where: {
             email: req.session.email
         }
-    }).then()
+    })
 
-    models.Posts.findByPk(30, {
+    models.Posts.findByPk(req.params.postId, {
 
         //include comments
         include: [
             {
                 model: models.Comments,
+                include: [
+                    {
+                        model: models.Users,
+                        as: 'user'
+                    }
+                ],
                 as: 'comment'
             }, {
                 model: models.Users,
@@ -38,7 +44,7 @@ module.exports.getPost = async function (req, res) {
         //crosscheck user with comments
         for (let i = 0; i < post.comment.length; i++) {
 
-            if (post.comment[i].user_id == user_id) {
+            if (post.comment[i].user_id == user_id.id) {
 
                 //if user made comment show update comment
                 post.comment[i].hidden = ''
@@ -53,10 +59,10 @@ module.exports.getPost = async function (req, res) {
         }
 
         //crosscheck users favourites with this post
-        models.Favourite.findAll({
+        models.Notifications.findAll({
             where: {
-                post_id: 30,
-                user_id: 1
+                post_id: req.params.postId,
+                user_id: user_id.id
             }
         }).then(result => {
 
@@ -73,7 +79,7 @@ module.exports.getPost = async function (req, res) {
             }
 
             //res.json(post)
-            res.render('article', { post: post })
+            res.render('article', { post: post, sessionUser: user_id })
 
         })
 
@@ -82,12 +88,17 @@ module.exports.getPost = async function (req, res) {
 }
 
 //add favourite button
-module.exports.addFavourite = (req, res, next) => {
+module.exports.addFavourite = async function (req, res, next) {
+    let user_id = await models.Users.findOne({
+        where: {
+            email: req.session.email
+        }
+    })
 
     let favourite = models.Favourite.build({
         isFavourite: 'TRUE',
         post_id: req.body.post_id,
-        user_id: 1
+        user_id: user_id.id
     })
     favourite.save().then(() => res.redirect('back'))
 
@@ -104,7 +115,7 @@ module.exports.addComment = (req, res, next) => {
 
     comment.save().then(() => res.redirect("back"))
 
-    // === notification on comment ===
+    // ============ notification on comment ============
     let postId = req.body.post_id,
         ownerId = req.body.user_id,
         type = req.body.type;

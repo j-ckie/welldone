@@ -15,6 +15,7 @@ router.get("/", (req, res) => res.render("register"));
 
 // registration
 router.post("/", (req, res) => {
+    console.log("Step 1 of user creation process...")
     let email = req.body.email,
         name = req.body.name,
         password = req.body.password,
@@ -38,12 +39,13 @@ router.post("/", (req, res) => {
         .then(persistedUser => {
             if (persistedUser) {
                 res.status(500).json({ message: "Email already registered" })
+                console.log("Email already registered, foo")
             } else {
                 let persistedEmail = req.body.email,
                     persistedName = req.body.name,
                     persistedPassword = req.body.password,
                     persistedConfirmPassword = req.body.confirmPassword
-
+                console.log("creating new user information...")
                 bcrypt.hash(persistedPassword, SALT_ROUNDS)
                     .then(hash => {
 
@@ -55,6 +57,8 @@ router.post("/", (req, res) => {
                             password: hash,
                             user_image: default_user_image
                         })
+
+                        console.log("New User created. Have fun.")
                         // if (req.session) {
                         //     req.session.email = persistedUser.email
                         //     req.session.name = persistedUser.name

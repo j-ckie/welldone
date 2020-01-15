@@ -1,50 +1,169 @@
-<html>
-<head>
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css?family=Catamaran:200&display=swap" rel="stylesheet">
-<link rel='stylesheet' type='text/css' href='/account.css'/>
-<link rel='stylesheet' type='text/css' href='/master.css'/>
-</head>
-<body>
+{{>head}}
 
 <header class="header">
   <nav>
       <a href='/'><b>WellDone</b></a>
       <div>
-        <a href='/' class="logout" style='vertical-align:sub'><i>logout</i></a>
+        <a href='/' class="logout" id="logout-button-account" style='vertical-align:sub'><i>logout</i></a>
       </div>
   </nav>
 </header>
 
-<div>
-<section>
-  <h1>Eric Jimenez
-    <span><a href='/editprofile'>Edit profile</a></span>
-  </h1>
-  
-</section>
+<div class="row d-flex">
+  <div id="blog-column" class="col">
 
-<section>
-<h4><a href='/acct?c=Profile'>Profile</a><span><a href='/acct?c=Posts'>Posts</a></span><span><a href='/acct?c=Claps'>Claps</a></span></h4>
-</section>
-<hr/>
 
-<section class="noscroll">
-  <h3>Claps from Eric Jimenez</h3>
-  {{#favouritePosts}}
-  <div>
-    <h3><a href="#">{{post.title}}</a></h3>
-    <p><a href="#">{{post.user.name}}</a></p>
-  </div>
-  {{/favouritePosts}}
-  <h3>Posts from Eric Jimenez</h3>
-    {{#userPosts}}
+      <div class="d-flex py-3"></div>
+
     <div>
-      <h3><a href="#">{{title}}</a></h3>
-      <p><a href="#">{{user.name}}</a></p>
+      <div class="row d-flex">
+        <h1 id="username-text">{{userPage.name}}</h1>
+        <form action="/acct/editprofile" method="post">
+          <span><button id="edit-profile-button">Edit profile</button></span>
+        </form>
+      </div>
+
+      <div class="d-flex py-3"></div>
+
+<!-- TABS -->
+
+    <div id="tabs-div" class="w3-bar w3-black d-flex">
+      <button class="account-page-tabs" onclick="openTab('Create')">Write</button>
+      <button class="account-page-tabs" onclick="openTab('Posts')">Your posts</button>
+      <button class="account-page-tabs" onclick="openTab('Profile')">Profile</button>
+      <button class="account-page-tabs" onclick="openTab('Favourites')">Favourites</button>
     </div>
-    {{/userPosts}}
-</section>
+
+    <div class="row d-flex">
+      <hr class="article-hr">
+    </div>
+
+    <div class="d-flex py-3"></div>
+
+<!-- CREATE TAB -->
+
+    <div id="Create" class="tab">
+      <div class="form-group">
+        <p id="write-post-text" class="text-light">Write a post:</p>
+        <p class="write-post-textarea-name-text">Upload an image:</p>
+        <form action="/acct/addPost" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="user_id" value="1">
+          <input class="choose-file-text" type="file" name="post_image" accept="image/jpeg, image/jpg, image/png">
+
+          <p class="write-post-textarea-name-text">Choose a category:</p>
+          {{#categories}}
+            <div>
+                <input type="checkbox" name="categories" value="{{id}}">
+                <label class="text-light" for="huey">{{category}}</label>
+            </div>
+          {{/categories}}
+
+          <p class="write-post-textarea-name-text">Title:</p>
+          <input class="comment-textbox mb-1" type="text" name="title">
+          <p class="text-light write-post-textarea-name-text">Post body:</p>
+          <textarea class="form-control comment-textbox" name="body" rows="8" cols="80"></textarea>
+          <button id="publish-button">Publish</button>
+        </form>
+      </div>
+    </div>
+
+<!-- PROFILE TAB -->
+
+    <div id="Profile" class="tab">
+      <p class="text-light">Your profile:</p>
+      <img src="{{Page.user_image}}" alt="Profile picture">
+      <p><b>Name:</b> {{Page.name}}</p>
+      <p><b>Email:</b> {{Page.email}}</p>
+    </div>
+
+<!-- POSTS TAB -->
+
+    <div id="Posts" class="tab">
+
+      <!-- published posts -->
+
+      <p class="text-light">Your posts:</p>
+      {{#userPosts}}
+      <div>
+        {{#postImage}}
+        <img src="{{imageURL}}">
+        {{/postImage}}
+        {{^postimage}}
+        {{/postimage}}
+        <h2>{{title}}</h2>
+        {{#postswithcategories}}
+        <p>{{category.category}}</p>
+        {{/postswithcategories}}
+        <p>{{body}}</p>
+        <p>Comments: {{comment.length}}</p>
+        <form action="/acct/updatePost" method="post" enctype="multipart/form-data">
+          <input type="file" name="post_image" accept="image/jpeg, image/jpg, image/png">
+          <input type="hidden" name="post_id" value="{{id}}">
+          <input type="hidden" name="user_id" value="1">
+          {{#categories}}
+          <div>
+            <input type="checkbox" name="categories" value="{{id}}">
+            <label for="huey">{{category}}</label>
+          </div>
+          {{/categories}}
+          <input type="text" name="title"><br>
+          <textarea name="body" rows="8" cols="40"></textarea><br>
+          <button>Update Post</button>
+        </form>
+        <form action="/acct/deletePost" method="post">
+          <input type="hidden" name="post_id" value="{{id}}">
+          <button>Delete Post</button>
+        </form>
+        <form action="/post" method="get">
+          <input type="hidden" name="post_id" value="{{id}}">
+          <button>Post Page</button>
+        </form>
+        <form action="/acct/removePostImage" method="post">
+          {{#postImage}}
+          <input type="hidden" name="file_path" value="{{imageURL}}">
+          {{/postImage}}
+          <input type="hidden" name="post_id" value="{{id}}">
+          <button>Delete Image</button>
+        </form>
+      </div>
+      {{/userPosts}}
+      {{^userPosts}}
+    <p class="text-light no-content-message">You haven't published anything yet!</p>
+      {{/userPosts}}
+    </div>
+
+<!-- FAVOURITES TAB -->
+
+    <div id="Favourites" class="tab">
+        <div>
+        <p class="text-light">Your favourites:</p>
+          {{#favouritePosts}}
+          <div>
+            <h2>{{post.title}}</h2>
+            <p>Comments: {{post.comment.length}}</p>
+            <form action="/post" method="post">
+              <input type="hidden" name="post_id" value="{{post.id}}">
+              <button>Post Page</button>
+            </form>
+            <form action="/acct/removeFavourite" method="post">
+              <input type="hidden" name="favourite_id" value="{{id}}">
+              <button>Remove Favourite</button>
+            </form>
+          </div>
+          {{/favouritePosts}}
+          {{^favouritePosts}}
+          <p class="text-light no-content-message">You don't have any favorites yet! Click on the heart at the end of an article to see it here.</p>
+          {{/favouritePosts}}
+        </div>
+    </div>
+
+    </div>
+
+
+  </div>
 </div>
-</body>
-</html>
+
+<script src="/tabFunction.js"></script>
+
+{{>footer}}
+

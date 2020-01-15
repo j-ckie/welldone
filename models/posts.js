@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         models.Posts.hasMany(models.Comments, {as: 'comment',foreignKey: 'post_id'})
         models.Posts.hasMany(models.PostsWithCategories, {as: 'postswithcategories',foreignKey: 'post_id'})
         models.Posts.hasOne(models.PostImage, {as: 'postImage',foreignKey: 'post_id'})
+        models.Posts.hasMany(models.Notifications, {as: 'notification',foreignKey: 'post_id'})
     };
     return Posts;
 };

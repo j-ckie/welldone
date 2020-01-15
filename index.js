@@ -11,6 +11,7 @@ const path = require("path");
 const VIEWS_PATH = path.join(__dirname, "/views")
 const mustacheExpress = require("mustache-express");
 const bcrypt = require("bcrypt");
+const PORT = process.env.PORT || 8080;
 require("dotenv").config();
 
 //========= web push ===========
@@ -34,7 +35,7 @@ app.use(session({
 
 //========== authentication middleware ==========
 const authenticate = require("./util/auth");
-/* 
+/*
 To add authentication to route:
 
 ex: app.get("/private-info", authenticate, (req, res) => {<CODE HERE>})
@@ -66,8 +67,6 @@ app.post("/logout", authenticate, (req, res) => {
     req.session.destroy();
     res.redirect("/")
 })
-
-
 
 //Routes
 const articleRouter = require('./routes/article')
@@ -192,6 +191,6 @@ app.post("/notify", (req, res) => {
 })
 
 //Server Connection
-app.listen(3000, () => {
-    console.log("Server is live on http://localhost:3000 at " + Date.now());
+app.listen(PORT, () => {
+    console.log(`Server is live on http://localhost:${PORT} at ` + Date.now());
 });

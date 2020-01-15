@@ -51,7 +51,7 @@
                 <input type="hidden" name="postId" value={{post.id}} />
                 <input type="hidden" name="type" value="like" />
                 <input type="hidden" name="ownerId" value="{{post.user_id}}" />
-                <button><i class="heart fa fa-heart-o" ></i></button>
+                <button class="heart"><i class="heart fa fa-heart-o" ></i></button>
             </form>
           </span> {99} likes
       </p>
@@ -68,7 +68,7 @@
 
   <div id="comment-form-div" class="form-group">
     <form action="/article/addComment" method="post">
-      <input type="hidden" name="user_id" value="1">
+      <input type="hidden" name="user_id" value="{{sessionUser.id}}">
       <input type="hidden" name="post_id" value="{{post.id}}">
       <input type="hidden" name="user_name" value="{{req.session.name}}">
       <input type="hidden" name="type" value="comment" />
