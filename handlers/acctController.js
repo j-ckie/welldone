@@ -5,12 +5,13 @@ const fs = require('fs')
 
 //Grabs Users Posts and Favourites then sends them to Page
 module.exports.getThePostsandFavourites = async function (req, res) {
-
+  console.log("getThePostsandFavourites")
+  console.log(req.params)
     let user_id = await models.Users.findOne({
         where: {
-            email: req.params.userEmail.slice(1)
+            email: req.params.userEmail
         }
-    }).then()
+    })
 
       let userPage = await models.Users.findByPk(user_id.id, {
         //include users favourites
@@ -65,7 +66,7 @@ module.exports.getThePostsandFavourites = async function (req, res) {
             as: 'post'
           }
         ]
-      }).then()
+      })
 
   let categories = await models.Categories.findAll()
 
@@ -301,6 +302,6 @@ module.exports.removeFromPostImage = (req, res, next) => {
 
 module.exports.editProfile = async function(req,res) {
   let categories = await models.Categories.findAll()
-  
+
   res.render('editprofile',{categories: categories})
 }
