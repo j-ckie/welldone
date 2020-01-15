@@ -31,5 +31,7 @@ module.exports.getHomePage = async function(req, res) {
 //  ]
   //  ).then();
   res.json(popular);
-  // res.render('index', {categories:categories,aPost:aPost,popular:popular})
+  // res.render('index', {categories:categories,aPost:aPost,popular:popular})  Working on
+  //res.json()
+  // res.render('index', {categories: categories, user: req.session})
 }

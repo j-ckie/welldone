@@ -12,6 +12,7 @@
 
 body {
   background-color: rgb(65, 65, 65);
+  font-family: sans-serif;
 }
 
 p {
@@ -20,6 +21,37 @@ p {
 
 a {
   color: #f8f9fa;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #f8f9fa;
+}
+
+.article-hr {
+  width: 80%;
+  margin: auto;
+  border-top: 1px solid gray;
+}
+
+a.text-light:hover,a.text-light:focus {
+  color:rgba(165, 143, 143) !important
+}
+
+img {
+  border-radius: 10px;
+}
+
+.row {
+  margin:0;
+}
+
+.col-10 {
+  padding-left:0;
+}
+
+#blog-column {
+  margin: 0 75px;
 }
 
 /************************************************* HEADER CODE *************************************************/
@@ -52,6 +84,19 @@ header div a:nth-child(1):hover,header div a:nth-child(2):hover,header div a:nth
 }
 header div a:nth-child(2),header div a:nth-child(3){
   padding-top: 18px;
+}
+
+#logout-button {
+  color: #f8f9fa;
+  background: none;
+  border: none;
+  margin-top: 1.1rem;
+}
+
+#account-button {
+  color: #f8f9fa;
+  background: none;
+  border: none;
 }
 
 /************************************************* FOOTER *************************************************/
@@ -164,6 +209,10 @@ font-size: .9rem;
   color:whitesmoke;
 }
 
+.author-category-text {
+  font-size: 0.8rem;
+}
+
 /************************************************* ARTICLE PAGE *************************************************/
 
 #article-secondary-text {
@@ -172,6 +221,47 @@ font-size: .9rem;
 
 #article-image {
     width: 30rem;
+}
+
+/* comments */
+
+.comment-textbox {
+  background-color: rgba(255, 215, 189, 0.9);
+}
+
+#comments-text {
+  color: #f8f9fa;
+}
+
+#add-comment-button-div {
+  text-align: end;
+  margin-top: 0.5rem;
+}
+
+.comment-buttons-div {
+  text-align: start;
+}
+
+#add-comment-button {
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+}
+
+.comment-buttons {
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+}
+
+.date-comment {
+  font-size: 0.8rem;
+}
+
+.username-comment {
+  font-size: 0.8rem;
 }
 
 /************************************************* LOGIN PAGE *************************************************/
@@ -244,32 +334,23 @@ font-size: .9rem;
   margin-bottom: 1rem;
 }
 
-/************************************************* LAYOUT PAGE *************************************************/
+/************************************************* EDIT PROFILE PAGE *************************************************/
 
-
-
-/*************************************************  *************************************************/
-
-#blog-column{
-  margin: 0 75px;
-}
-
-.popular-title-text {
+/* .popular-title-text {
     font-size: 1.3rem;
+} */
+
+/* a.text-light:hover,a.text-light:focus{
+  color:rgba(165, 143, 143) !important */
+.choose-file-text {
+  color: #f8f9fa;
 }
 
-a.text-light:hover,a.text-light:focus{
-  color:rgba(165, 143, 143) !important
-}
-
-img{
-  border-radius: 10px;
-}
-.row{
-  margin:0;
-}
-.col-10{
-  padding-left:0;
+#publish-button {
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
 }
 
 /************************************************* MEDIA QUERIES *************************************************/
@@ -330,5 +411,164 @@ img{
 
 
 
+
+}
+
+
+
+/************************************************* FROM STYLES.CSS *************************************************/
+
+.nav-links-mobile {
+  padding: 0px;
+}
+
+.nav-links-text {
+  font-size: 0.8rem;
+}
+
+/* ////////////////////////////////////// */
+*{
+margin:0;
+padding:0;
+/* box-sizing: border-box; */
+}
+
+::-webkit-scrollbar{
+-webkit-appearance: none;
+width:0;
+}
+::-webkit-scrollbar-thumb:horizontal{
+border-radius: 10px;
+border: 3.5px solid transparent;
+background-color: rgba(172, 168, 168, 0.863);
+background-clip: content-box;
+}
+
+/* ////////////////////////////////////////////////////////////////// */
+@media only screen and (min-width: 768px){
+
+header{
+box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+position: sticky;
+top: 0px;
+background-color:rgba(65, 65, 65, 0.521);
+}
+nav{
+height: 75px;
+margin:auto;
+width:90%;
+display:flex;
+align-items: center;
+justify-content: space-between;
+font-size: 1.1rem;
+vertical-align: sub;
+list-style:none;
+}
+nav b{
+font-size: 1.8rem;
+color:whitesmoke;
+}
+nav a{
+text-decoration: none !important;
+}
+nav a.nav-link{
+margin:0;
+}
+nav i{
+color:whitesmoke;
+font-size: 1rem;
+}
+}
+/* /////////////////////////////////////////////////////////////// */
+@media only screen and (max-width: 768px){
+button:focus{
+  box-shadow: none;
+  outline: none;
+  background-color: none;
+}
+
+body{
+  overflow: hidden;
+  height:100vh;
+}
+
+.navbar-collapse{
+ margin-top:2rem;
+ overflow: auto;
+ height: 80vh;
+ margin-bottom: 15px;
+}
+
+.navbar-collapse ul li{
+ border-bottom: 2px solid rgba(235, 231, 231, 0.911);
+ padding: 1rem;
+ text-align: center;
+}
+
+header{
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0px;
+  background-color: rgba(65, 65, 65, 0.521);
+}
+
+.navbar{
+  padding:16px;
+}
+
+nav{
+  height: 72px;
+  margin:auto;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.1rem;
+ vertical-align: sub;
+ list-style:none;
+}
+
+nav b{
+  font-size: 1.8rem;
+  color:whitesmoke;
+}
+
+nav a{
+  color:whitesmoke;
+  text-decoration: none !important;
+  padding-left:15px;
+}
+
+nav a.nav-link{
+  margin:0 14rem;
+}
+
+nav i{
+  color: whitesmoke;
+  font-size: 1rem;
+  padding-right: 20px;
+}
+
+}
+/* ///////////////////////////////////////////////////////////////// */
+@media only screen and (max-height:670px){
+nav{
+  height: 60px;
+  margin:auto;
+  width:90%;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+}
+/* ////////////////////////////////////////////////////////////////// */
+@media only screen and (max-height:600px){
+nav{
+  height: 50px;
+  margin:auto;
+  width:90%;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 }

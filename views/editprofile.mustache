@@ -1,1 +1,120 @@
+
 <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+</html>
+
+{{>head}}
+{{>header}}
+
+<div>
+    <section>
+    {{#userPage}}
+        <h1>TEST{{userPage.name}}</h1>
+    {{/userPage}}
+
+<div>
+    <p id="change-pic-text">Change profile picture:</p>
+    <form action="acct/user_image" method="post" enctype="multipart/form-data">
+      <input class="choose-file-text" type="file" name="user_image" accept="image/jpeg, image/jpg, image/png">
+      <button id="save-photo-button">Save</button>
+    </form>
+    <img src="{{userPage.user_image}}" alt="Profile picture">
+</div>
+
+<div class="form-group">
+    <p id="write-post-text">Write a post</p>
+    <form action="/acct/addPost" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="user_id" value="1">
+      <input class="choose-file-text" type="file" name="post_image" accept="image/jpeg, image/jpg, image/png">
+      {{#categories}}
+      <div>
+        <input type="checkbox" name="categories" value="{{id}}">
+        <label for="huey">{{category}}</label>
+      </div>
+      {{/categories}}
+      <input class="comment-textbox mb-1" type="text" name="title"><br>
+      <textarea class="form-control comment-textbox" name="body" rows="4" cols="80"></textarea>
+      <button id="publish-button">Publish</button>
+    </form>
+</div>
+
+    <ul>
+    <p class="text-light">Write a post</p>
+      {{#userPosts}}
+      <li>
+        {{#postImage}}
+        <img src="{{imageURL}}">
+        {{/postImage}}
+        {{^postimage}}
+        {{/postimage}}
+        <h2>{{title}}</h2>
+        {{#postswithcategories}}
+        <p>{{category.category}}</p>
+        {{/postswithcategories}}
+        <p>{{body}}</p>
+        <p>Comments: {{comment.length}}</p>
+        <form action="/acct/updatePost" method="post" enctype="multipart/form-data">
+          <input type="file" name="post_image" accept="image/jpeg, image/jpg, image/png">
+          <input type="hidden" name="post_id" value="{{id}}">
+          <input type="hidden" name="user_id" value="1">
+          {{#categories}}
+          <div>
+            <input type="checkbox" name="categories" value="{{id}}">
+            <label for="huey">{{category}}</label>
+          </div>
+          {{/categories}}
+          <input type="text" name="title"><br>
+          <textarea name="body" rows="8" cols="40"></textarea><br>
+          <button>Update Post</button>
+        </form>
+        <form action="/acct/deletePost" method="post">
+          <input type="hidden" name="post_id" value="{{id}}">
+          <button>Delete Post</button>
+        </form>
+        <form action="/post" method="get">
+          <input type="hidden" name="post_id" value="{{id}}">
+          <button>Post Page</button>
+        </form>
+        <form action="/acct/removePostImage" method="post">
+          {{#postImage}}
+          <input type="hidden" name="file_path" value="{{imageURL}}">
+          {{/postImage}}
+          <input type="hidden" name="post_id" value="{{id}}">
+          <button>Delete Image</button>
+        </form>
+      </li>
+      {{/userPosts}}
+      {{^userPosts}}
+    <li class="text-light">You Have No Posts</li>
+      {{/userPosts}}
+    </ul>
+
+    <ul>
+    <p class="text-light">Your favorites</p>
+      {{#favouritePosts}}
+      <li>
+        <h2>{{post.title}}</h2>
+        <p>Comments: {{post.comment.length}}</p>
+        <form action="/post" method="post">
+          <input type="hidden" name="post_id" value="{{post.id}}">
+          <button>Post Page</button>
+        </form>
+        <form action="/acct/removeFavourite" method="post">
+          <input type="hidden" name="favourite_id" value="{{id}}">
+          <button>Remove Favourite</button>
+        </form>
+      </li>
+      {{/favouritePosts}}
+      {{^favouritePosts}}
+      <li class="text-light">You Have No Favourites</li>
+      {{/favouritePosts}}
+    </ul>
+
+{{>footer}}
