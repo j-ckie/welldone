@@ -17,7 +17,7 @@ module.exports.getPost = async function (req, res) {
       email: req.session.email
     }
   })
-
+  
   //grabs post
   let post = await models.Posts.findByPk(req.params.postId, {
     //include comments
