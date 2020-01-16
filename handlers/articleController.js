@@ -81,7 +81,7 @@ module.exports.getPost = async function (req, res) {
   }
 
   //res.json(post)
-  res.render('article', {post: post, sessionUser: user_id, categories:categories})
+  res.render('article', {post: post, user: user_id, categories:categories})
 
 }
 

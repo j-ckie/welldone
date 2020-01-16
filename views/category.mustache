@@ -20,8 +20,8 @@
 <div class="row d-flex">
 <div id="blog-column" class="col">
 
-{{#category}}
-{{#postswithcategories}}
+
+{{#category.postswithcategories}}
 <div class="row d-flex">
     <div class="col-6">
         {{#post}}
@@ -60,8 +60,7 @@
 </div>
 <div class="row d-flex py-3"></div>
         {{/post}}
-{{/postswithcategories}}
-{{/category}}
+{{/category.postswithcategories}}
 
 </div>
 </div>
