@@ -100,6 +100,14 @@ module.exports.getHomePage = async function(req, res) {
     }
   )
 
+  //sorts by updated date
+  aPost.sort(function(a, b) {
+    return a.updatedAt - b.updatedAt;
+  })
+
+  //reverses to most recently updated
+  aPost.reverse()
+
   //sorts posts by most likes
   popular.sort(function(a, b) {
     return a.notification.length - b.notification.length;
