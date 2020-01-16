@@ -128,10 +128,23 @@ app.post("/endpoint", (req, res) => {
                 }
             })
                 .then(persistedEndpoint => {
-                    if (!persistedEndpoint) {
+                    if (!persistedEndpoint) { //if endpoint doesnt exist, save to table
+                        console.log("Saving new endpoint for user ", persistedId)
                         userEndpoint.save().then(() => res.status(201)).catch(err => console.error(err));
+                    } else if (persistedEndpoint.user_id != persistedId) { //if current endpoint id doesn't match table, update it
+                        console.log("CURRENT USER does not match endpoint user")
+                        models.Endpoints.update({
+                            user_id: persistedId
+                        }, {
+                            where: {
+                                endpoint_data: persistedEndpoint.endpoint_data
+                            }
+                        }).then(() => res.status(201)).catch(err => console.error(err))
+                    } else if (persistedEndpoint.user_id === persistedId) { //do nothing 
+                        console.log("CURRENT USER matches endpoint user")
+                        res.status(201)
                     }
-                })
+                }).catch(err => console.error(err))
         })
         .catch(err => console.error(err))
 
