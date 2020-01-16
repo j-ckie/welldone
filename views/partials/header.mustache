@@ -2,7 +2,7 @@
         <div>
             <a href='/'><b>WellDone</b></a>
 
-              <a href="/acct/{{user.email}}" id="account-button" style='vertical-align:sub'><i>account</i></a>
+              <a href="/acct/{{sessionUser.email}}" id="account-button" style='vertical-align:sub'><i>account</i></a>
             <form method="POST" action="/logout">
                 <button id="logout-button" style='vertical-align:sub;'><i>logout</i></button>
             </form>

@@ -89,7 +89,7 @@ module.exports.getThePostsandFavourites = async function (req, res) {
   //grabs categories
   let categories = await models.Categories.findAll()
 
-  res.render('account', { userPage: userPage, categories: categories, user: sessionId });
+  res.render('account', { userPage: userPage, categories: categories, sessionUser: sessionId });
   //res.json(userPage)
 }
 
