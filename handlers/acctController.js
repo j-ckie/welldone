@@ -145,6 +145,35 @@ module.exports.postToYourPosts = async function (req, res) {
 
 //Grabs Post and Deletes it from database
 module.exports.deleteFromYourPosts = (req, res, next) => {
+  models.PostImage.destroy({
+    where: {
+      post_id: req.body.post_id
+    }
+  })
+
+  let path = './public' + req.body.file_path
+  fs.unlink(path, (err) => {
+    console.log(req.body.file_path + 'was deleted');
+  })
+
+  models.Comments.destroy({
+    where: {
+      post_id: req.body.post_id
+    }
+  })
+
+  models.PostsWithCategories.destroy({
+    where: {
+      post_id: req.body.post_id
+    }
+  })
+
+  models.Notifications.destroy({
+    where: {
+      post_id: req.body.post_id
+    }
+  })
+
   models.Posts.destroy({
     where: {
       id: req.body.post_id

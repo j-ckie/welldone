@@ -6,37 +6,17 @@ const models = require('../models')
 const authenticate = require("../util/auth");
 const bcrypt = require("bcrypt");
 // //============================================
+
 // router.get('/', authenticate, CategoryController.getCategories)
-router.get('/:categoryId', async (req, res) => {
-  let categoryId = req.params.categoryId
-  let category = await models.Categories.findAll({
-      include:[
-          {
-              model:models.PostsWithCategories,
-              include:[
-                {
-                model:models.Posts,
-                include:[
-                {
-                  model: models.Users,
-                  as: "user"
-                },
-                {
-                  model: models.PostImage,
-                  as: 'postImage'
-                }
-              ],
-                as:'post'
-                },
-              ],
-              as: 'postswithcategories'
-          }       
-      ],
-      where:{
-           category:categoryId
-       }
+router.get('/:categoryId',authenticate, async (req, res) => {
+  //user
+  let user_id = await models.Users.findOne({
+    where: {
+        email: req.session.email
+      }
   })
-  // res.json(category)
-  res.render('category',{category:category,postswithcategories:category.postswithcategories,post:category.post,user:category.user})
-})
+
+
+router.get('/:categoryId', authenticate, CategoryController.getCategories)
+
 module.exports = router
