@@ -60,4 +60,7 @@ router.get("/", async (req, res) => {
     // console.log(notifItems.type, notifItems.sender, notifItems.post)
 })
 
-module.exports = router
+
+
+
+module.exports = router 

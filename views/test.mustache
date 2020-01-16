@@ -1,8 +1,23 @@
 {{! to test auth }}
 
 <html>
-    {{> head}}
+    <h1>THIS IS A TEST. PLEASE STAND BY</h1>
     <body>
-        <h1>Logged in successfully with token :D</h1>
+        <form method="POST" action="/notify">
+            <input type="hidden" name="ownerId" value="4" />
+            <input type="hidden" name="postId" value="33" />
+            <input type="hidden" name="type" value="like" />
+            <button>Like</button>
+        </form>
+
+        <form method="POST" action="/article/addComment">
+            <input type="hidden" name="ownerId" value="4" />
+            <input type="hidden" name="post_id" value="33" />
+            <input type="hidden" name="type" value="comment" />
+            <input type="hidden" name="user_id" value="4" />
+            <textarea name="body" value="testing comments notification feature, please stand clear.........."></textarea>
+            <button>Comment</button>
+        </form>
+
     </body>
 </html>
