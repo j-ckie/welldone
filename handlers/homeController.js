@@ -123,6 +123,6 @@ module.exports.getHomePage = async function(req, res) {
     topten.push(popular[i])
   }
 
-  //res.json(aPost);
+  //res.json(topten);
   res.render('index', {categories: categories, aPost:aPost, popular:topten, user: user_id})
 }

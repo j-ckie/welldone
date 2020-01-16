@@ -37,15 +37,12 @@ module.exports.getPost = async function (req, res) {
       },{
         model: models.PostImage,
         as: 'postImage'
-      },{
-        model: models.Notifications,
-        as: 'notification'
       }
     ]
   })
 
   //checks to see if session user has liked post
-  let liked = await models.Notifications.findAll({
+  let liked = await models.Notifications.findOne({
     where: {
       user_id: user_id.id,
       type: 'like',
@@ -53,8 +50,19 @@ module.exports.getPost = async function (req, res) {
     }
   })
 
+  post.liked = liked
+
+  let likes = await models.Notifications.findAll({
+    where: {
+      post_id: post.id,
+      type: 'like'
+    }
+  })
+
+  post.likes = likes
+
   //determines which button to show based on the users likes
-  if(liked != 0) {
+  if(liked != null) {
     user_id.hideAdd = 'hidden'
   } else {
     user_id.hideRemove = 'hidden'
@@ -69,7 +77,7 @@ module.exports.getPost = async function (req, res) {
     }
   }
 
-  //res.json(liked)
+  //res.json(post)
   res.render('article', {post: post, sessionUser: user_id})
 
 }
