@@ -63,24 +63,24 @@ let categoryId = req.params.categoryId
   for(let i = 0; i < category.postswithcategories.length; i++){
     let likes = await models.Notifications.findAll({
       where: {
-        post_id: category.postswithcategories[i].id,
+        post_id: category.postswithcategories[i].post_id,
         type: 'like'
       }
     })
 
     category.postswithcategories[i].likes = likes
-
     //finds if user liked post
     let liked = await models.Notifications.findOne({
       where: {
         user_id: user_id.id,
         type: 'like',
-        post_id: category.postswithcategories[i].id
+        post_id: category.postswithcategories[i].post_id
       }
     })
 
     category.postswithcategories[i].liked = liked
 
+    console.log(liked)
     //determines which button to show
     if(liked != null) {
       category.postswithcategories[i].hideAdd = 'hidden'
