@@ -70,6 +70,8 @@
     <form action="/article/addComment" method="post">
       <input type="hidden" name="user_id" value="{{sessionUser.id}}">
       <input type="hidden" name="post_id" value="{{post.id}}">
+      <input type="hidden" name="ownerId" value={{post.user_id}} />
+      <input type="hidden" name="type" value="comment" />
       <input type="hidden" name="user_name" value="{{sessionUser.name}}">
       <textarea class="form-control comment-textbox" name="body" rows="4" cols="80"></textarea>
       <div id="add-comment-button-div">

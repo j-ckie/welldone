@@ -1,20 +1,27 @@
 const models = require('../models')
-const sequelize = require("sequelize");
+
+//========= web push ===========
+const webpush = require("web-push");
+
+const publicVapidKey = process.env.PUBLIC_VAPID_KEY;
+const privateVapidKey = process.env.PRIVATE_VAPID_KEY;
+
+webpush.setVapidDetails(`mailto:test@email.com`, publicVapidKey, privateVapidKey);
+//=================================
 
 //Grabs post and sends it to page
-module.exports.getPost = async function(req,res){
-  let user_id = await models.Users.findOne({
-    where: {
-      email: req.session.email
-    }
-  })
 
-  let post = await models.Posts.findByPk(req.params.postId,{
+module.exports.getPost = async function (req, res) {
 
-    //include comments
-    include: [
-      {
-        model: models.Comments,
+    let user_id = await models.Users.findOne({
+        where: {
+            email: req.session.email
+        }
+    })
+
+    models.Posts.findByPk(req.params.postId, {
+
+        //include comments
         include: [
           {
             model: models.Users,
@@ -48,39 +55,107 @@ module.exports.getPost = async function(req,res){
 
 }
 
+//add favourite button
+module.exports.addFavourite = async function (req, res, next) {
+    let user_id = await models.Users.findOne({
+        where: {
+            email: req.session.email
+        }
+    })
+
+    let favourite = models.Favourite.build({
+        isFavourite: 'TRUE',
+        post_id: req.body.post_id,
+        user_id: user_id.id
+    })
+    favourite.save().then(() => res.redirect('back'))
+
+}
+
 //add comment button
-module.exports.addComment = (req,res,next) => {
+module.exports.addComment = (req, res, next) => {
 
-  let comment = models.Comments.build({
-    body: req.body.body,
-    post_id: req.body.post_id,
-    user_id: req.body.user_id
-  })
+    let comment = models.Comments.build({
+        body: req.body.body,
+        post_id: req.body.post_id,
+        user_id: req.body.user_id
+    })
 
-  comment.save().then(() => res.redirect('back'))
+    comment.save()
+
+    // ==== create notification on comment
+    let postId = req.body.post_id,
+        ownerId = req.body.ownerId,
+        type = req.body.type
+    // console.log(postId)
+    // console.log(ownerId)
+
+    // find name of likeR
+    models.Users.findOne({
+        where: {
+            email: req.session.email
+        }
+    })
+        .then(persistedUser => {
+            let name = persistedUser.name,
+                senderId = persistedUser.id;
+
+            // build entry on Notifications table
+            let newNotification = models.Notifications.build({
+                type: type,
+                owner_id: ownerId,
+                user_id: senderId,
+                post_id: postId
+            });
+
+            newNotification.save()
+
+            // look for endpoints table to find user specific endpoints
+
+            models.Endpoints.findAll({
+                where: {
+                    user_id: ownerId
+                }
+            })
+                .then(data => {
+                    console.log("Found endpoint for user")
+                    data.forEach(endpoint => {
+                        // todo: update endpoint if different user session is on same endpoint
+                        const payload = JSON.stringify({
+                            title: `${name} has commented on your post.`
+                        });
+                        let remote = JSON.parse(endpoint.endpoint_data) // remote endpoint
+                        console.log("pushing to" + remote)
+                        webpush.sendNotification(remote, payload)
+
+                    })
+                    res.redirect("back")
+                })
+                .catch(err => console.error(err))
+        }).catch(err => console.error(err))
 
 }
 
 //update comment button
-module.exports.updateComment = (req,res,next) => {
+module.exports.updateComment = (req, res, next) => {
 
-  models.Comments.update({
-    body: req.body.body
-  }, {
-    where: {
-      id: req.body.comment_id
-    }
-  }).then(() => res.redirect('back'))
+    models.Comments.update({
+        body: req.body.body
+    }, {
+        where: {
+            id: req.body.comment_id
+        }
+    }).then(() => res.redirect('back'))
 
 }
 
 //delete comment button
-module.exports.deleteComment = (req,res,next) => {
+module.exports.deleteComment = (req, res, next) => {
 
-  models.Comments.destroy({
-    where: {
-      id: req.body.comment_id
-    }
-  }).then(() => res.redirect('back'))
+    models.Comments.destroy({
+        where: {
+            id: req.body.comment_id
+        }
+    }).then(() => res.redirect('back'))
 
 }
