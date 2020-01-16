@@ -1,19 +1,15 @@
 
-let editPostBtn = document.getElementsByClassName("editpost-button")
-let updatePostForm = document.getElementsByClassName("update-post-form")
-let hideEditFields = document.getElementsByClassName("hide-post-form")
+function showEdit(id) {
+    let edit = document.getElementById(`Edit${id}`)
+    let cancelEditBtn = document.getElementById('hide-edit-button')
+    cancelEditBtn.style.display = "block"
+    edit.style.display = "block"
+}
 
-updatePostForm.style.display = "none";
-hideEditFields.style.display = "none";
+function hideEdit(id) {
+    let edit = document.getElementById(`Edit${id}`)
+    let cancelEditBtn = document.getElementById('hide-edit-button')
+    cancelEditBtn.style.display = "none"
+    edit.style.display = "none"
+}
 
-editPostBtn.addEventListener("click", () => {
-    updatePostForm.style.display = "block";
-    hideEditFields.style.display = "block";
-    editPostBtn.style.display = "none";
-})
-
-hideEditFields.addEventListener("click", () => {
-    updatePostForm.style.display = "none";
-    editPostBtn.style.display = "block";
-    hideEditFields.style.display = "none";
-})

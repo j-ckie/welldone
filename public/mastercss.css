@@ -309,6 +309,10 @@ font-size: .9rem;
   font-size: 0.7rem;
 }
 
+.edit-comment-buttons:focus {
+  outline: none
+}
+
 .edit-comment {
   display: flex;
 }
@@ -456,6 +460,14 @@ font-size: .9rem;
 
 .centered-content-posts {
   text-align: center;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.centered-content-posts img {
+  width: 70%;
+  height: auto;
 }
 
 .remove-post-img-form {
@@ -513,8 +525,17 @@ font-size: .9rem;
   height: 2.25rem;
 }
 
-.all-buttons {
+.edit-tab-tabs {
+  margin: 1rem;
+  transition: all .2s ease-in-out;
+  color:#f8f9fa;
+  background: none;
+  border: none;
+}
 
+.edit-tab-tabs:hover {
+  transform: scale(1.2);
+  color: rgba(255, 215, 189, 0.9);
 }
 
 /************************************************* EDIT PROFILE PAGE *************************************************/
@@ -548,6 +569,14 @@ font-size: .9rem;
 
 .no-content-message {
   font-size: 0.7rem;
+}
+
+#update-profile-button {
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+  margin-top: 0.3rem;
 }
 
 /************************************************* MEDIA QUERIES *************************************************/
