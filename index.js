@@ -32,7 +32,6 @@ app.use(session({
 }))
 //===================================
 
-
 //========== authentication middleware ==========
 const authenticate = require("./util/auth");
 /*
@@ -47,7 +46,7 @@ Ask Jackie for more information
 
 app.use(express.urlencoded({ extended: true }))
 
-var $ = require("jquery")
+
 
 //======== registration ========
 const registrationRouter = require('./handlers/register');
@@ -78,6 +77,9 @@ app.use('/acct', acctRouter)
 const homeRouter = require('./routes/home')
 app.use('/', homeRouter)
 
+const categoryRouter = require('./routes/category')
+app.use('/category', categoryRouter)
+
 //Mustache
 app.use(express.static(path.join(__dirname, "partials")));
 app.use(express.static(path.join(__dirname, '/public')))
@@ -90,12 +92,25 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 
+//account page
+app.get('/acct', authenticate,(req, res) => {
+    res.render('account')
+})
 // edit profile mustache page
 app.get("/editprofile", (req, res) => res.render("editprofile"))
 
 //category page
 app.get('/category', (req, res) => {
+    // console.log(req.paramas.Categories)
     res.render('category')
+})
+//article page
+app.get('/article', (req, res) => {
+    res.render('article')
+})
+//home
+app.get('/', authenticate,(req, res) => {
+    res.render('index')
 })
 
 //====== notifications page ======

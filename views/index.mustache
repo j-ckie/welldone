@@ -5,8 +5,6 @@
 {{> header}}
 
 <!--CATEGORY SCROLL BAR-->
-
-<div id='category'></div>
 {{> carousel}}
 <!--MOST POPULAR (DESKTOP ONLY)-->
 
@@ -15,30 +13,24 @@
 <div id="most-popular" class="row d-flex">
     <div id="popular-column" class="col">
         <div class="row d-flex">
-            <div class="col-3 popular-posts">
+        {{#popular}}
+            <div class="col-3 popular-posts ">
                 <img src="./images/pcImage140.jpg">
                 <p class="popular-title-text"><a href='article?art=1'>
-                    {What Your Body Is Saying Says The Most About You }</a>
+                    {{title}}</a>
                 </p>
+                <ul class="nextway">
+                    <div class="num">{{id}}</div>
+                    {{#notifications}}
+                    <div style="display:none" class="sum">{{type}}{{post_id}}</div>
+                    {{/notifications}}
+                </ul>
+                {{! returns top for post by Id }}
+                <div class="count"></div> 
             </div>
-            <div class="col-3 popular-posts">
-                <img src="./images/pcImage140.jpg">
-                <p class="popular-title-text"><a href='article?art=3'>
-                    {Post Title 3}</a>
-                </p>
-            </div>
-            <div class="col-3 popular-posts">
-                <img src="./images/pcImage140.jpg">
-                <p class="popular-title-text"><a href='article?art=1'>
-                    {Post Title 1}</a>
-                </p>
-            </div>
-            <div class="col-3 popular-posts">
-                <img src="./images/pcImage140.jpg">
-                <p class="popular-title-text"><a href='article?art=5'>
-                    {Post Title 5}</a>
-                </p>
-            </div>
+
+        {{/popular}}
+
         </div>
     </div>
 </div>
@@ -50,32 +42,43 @@
 </div>
 
 <!--BLOG LIST START-->
-
 <div class="row d-flex">
 <div id="blog-column" class="col">
 
+{{#aPost}}
 <div class="row d-flex">
     <div class="col-6">
-        <p class="popular-title-text"><a href='article?art=1'>
-                    {What Your Body Is Saying Says The Most About You}</a>
+   
+        <p class="popular-title-text"><a href='article?art={{id}}'>
+                    {{title}}</a>
         </p>
-        <p class="text-light post-secondary-text">
-            {One of the best life hacks for making yourself more likeable is showing your hands at all times. Why is this? Well back before the internet, when humans were evolving...}
+    
+        <p class="text-light post-secondary-text opener">{{body}}
         </p>
         <div class="row d-flex">
             <div class="col-10">
-                <p class="author-text"><a href="/author?a=JB_Wilson">
-                    {JB Wilson}</a><span>
-                in<span class="category-text"><a href="/category?c=ONEZERO"> {ONEZERO}</a></span></span>
-                </p>
+           
+                <p class="author-text"><a href="/author?a={{user.name}}">
+                    {{user.name}}</a><span>
+                in
+            {{#postswithcategories}}
+                <span class="category-text "> 
+                <a href="/category?c={{category.category}}">{{category.category}}</a></span>       
+            {{/postswithcategories}}            
+                </span></p>  
                 <p class="post-secondary-text text-light">
-                    {Jan 5, 2020}<span> - 8 min read <span>
-                        <form method="POST" action="/notification">
-                            <input type="hidden"
-                            <i class="heart fa fa-heart-o"></i>
+                <div class="datesplit">
+                    {{createdAt}}</div>                 
+                    <span>
+                        <form method="POST" action="/notify">
+                            <input type="hidden" name="postId" value="{{id}}" />
+                            <input type="hidden" name="type" value="like" />
+                            <input type="hidden" name="ownerId" value="{{user_id}}" />
+                            <button><i class="heart fa fa-heart-o" ></i></button>
                         </form>
                     <span></span>
                 </p>
+            
             </div>
         </div>
     </div>
@@ -85,39 +88,17 @@
 </div>
 
 <div class="row d-flex py-3"></div>
-
-<div class="row d-flex">
-    <div class="col-6">
-        <p class="post-title-text"><a href='article?art=11'>
-            {Post Title 11}</a>
-        </p>
-        <p class="text-light post-secondary-text">
-            {Post Opener}
-        </p>
-        <div class="row d-flex">
-            <div class="col-10">
-                <p class="author-text"><a href="/author?a=JB_Wilson">
-                    {JB Wilson}</a><span>
-                in<span class="category-text"><a href="/category?c=ELEMENTAL"> {ELEMENTAL}</a></span></span>
-                </p>
-                <p class="post-secondary-text text-light">
-                    {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o" ></i><span></span>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-6 post-image">
-        <img src="./images/pcImage.jpg">
-    </div>
-</div>
-
+{{/aPost}}
 </div>
 </div>
 
-<div class="row d-flex py-3"></div>
 
 <!--FOOTER-->
 
 {{> footer}}
+<script src="heart.js"></script>
+<script src="datesplit.js"></script>
+<script src="opener.js"></script> 
 <script src="category.js"></script>
+<script src="notification.js"></script>
 <script src="client.js"></script>
