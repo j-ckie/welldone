@@ -58,12 +58,12 @@
         <div class="row d-flex">
             <div class="col-10">
            
-                <p class="author-text"><a href="/author?a={{user.name}}">
+                <p class="author-text"><a href="/author/{{user.name}}">
                     {{user.name}}</a><span>
                 in
             {{#postswithcategories}}
                 <span class="category-text "> 
-                <a href="/category?c={{category.category}}">{{category.category}}</a></span>       
+                <a href="/category/{{category.category}}">{{category.category}}</a></span>       
             {{/postswithcategories}}            
                 </span></p>  
                 <p class="post-secondary-text text-light">

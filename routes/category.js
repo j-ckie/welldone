@@ -7,7 +7,7 @@ const authenticate = require("../util/auth");
 const bcrypt = require("bcrypt");
 // //============================================
 // router.get('/', authenticate, CategoryController.getCategories)
-router.get('/category/:categoryId', async (req, res) => {
+router.get('/:categoryId', async (req, res) => {
     
   let categoryId = req.params.categoryId
   let category = await models.Categories.findOne({
@@ -16,12 +16,13 @@ router.get('/category/:categoryId', async (req, res) => {
               model:models.Posts,
               as: 'post'
           }
-      ]
-      // where:{
-      //     id:categoryId
-      // }
+      ],
+      where:{
+          category:categoryId
+      }
   })
-  console.log(category)
+  // console.log(category)
   res.json(category)
+  // res.render('category')
 })
 module.exports = router
