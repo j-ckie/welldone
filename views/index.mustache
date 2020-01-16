@@ -6,6 +6,7 @@
 
 <!--CATEGORY SCROLL BAR-->
 {{> carousel}}
+
 <!--MOST POPULAR (DESKTOP ONLY)-->
 
 <div class="row d-flex py-3"></div>
@@ -15,18 +16,20 @@
         <div class="row d-flex">
         {{#popular}}
             <div class="col-3 popular-posts ">
-                <img src="./images/pcImage140.jpg">
-                <p class="popular-title-text"><a href='article?art=1'>
+
+                <img src="{{postImage.imageURL}}" onerror=this.src="/post_images/defaultImage.png">
+                <p class="popular-title-text"><a href='/article/{{id}}'>
+
                     {{title}}</a>
                 </p>
                 <ul class="nextway">
-                    <div class="num">{{id}}</div>
-                    {{#notifications}}
+                    <div class="num">{{notification.length}} Likes</div>
+                    {{#notification}}
                     <div style="display:none" class="sum">{{type}}{{post_id}}</div>
-                    {{/notifications}}
+                    {{/notification}}
                 </ul>
                 {{! returns top for post by Id }}
-                <div class="count"></div> 
+                <div class="count"></div>
             </div>
 
         {{/popular}}
@@ -48,42 +51,52 @@
 {{#aPost}}
 <div class="row d-flex">
     <div class="col-6">
-   
-        <p class="popular-title-text"><a href='article?art={{id}}'>
+
+        <p class="popular-title-text"><a href='/article/{{id}}'>
                     {{title}}</a>
+
         </p>
-    
+
         <p class="text-light post-secondary-text opener">{{body}}
         </p>
         <div class="row d-flex">
             <div class="col-10">
-           
-                <p class="author-text"><a href="/author?a={{user.name}}">
+                <p class="author-text"><a href="/acct/{{user.email}}">
                     {{user.name}}</a><span>
-                in
-            {{#postswithcategories}}
-                <span class="category-text "> 
-                <a href="/category?c={{category.category}}">{{category.category}}</a></span>       
-            {{/postswithcategories}}            
-                </span></p>  
+                in<span class="category-text">
+                {{#postswithcategories}}
+                
+                  {{#category}}
+                  <a href="/category/{{category}}">{{category}}</a></span></span>
+                  {{/category}}
+                  {{/postswithcategories}}
+                </p>
                 <p class="post-secondary-text text-light">
                 <div class="datesplit">
-                    {{createdAt}}</div>                 
+                    {{createdAt}}</div>
                     <span>
                         <form method="POST" action="/notify">
                             <input type="hidden" name="postId" value="{{id}}" />
                             <input type="hidden" name="type" value="like" />
                             <input type="hidden" name="ownerId" value="{{user_id}}" />
-                            <button><i class="heart fa fa-heart-o" ></i></button>
+
+                            <button class="heart" {{hideAdd}}><i class="heart fa fa-heart-o" ></i></button>
+
                         </form>
-                    <span></span>
+                        <form method="POST" action="/acct/removeFavourite">
+                            <input type="hidden" name="favourite_id" value="{{liked.id}}">
+                            <button class="heart" {{hideRemove}}><i class="heart fa fa-heart" ></i></button>
+                        </form>
+                    <span></span> {{likes.length}} likes
                 </p>
-            
+
             </div>
         </div>
     </div>
      <div class="col-6 post-image">
-        <img src="./images/pcImage.jpg">
+
+        <img src="{{postImage.imageURL}}" onerror=this.src="/post_images/defaultImage.png">
+
     </div>
 </div>
 
@@ -98,7 +111,7 @@
 {{> footer}}
 <script src="heart.js"></script>
 <script src="datesplit.js"></script>
-<script src="opener.js"></script> 
+<script src="opener.js"></script>
 <script src="category.js"></script>
 <script src="notification.js"></script>
 <script src="client.js"></script>

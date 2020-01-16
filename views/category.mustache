@@ -7,7 +7,9 @@
 <!--CATEGORY SCROLL BAR-->
 
 {{> carousel}}
-<div id="category"></div>
+{{#category}}
+<div id="category">{{category}}</div>
+{{/category}}
 <!--HORIZONTAL LINE-->
 
 <div class="row d-flex py-3">
@@ -17,32 +19,45 @@
 <!--BLOG LIST START-->
 <div class="row d-flex">
 <div id="blog-column" class="col">
-{{#allPost}}
+
+{{#category}}
+{{#postswithcategories}}    
 <div class="row d-flex">
     <div class="col-6">
-        <p class="post-title-text"><a href='article?art=2'>
-            {{post.id}}</a>
-        </p>
-        <p class="text-light post-secondary-text">
-            {One of the best life hacks for making yourself more likeable is showing your hands at all times. Why is this? Well back before the internet, when humans were evolving...}
-        </p>
+        {{#post}}
+        <p class="post-title-text"><a href='/article/{{id}}'>{{title}}</a></p>
+        <p class="text-light post-secondary-text opener">{{body}}</p>
         <div class="row d-flex">
             <div class="col-10">
-                <p class="author-text"><a href='/author?a={{user.name}}'>
-                    {{user.name}}</a>
-                </p>            
+            {{#user}}
+                <p class="author-text"><a href="/acct/{{}}">
+                    {{name}}</a><span>                   
+                </span></p>  
+                {{/user}}
                 <p class="post-secondary-text text-light">
-                    {Jan 5, 2020}<span> - 8 min read <span><i class="heart fa fa-heart-o"></i><span></span>
+                <div class="datesplit">
+                    {{createdAt}}</div>
+                    <span>
+                        <form method="POST" action="/notify">
+                            <input type="hidden" name="postId" value="{{id}}" />
+                            <input type="hidden" name="type" value="like" />
+                            <input type="hidden" name="ownerId" value="{{user_id}}" />
+                            <button><i class="heart fa fa-heart-o" ></i></button>
+                        </form>
+                    </span>
                 </p>
+
             </div>
         </div>
     </div>
      <div class="col-6 post-image">
-        <img src="./images/pcImage.jpg">
+        <img src="{{postImage.imageURL}}" onerror=this.src="/post_images/defaultImage.png">
     </div>
 </div>
 <div class="row d-flex py-3"></div>
-{{/allPost}}
+        {{/post}}
+{{/postswithcategories}}
+{{/category}}
 
 </div>
 </div>
@@ -50,7 +65,7 @@
 <div class="row d-flex py-3"></div>
 
 <!--FOOTER-->
-<script src="./heart.js"></script>
-<script src="./datesplit.js"></script>
-<script src="./opener.js"></script> 
 {{> footer}}
+<script src="/opener.js"></script> 
+<script src="/heart.js"></script>
+<script src="/datesplit.js"></script>

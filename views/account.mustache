@@ -1,6 +1,15 @@
 {{>head}}
 
-{{>header}}
+<header class="header">
+        <div>
+            <a href='/'><b>WellDone</b></a>
+
+              <a href="/acct/{{sessionId.email}}" id="account-button" style='vertical-align:sub'><i>account</i></a>
+            <form method="POST" action="/logout">
+                <button id="logout-button" style='vertical-align:sub;'><i>logout</i></button>
+            </form>
+        </div>
+</header>
 
 <div class="row d-flex">
   <div id="blog-column" class="col">
@@ -10,7 +19,7 @@
 
     <div>
       <div class="row d-flex">
-        <h1 id="username-text">{{userPage.name}}</h1>
+        <h1 class="username-text">{{userPage.name}}</h1>
         <form action="/acct/editprofile" method="post">
           <span><button id="edit-profile-button" {{userPage.hidden}}>Edit profile</button></span>
         </form>
@@ -105,7 +114,7 @@
         <p class="number-of-comments">Comments: {{comment.length}}</p>
 
               <!-- delete post -->
-
+      <div class="all-buttons row d-flex">
         <form class="delete-post-form" action="/acct/deletePost" method="post" {{userPage.hidden}}>
           <input type="hidden" name="post_id" value="{{id}}">
           <button class="delete-post-button">Unpublish</button>
@@ -113,8 +122,11 @@
 
       <!-- edit post -->
 
-      <p class="tab-subject-opener" {{userPage.hidden}}>Edit this post:<p>
-      <div class="form-group" {{userPage.hidden}}>
+      <button class="show-hide-edit-buttons" class="editpost-button" {{userPage.hidden}}>Edit this post</button>
+      <button class="show-hide-edit-buttons" class="hide-post-form">Cancel</button>
+      </div>
+
+      <div class="update-post-form" class="form-group" {{userPage.hidden}}>
         <p class="write-post-textarea-name-text">Upload an image:</p>
         <form action="/acct/updatePost" method="post" enctype="multipart/form-data">
           <input type="hidden" name="user_id" value="1">
@@ -136,8 +148,16 @@
           <button class="edit-post-button">Save Changes</button>
         </form>
       </div>
-
       </div>
+
+    <div class="d-flex py-3"></div>
+
+      <div class="row d-flex">
+        <hr class="article-hr">
+      </div>
+
+    <div class="d-flex py-3"></div>
+
       {{/userPage.post}}
 
       {{^userPage.post}}
@@ -151,9 +171,9 @@
         <div>
         <p class="text-light tab-subject-opener">Your favourites:</p>
           {{#userPage.notification}}
-          <div>
+          <div {{hidden}}>
             <a class="favourite-articles" href="/article/{{post.id}}">{{post.title}}</a>
-            <p class="by-author-text">by {{post.user}}</p>
+            <a class="by-author-text" href="/acct/{{post.user.email}}">by {{post.user.name}}</a>
             <form action="/acct/removeFavourite" method="post">
               <input type="hidden" name="favourite_id" value="{{id}}">
               <button id="remove-favourite-button" {{userPage.hidden}}>Remove</button>
@@ -171,5 +191,6 @@
 </div>
 
 <script src="/tabFunction.js"></script>
+<script src="/editpost.js"></script>
 
 {{>footer}}

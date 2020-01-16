@@ -10,11 +10,13 @@ var list = [];
     count += 1;
   }else{
     count = count;
+    // console.log(count)
   }
 }
 
 var object = []
 list.sort()
+console.log(list)
 var current = null;
 var cnt = 0;
 var a = 0;
@@ -38,7 +40,7 @@ if(cnt>0){
   a++;
 }
 
-object.sort((a,b)=>(a.count> b.count)? -1:1)
+// object.sort((a,b)=>(a.count> b.count)? -1:1)
 
 console.log(object)
 
@@ -52,9 +54,11 @@ var postStringd = object[3].post
 var extractord = postStringd.match(/(\d+)/)
 
 
-document.getElementsByClassName('num')[0].innerHTML = extractora[0];
-document.getElementsByClassName('num')[1].innerHTML = extractorb[0]; 
-document.getElementsByClassName('num')[2].innerHTML = extractorc[0];
-document.getElementsByClassName('num')[3].innerHTML = extractord[0];
+
+
+// document.getElementsByClassName('count')[0].innerHTML = extractora[0];
+// document.getElementsByClassName('count')[1].innerHTML = extractorb[0]; 
+// document.getElementsByClassName('count')[2].innerHTML = extractorc[0];
+// document.getElementsByClassName('count')[3].innerHTML = extractord[0];
 
 
