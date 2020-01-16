@@ -114,6 +114,7 @@ app.post("/endpoint", (req, res) => {
         }
     })
         .then(persistedUser => {
+
             let persistedId = persistedUser.id
 
             let userEndpoint = models.Endpoints.build({
