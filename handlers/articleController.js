@@ -37,9 +37,26 @@ module.exports.getPost = async function (req, res) {
         },{
           model: models.PostImage,
           as: 'postImage'
+        },{
+          model: models.Notifications,
+          as: 'notification'
         }
       ]
     })
+
+    let liked = await models.Notifications.findAll({
+      where: {
+        user_id: user_id.id,
+        type: 'like',
+        post_id: req.params.postId
+      }
+    })
+
+    if(liked != null) {
+      user_id.hideAdd = 'hidden'
+    } else {
+      user_id.hideRemove = 'hidden'
+    }
 
   //crosscheck user with comments
   for(let i = 0; i < post.comment.length; i++) {
