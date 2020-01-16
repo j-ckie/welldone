@@ -151,6 +151,11 @@ module.exports.deleteFromYourPosts = (req, res, next) => {
     }
   })
 
+  let path = './public' + req.body.file_path
+  fs.unlink(path, (err) => {
+    console.log(req.body.file_path + 'was deleted');
+  })
+
   models.Comments.destroy({
     where: {
       post_id: req.body.post_id
