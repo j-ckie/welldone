@@ -15,12 +15,12 @@
         <div class="row d-flex">
         {{#popular}}
             <div class="col-3 popular-posts ">
-                <img src="./images/pcImage140.jpg">
-                <p class="popular-title-text"><a href='article?art=1'>
+                <img src="{{postImage.imageURL}}" onerror=this.src="/post_images/defaultImage.png">
+                <p class="popular-title-text"><a href='/article/{{id}}'>
                     {{title}}</a>
                 </p>
                 <ul class="nextway">
-                    <div class="num">{{id}}</div>
+                    <div class="num">{{notification.length}} Likes</div>
                     {{#notifications}}
                     <div style="display:none" class="sum">{{type}}{{post_id}}</div>
                     {{/notifications}}
@@ -49,7 +49,7 @@
 <div class="row d-flex">
     <div class="col-6">
 
-        <p class="popular-title-text"><a href='article?art={{id}}'>
+        <p class="popular-title-text"><a href='/article/{{id}}'>
                     {{title}}</a>
         </p>
 
@@ -57,9 +57,12 @@
         </p>
         <div class="row d-flex">
             <div class="col-10">
-                <p class="author-text"><a href="/acct/{{}}">
-                    {JB Wilson}</a><span>
-                in<span class="category-text"><a href="/category?c=ONEZERO"> {ONEZERO}</a></span></span>
+                <p class="author-text"><a href="/acct/{{user.email}}">
+                    {{user.name}}</a><span>
+                in<span class="category-text">
+                  {{#category}}
+                  <a href="/category/{{category}}">{{category}}</a></span></span>
+                  {{/category}}
                 </p>
                 <p class="post-secondary-text text-light">
                 <div class="datesplit">
@@ -69,16 +72,20 @@
                             <input type="hidden" name="postId" value="{{id}}" />
                             <input type="hidden" name="type" value="like" />
                             <input type="hidden" name="ownerId" value="{{user_id}}" />
-                            <button><i class="heart fa fa-heart-o" ></i></button>
+                            <button class="heart" {{hideAdd}}><i class="heart fa fa-heart-o" ></i></button>
                         </form>
-                    <span></span>
+                        <form method="POST" action="/acct/removeFavourite">
+                            <input type="hidden" name="favourite_id" value="{{liked.id}}">
+                            <button class="heart" {{hideRemove}}><i class="heart fa fa-heart" ></i></button>
+                        </form>
+                    <span></span> {{likes.length}} likes
                 </p>
 
             </div>
         </div>
     </div>
      <div class="col-6 post-image">
-        <img src="./images/pcImage.jpg">
+        <img src="{{postImage.imageURL}}" onerror=this.src="/post_images/defaultImage.png">
     </div>
 </div>
 

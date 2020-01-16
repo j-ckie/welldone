@@ -49,7 +49,7 @@ router.post("/", (req, res) => {
                 bcrypt.hash(persistedPassword, SALT_ROUNDS)
                     .then(hash => {
 
-                      default_user_image = './profile_pictures/defaultpicture.png'
+                      default_user_image = '/profile_pictures/defaultpicture.png'
 
                         let newUser = models.Users.build({
                             email: persistedEmail,
