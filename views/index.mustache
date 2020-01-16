@@ -13,30 +13,24 @@
 <div id="most-popular" class="row d-flex">
     <div id="popular-column" class="col">
         <div class="row d-flex">
-            <div class="col-3 popular-posts">
+        {{#popular}}
+            <div class="col-3 popular-posts ">
                 <img src="./images/pcImage140.jpg">
                 <p class="popular-title-text"><a href='article?art=1'>
-                    {What Your Body Is Saying Says The Most About You }</a>
+                    {{title}}</a>
                 </p>
+                <ul class="nextway">
+                    <div class="num">{{id}}</div>
+                    {{#notifications}}
+                    <div style="display:none" class="sum">{{type}}{{post_id}}</div>
+                    {{/notifications}}
+                </ul>
+                {{! returns top for post by Id }}
+                <div class="count"></div> 
             </div>
-            <div class="col-3 popular-posts">
-                <img src="./images/pcImage140.jpg">
-                <p class="popular-title-text"><a href='article?art=3'>
-                    {Post Title 3}</a>
-                </p>
-            </div>
-            <div class="col-3 popular-posts">
-                <img src="./images/pcImage140.jpg">
-                <p class="popular-title-text"><a href='article?art=1'>
-                    {Post Title 1}</a>
-                </p>
-            </div>
-            <div class="col-3 popular-posts">
-                <img src="./images/pcImage140.jpg">
-                <p class="popular-title-text"><a href='article?art=5'>
-                    {Post Title 5}</a>
-                </p>
-            </div>
+
+        {{/popular}}
+
         </div>
     </div>
 </div>
@@ -100,8 +94,9 @@
 <!--FOOTER-->
 
 {{> footer}}
-<script src="./heart.js"></script>
-<script src="./datesplit.js"></script>
-<script src="./opener.js"></script> 
-<script src="./category.js"></script>
+<script src="heart.js"></script>
+<script src="datesplit.js"></script>
+<script src="opener.js"></script> 
+<script src="category.js"></script>
+<script src="notification.js"></script>
 <script src="client.js"></script>
