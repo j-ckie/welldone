@@ -8,9 +8,14 @@ module.exports.getCategories = async function (req,res) {
     include: 
     [
       {
-        model: models.Categories,
-        as: 'category'
-          
+        model: models.PostsWithCategories,
+          include:[
+          {
+            model: models.Categories,
+            as: 'category'        
+          }
+          ],
+          as: 'postswithcategories'       
       },
       {
         model:models.Users,
@@ -20,7 +25,36 @@ module.exports.getCategories = async function (req,res) {
     ] 
 })
 
+let categoryId = req.params.categoryId
+  let category = await models.Categories.findAll({
+      include:[
+          {
+              model:models.PostsWithCategories,
+              include:[
+                {
+                model:models.Posts,
+                include:[
+                {
+                  model: models.Users,
+                  as: "user"
+                },
+                {
+                  model: models.PostImage,
+                  as: 'postImage'
+                }
+              ],
+                as:'post'
+                },
+              ],
+              as: 'postswithcategories'
+          }       
+      ],
+      where:{
+           category:categoryId
+       }
+  })
 
-  res.render('category',{categories:categories,aPost:aPost})
+
+  res.render('category',{categories:categories,aPost:aPost,category:category,postswithcategories:category.postswithcategories,post:category.post,user:category.user})
   
 }

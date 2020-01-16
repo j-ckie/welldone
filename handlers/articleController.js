@@ -18,6 +18,9 @@ module.exports.getPost = async function (req, res) {
     }
   })
 
+   //categories
+   let categories = await models.Categories.findAll()
+
   //grabs post
   let post = await models.Posts.findByPk(req.params.postId, {
     //include comments
@@ -78,7 +81,7 @@ module.exports.getPost = async function (req, res) {
   }
 
   //res.json(post)
-  res.render('article', {post: post, sessionUser: user_id})
+  res.render('article', {post: post, sessionUser: user_id, categories:categories})
 
 }
 
