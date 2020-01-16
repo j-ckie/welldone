@@ -374,7 +374,7 @@ font-size: .9rem;
   color: rgba(255, 215, 189, 0.9);
 }
 
-#username-text {
+.username-text {
   color: #f8f9fa;
   margin-top: 0.2rem;
 }
