@@ -52,6 +52,10 @@
 
         <p class="popular-title-text"><a href='/article/{{id}}'>
                     {{title}}</a>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9f9e7f0e0f0c2ecea15338f4e8fec657fad95a30
         </p>
 
         <p class="text-light post-secondary-text opener">{{body}}
@@ -73,7 +77,13 @@
                             <input type="hidden" name="postId" value="{{id}}" />
                             <input type="hidden" name="type" value="like" />
                             <input type="hidden" name="ownerId" value="{{user_id}}" />
+<<<<<<< HEAD
                             <button class="heart" {{hideAdd}}><i class="heart fa fa-heart-o" ></i></button>
+=======
+
+                            <button class="heart" {{hideAdd}}><i class="heart fa fa-heart-o" ></i></button>
+
+>>>>>>> 9f9e7f0e0f0c2ecea15338f4e8fec657fad95a30
                         </form>
                         <form method="POST" action="/acct/removeFavourite">
                             <input type="hidden" name="favourite_id" value="{{liked.id}}">
@@ -86,7 +96,13 @@
         </div>
     </div>
      <div class="col-6 post-image">
+<<<<<<< HEAD
         <img src="{{postImage.imageURL}}" onerror=this.src="/post_images/defaultImage.png">
+=======
+
+        <img src="{{postImage.imageURL}}" onerror=this.src="/post_images/defaultImage.png">
+
+>>>>>>> 9f9e7f0e0f0c2ecea15338f4e8fec657fad95a30
     </div>
 </div>
 
