@@ -20,8 +20,8 @@
 <div class="row d-flex">
 <div id="blog-column" class="col">
 
-{{#category}}
-{{#postswithcategories}}
+
+{{#category.postswithcategories}}
 <div class="row d-flex">
     <div class="col-6">
         {{#post}}
@@ -42,7 +42,9 @@
                             <input type="hidden" name="postId" value="{{id}}" />
                             <input type="hidden" name="type" value="like" />
                             <input type="hidden" name="ownerId" value="{{user_id}}" />
-                            <button class="heart" {{hideAdd}}><i class="heart fa fa-heart-o" ></i></button>
+
+                            <button class="heart-buttons" {{hideAdd}}><i class="heart fa fa-heart-o" ></i></button>
+
                         </form>
                         <form method="POST" action="/acct/removeFavourite">
                             <input type="hidden" name="favourite_id" value="{{liked.id}}">
@@ -60,8 +62,7 @@
 </div>
 <div class="row d-flex py-3"></div>
         {{/post}}
-{{/postswithcategories}}
-{{/category}}
+{{/category.postswithcategories}}
 
 </div>
 </div>
