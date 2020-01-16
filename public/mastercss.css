@@ -157,6 +157,11 @@ header div a:nth-child(2),header div a:nth-child(3){
 
 .popular-title-text {
     font-size: medium;
+    margin-bottom: 0rem;
+}
+
+.num {
+  color: rgba(255, 215, 189, 0.9);
 }
 
 #popular-column {
@@ -165,6 +170,11 @@ header div a:nth-child(2),header div a:nth-child(3){
 
 .popular-posts img{
 margin-bottom:15px;
+}
+
+.heart-buttons {
+  background: none;
+  border: none;
 }
 
 .heart {
@@ -223,6 +233,11 @@ font-size: .9rem;
 
 .author-category-text {
   font-size: 0.8rem;
+}
+
+.datesplit {
+  color: #f8f9fa;
+  font-size: 0.7rem;
 }
 
 /************************************************* ARTICLE PAGE *************************************************/
