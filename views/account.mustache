@@ -70,7 +70,7 @@
 <!-- PROFILE TAB -->
 
     <div id="Profile" class="tab" style="display:none">
-      <p class="text-light">Your profile:</p>
+      <p class="text-light tab-subject-opener">Your profile:</p>
       <img src="{{userPage.user_image}}" alt="Profile picture">
       <p><b>Name:</b> {{userPage.name}}</p>
       <p><b>Email:</b> {{userPage.email}}</p>
@@ -82,48 +82,71 @@
 
       <!-- published posts -->
 
-      <p class="text-light">Your posts:</p>
+      <p class="text-light tab-subject-opener">Your posts:</p>
       {{#userPage.post}}
       <div>
-        {{#postImage}}
-        <img src="{{imageURL}}">
-        {{/postImage}}
-        {{^postimage}}
-        {{/postimage}}
-        <h2>{{title}}</h2>
-        {{#postswithcategories}}
-        <p>{{category.category}}</p>
-        {{/postswithcategories}}
-        <p>{{body}}</p>
-        <p>Comments: {{comment.length}}</p>
-        <a href="/article/{{id}}">Post Page</a>
-        <form action="/acct/updatePost" method="post" enctype="multipart/form-data">
-          <input type="file" name="post_image" accept="image/jpeg, image/jpg, image/png">
-          <input type="hidden" name="post_id" value="{{id}}">
-          <input type="hidden" name="user_id" value="1">
-          {{#categories}}
-          <div>
-            <input type="checkbox" name="categories" value="{{id}}">
-            <label for="huey">{{category}}</label>
-          </div>
-          {{/categories}}
-          <input type="text" name="title"><br>
-          <textarea name="body" rows="8" cols="40"></textarea><br>
-          <button>Update Post</button>
-        </form>
-        <form action="/acct/deletePost" method="post">
-          <input type="hidden" name="post_id" value="{{id}}">
-          <button>Delete Post</button>
-        </form>
-        <form action="/acct/removePostImage" method="post">
+        <div class="centered-content-posts">
           {{#postImage}}
-          <input type="hidden" name="file_path" value="{{imageURL}}">
+          <img src="{{imageURL}}">
+
+          <form class="remove-post-img-form" action="/acct/removePostImage" method="post">
+            {{#postImage}}
+            <input type="hidden" name="file_path" value="{{imageURL}}">
+            {{/postImage}}
+            <input type="hidden" name="post_id" value="{{id}}">
+            <button class="delete-post-image-button">Delete Image</button>
+          </form>
+
           {{/postImage}}
+
+          {{^postimage}}
+          {{/postimage}}
+
+          <a href="/article/{{id}}" class="your-posts-titles">{{title}}</a>
+          {{#postswithcategories}}
+          <p>in {{category.category}}</p>
+          {{/postswithcategories}}
+        </div>
+
+        <p>{{body}}</p>
+        <p class="number-of-comments">Comments: {{comment.length}}</p>
+
+              <!-- delete post -->
+
+        <form class="delete-post-form" action="/acct/deletePost" method="post">
           <input type="hidden" name="post_id" value="{{id}}">
-          <button>Delete Image</button>
+          <button class="delete-post-button">Unpublish</button>
+        </form>
+
+      <!-- edit post -->
+
+      <p class="tab-subject-opener">Edit this post:<p>
+      <div class="form-group">
+        <p class="write-post-textarea-name-text">Upload an image:</p>
+        <form action="/acct/updatePost" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="user_id" value="1">
+          <input class="choose-file-text" type="file" name="post_image" accept="image/jpeg, image/jpg, image/png">
+          <input type="hidden" name="post_id" value="{{id}}">
+
+          <p class="write-post-textarea-name-text">Choose a category:</p>
+          {{#categories}}
+            <div>
+                <input type="checkbox" name="categories" value="{{id}}">
+                <label class="text-light" for="huey">{{category}}</label>
+            </div>
+          {{/categories}}
+
+          <p class="write-post-textarea-name-text">Title:</p>
+          <input class="comment-textbox mb-1" type="text" name="title">
+          <p class="text-light write-post-textarea-name-text">Post body:</p>
+          <textarea class="form-control comment-textbox" name="body" rows="8" cols="80"></textarea>
+          <button class="edit-post-button">Save Changes</button>
         </form>
       </div>
+
+      </div>
       {{/userPage.post}}
+
       {{^userPage.post}}
     <p class="text-light no-content-message">You haven't published anything yet!</p>
       {{/userPage.post}}
@@ -133,14 +156,14 @@
 
     <div id="Favourites" class="tab" style="display:none">
         <div>
-        <p class="text-light">Your favourites:</p>
+        <p class="text-light tab-subject-opener">Your favourites:</p>
           {{#userPage.notification}}
           <div>
-            <h2>{{post.title}}</h2>
-              <a href="/article/{{post.id}}">Post Page</a>
+            <a class="favourite-articles" href="/article/{{post.id}}">{{post.title}}</a>
+            <p class="by-author-text">by {{post.user}}</p>
             <form action="/acct/removeFavourite" method="post">
               <input type="hidden" name="favourite_id" value="{{id}}">
-              <button>Remove Favourite</button>
+              <button id="remove-favourite-button">Remove</button>
             </form>
           </div>
           {{/userPage.notification}}
@@ -151,8 +174,6 @@
     </div>
 
     </div>
-
-
   </div>
 </div>
 
