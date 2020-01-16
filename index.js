@@ -11,6 +11,7 @@ const path = require("path");
 const VIEWS_PATH = path.join(__dirname, "/views")
 const mustacheExpress = require("mustache-express");
 const bcrypt = require("bcrypt");
+const PORT = process.env.PORT || 8080;
 require("dotenv").config();
 
 //========= web push ===========
@@ -128,6 +129,7 @@ app.post("/endpoint", (req, res) => {
         }
     })
         .then(persistedUser => {
+
             let persistedId = persistedUser.id
 
             let userEndpoint = models.Endpoints.build({
@@ -141,10 +143,23 @@ app.post("/endpoint", (req, res) => {
                 }
             })
                 .then(persistedEndpoint => {
-                    if (!persistedEndpoint) {
+                    if (!persistedEndpoint) { //if endpoint doesnt exist, save to table
+                        console.log("Saving new endpoint for user ", persistedId)
                         userEndpoint.save().then(() => res.status(201)).catch(err => console.error(err));
+                    } else if (persistedEndpoint.user_id != persistedId) { //if current endpoint id doesn't match table, update it
+                        console.log("CURRENT USER does not match endpoint user")
+                        models.Endpoints.update({
+                            user_id: persistedId
+                        }, {
+                            where: {
+                                endpoint_data: persistedEndpoint.endpoint_data
+                            }
+                        }).then(() => res.status(201)).catch(err => console.error(err))
+                    } else if (persistedEndpoint.user_id === persistedId) { //do nothing
+                        console.log("CURRENT USER matches endpoint user")
+                        res.status(201)
                     }
-                })
+                }).catch(err => console.error(err))
         })
         .catch(err => console.error(err))
 
@@ -154,7 +169,7 @@ app.post("/endpoint", (req, res) => {
 })
 
 
-// test if post_id will populate correctly
+// API fetch - will run on "push" eventListener
 app.post("/notify", (req, res) => {
     let postId = req.body.postId,
         ownerId = req.body.ownerId,
@@ -176,11 +191,11 @@ app.post("/notify", (req, res) => {
             let newNotification = models.Notifications.build({
                 type: type,
                 owner_id: ownerId,
-                sender_id: senderId,
+                user_id: senderId,
                 post_id: postId
             });
 
-            newNotification.save().then(() => res.status(201)).catch(err => console.error(err))
+            newNotification.save()
 
             // look for endpoints table to find user specific endpoints
 
@@ -190,19 +205,24 @@ app.post("/notify", (req, res) => {
                 }
             })
                 .then(data => {
+                    console.log("Found endpoint for user")
                     data.forEach(endpoint => {
+                        // todo: update endpoint if different user session is on same endpoint
                         const payload = JSON.stringify({
                             title: `${name} has liked your post.`
                         });
                         let remote = JSON.parse(endpoint.endpoint_data) // remote endpoint
                         console.log("pushing to" + remote)
                         webpush.sendNotification(remote, payload)
+
                     })
-                }).catch(err => console.error(err))
+                    res.redirect("back")
+                })
+                .catch(err => console.error(err))
         }).catch(err => console.error(err))
 })
 
 //Server Connection
 app.listen(3000, () => {
-    console.log("Server is live on http://localhost:3000 at " + Date.now());
+    console.log(`Server is live on http://localhost:${PORT} at ` + Date.now());
 });

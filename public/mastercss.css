@@ -6,6 +6,10 @@
   padding: 0px;
 }
 
+input:focus {
+  outline: none !important;
+}
+
 .container-fluid{
   padding:0;
 }
@@ -168,6 +172,14 @@ margin-bottom:15px;
   font-size: 20px;
   color:red;
   transition: all .2s ease-in-out;
+  box-shadow: none;
+  outline: none;
+  background: none;
+  border: none;
+}
+
+.heart:focus {
+  outline: none;
 }
 
 .heart:hover {
@@ -334,6 +346,126 @@ font-size: .9rem;
   margin-bottom: 1rem;
 }
 
+/************************************************* ACCOUNT PAGE *************************************************/
+
+#edit-profile-button {
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+  font-size: 0.7rem;
+  margin: 1rem;
+}
+
+#tabs-div {
+  margin-top: 1rem;
+  justify-content: space-evenly;
+}
+
+.account-page-tabs {
+  transition: all .2s ease-in-out;
+  color:#f8f9fa;
+  background: none;
+  border: none;
+}
+
+.account-page-tabs:hover {
+  transform: scale(1.2);
+  color: rgba(255, 215, 189, 0.9);
+}
+
+#username-text {
+  color: #f8f9fa;
+  margin-top: 0.2rem;
+}
+
+#write-post-text {
+  font-size: 1.4rem;
+}
+
+#remove-favourite-button {
+  color: rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+  border: none;
+  margin-bottom: 1.3rem;
+  font-size: 0.7rem;
+}
+
+.delete-post-image-button {
+  color: rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+  border: none;
+  font-size: 0.7rem;
+}
+
+.favourite-articles {
+  font-size: 1.3rem;
+}
+
+.by-author-text {
+  margin-bottom: 0.2rem;
+}
+
+.tab-subject-opener {
+  margin-bottom: 1.5rem;
+}
+
+.your-posts-titles {
+  color: #f8f9fa;
+  font-size: 2rem;
+}
+
+.centered-content-posts {
+  text-align: center;
+}
+
+.remove-post-img-form {
+  text-align: end;
+}
+
+.delete-post-form {
+  margin-bottom: 2rem;
+}
+
+.delete-post-button {
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+  font-size: 1rem;
+  margin: 1rem;
+  transition: all .2s ease-in-out;
+}
+
+.delete-post-button:hover {
+  transform: scale(1.2);
+  color: red;
+  border: 1px solid red
+}
+
+.number-of-comments {
+  margin-bottom: 0rem;
+  font-size: 0.8rem;
+}
+
+#publish-button {
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+  margin-top: 0.3rem;
+}
+
+.edit-post-button {
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+  margin-top: 0.3rem;
+}
+
 /************************************************* EDIT PROFILE PAGE *************************************************/
 
 /* .popular-title-text {
@@ -346,11 +478,25 @@ font-size: .9rem;
   color: #f8f9fa;
 }
 
-#publish-button {
+#save-photo-button {
   color: rgba(255, 215, 189, 0.9);
   border: 1px solid rgba(255, 215, 189, 0.9);
   padding: 0.3rem;
   background: none;
+  margin-top: 0.3rem;
+}
+
+.write-post-textarea-name-text {
+  margin-top: 1rem;
+  margin-bottom: 0.1rem;
+}
+
+#profile-pic-img {
+  margin-top: 1rem;
+}
+
+.no-content-message {
+  font-size: 0.7rem;
 }
 
 /************************************************* MEDIA QUERIES *************************************************/
@@ -480,12 +626,7 @@ font-size: 1rem;
 }
 }
 /* /////////////////////////////////////////////////////////////// */
-@media only screen and (max-width: 768px){
-button:focus{
-  box-shadow: none;
-  outline: none;
-  background-color: none;
-}
+@media only screen and (max-width: 768px) {
 
 body{
   overflow: hidden;
