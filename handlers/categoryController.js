@@ -1,6 +1,12 @@
 const models = require('../models')
 
 module.exports.getCategories = async function (req,res) {
+  //user
+  let user_id = await models.Users.findOne({
+    where: {
+        email: req.session.email
+      }
+  })
 
   let categories = await models.Categories.findAll()
 
@@ -18,23 +24,16 @@ module.exports.getCategories = async function (req,res) {
           ],
 
           as: 'postswithcategories'
-  
+
       }, {
-
-        model: models.Categories,
-        as: 'category'
-
-      },
-      {
         model:models.Users,
         as: 'user'
       }
-
     ]
 })
 
 let categoryId = req.params.categoryId
-  let category = await models.Categories.findAll({
+  let category = await models.Categories.findOne({
       include:[
           {
               model:models.PostsWithCategories,
@@ -92,3 +91,5 @@ let categoryId = req.params.categoryId
   }
 
   res.render('category',{categories:categories,aPost:aPost,category:category,postswithcategories:category.postswithcategories,post:category.post,user:category.user})
+
+}
