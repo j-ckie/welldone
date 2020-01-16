@@ -20,6 +20,10 @@ module.exports.getThePostsandFavourites = async function (req, res) {
     }
   })
 
+  if(user_id == null) {
+    user_id = sessionId
+  }
+
   //grabs all the information related to the Profile Page
   let userPage = await models.Users.findByPk(user_id.id, {
     include: [
@@ -156,7 +160,7 @@ module.exports.updateFromYourPosts = (req, res, next) => {
   let category = req.body.category
 
   //tests title for update
-  if (title != undefined) {
+  if (title != '') {
     models.Posts.update({
       title: title
       }, {
@@ -167,7 +171,7 @@ module.exports.updateFromYourPosts = (req, res, next) => {
     )
     .then()
   }
-  if (body != undefined) {
+  if (body != '') {
     models.Posts.update({
       body: body
     }, {
@@ -283,7 +287,7 @@ module.exports.removeFromPostImage = (req, res, next) => {
   .then(() => res.redirect('back'))
 }
 
-//updates user profile
+//render editprofile page
 module.exports.editProfile = async function(req,res) {
   //finds user
   let user_id = await models.Users.findOne({
@@ -298,4 +302,26 @@ module.exports.editProfile = async function(req,res) {
   let categories = await models.Categories.findAll()
 
   res.render('editprofile',{userPage: userPage, categories: categories})
+}
+
+//update user profile
+module.exports.updateProfile = async function (req, res) {
+  let user_id = await models.Users.findOne({
+    where: {
+      email: req.session.email
+    }
+  })
+
+  let name = req.body.name;
+
+  if(name != '') {
+    models.Users.update({
+      name: name
+    },{
+      where: {
+        id: user_id.id
+      }
+    })
+  }
+  res.redirect('back')
 }
