@@ -19,7 +19,7 @@
 
     <div>
       <div class="row d-flex">
-        <h1 id="username-text">{{userPage.name}}</h1>
+        <h1 class="username-text">{{userPage.name}}</h1>
         <form action="/acct/editprofile" method="post">
           <span><button id="edit-profile-button" {{userPage.hidden}}>Edit profile</button></span>
         </form>
@@ -114,7 +114,7 @@
         <p class="number-of-comments">Comments: {{comment.length}}</p>
 
               <!-- delete post -->
-
+      <div class="all-buttons row d-flex">
         <form class="delete-post-form" action="/acct/deletePost" method="post" {{userPage.hidden}}>
           <input type="hidden" name="post_id" value="{{id}}">
           <button class="delete-post-button">Unpublish</button>
@@ -122,8 +122,11 @@
 
       <!-- edit post -->
 
-      <p class="tab-subject-opener" {{userPage.hidden}}>Edit this post:<p>
-      <div class="form-group" {{userPage.hidden}}>
+      <button class="show-hide-edit-buttons" class="editpost-button" {{userPage.hidden}}>Edit this post</button>
+      <button class="show-hide-edit-buttons" class="hide-post-form">Cancel</button>
+      </div>
+
+      <div class="update-post-form" class="form-group" {{userPage.hidden}}>
         <p class="write-post-textarea-name-text">Upload an image:</p>
         <form action="/acct/updatePost" method="post" enctype="multipart/form-data">
           <input type="hidden" name="user_id" value="1">
@@ -145,8 +148,16 @@
           <button class="edit-post-button">Save Changes</button>
         </form>
       </div>
-
       </div>
+
+    <div class="d-flex py-3"></div>
+
+      <div class="row d-flex">
+        <hr class="article-hr">
+      </div>
+
+    <div class="d-flex py-3"></div>
+
       {{/userPage.post}}
 
       {{^userPage.post}}
@@ -180,5 +191,6 @@
 </div>
 
 <script src="/tabFunction.js"></script>
+<script src="/editpost.js"></script>
 
 {{>footer}}
