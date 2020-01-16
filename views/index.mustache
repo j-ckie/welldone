@@ -27,7 +27,7 @@
                     {{/notifications}}
                 </ul>
                 {{! returns top for post by Id }}
-                <div class="count"></div> 
+                <div class="count"></div>
             </div>
 
         {{/popular}}
@@ -49,27 +49,22 @@
 {{#aPost}}
 <div class="row d-flex">
     <div class="col-6">
-   
+
         <p class="popular-title-text"><a href='article?art={{id}}'>
                     {{title}}</a>
         </p>
-    
+
         <p class="text-light post-secondary-text opener">{{body}}
         </p>
         <div class="row d-flex">
             <div class="col-10">
-           
-                <p class="author-text"><a href="/author?a={{user.name}}">
-                    {{user.name}}</a><span>
-                in
-            {{#postswithcategories}}
-                <span class="category-text "> 
-                <a href="/category?c={{category.category}}">{{category.category}}</a></span>       
-            {{/postswithcategories}}            
-                </span></p>  
+                <p class="author-text"><a href="/acct/{{}}">
+                    {JB Wilson}</a><span>
+                in<span class="category-text"><a href="/category?c=ONEZERO"> {ONEZERO}</a></span></span>
+                </p>
                 <p class="post-secondary-text text-light">
                 <div class="datesplit">
-                    {{createdAt}}</div>                 
+                    {{createdAt}}</div>
                     <span>
                         <form method="POST" action="/notify">
                             <input type="hidden" name="postId" value="{{id}}" />
@@ -79,7 +74,7 @@
                         </form>
                     <span></span>
                 </p>
-            
+
             </div>
         </div>
     </div>
@@ -99,7 +94,7 @@
 {{> footer}}
 <script src="heart.js"></script>
 <script src="datesplit.js"></script>
-<script src="opener.js"></script> 
+<script src="opener.js"></script>
 <script src="category.js"></script>
 <script src="notification.js"></script>
 <script src="client.js"></script>

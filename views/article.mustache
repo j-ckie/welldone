@@ -44,13 +44,17 @@
 
       <p class="post-secondary-text text-light">
           <span id="article-like">
-            <form method="POST" action="/notify" {{post.hidden}}>
+            <form method="POST" action="/notify">
                 <input type="hidden" name="postId" value={{post.id}} />
                 <input type="hidden" name="type" value="like" />
                 <input type="hidden" name="ownerId" value="{{post.user_id}}" />
-                <button class="heart"><i class="heart fa fa-heart-o" ></i></button>
+                <button class="heart" {{sessionUser.hideAdd}}><i class="heart fa fa-heart-o" ></i></button>
             </form>
-          </span> {99} likes
+            <form method="POST" action="/acct/removeFavourite">
+                <input type="hidden" name="favourite_id" value="{{post.notification.id}}">
+                <button class="heart" {{sessionUser.hideRemove}}><i class="heart fa fa-heart-o" ></i></button>
+            </form>
+          </span> {{notification.length}} likes
       </p>
 
 <!--ADD COMMENT-->
@@ -81,9 +85,9 @@
 
       {{#comment}}
         <div>
-          <p><span class="username-comment"><b>{{user.name}}</b></span>, on <span class="date-comment">{{createdAt}}</span></p>
+          <a href="/acct/{{user.email}}"><span class="username-comment"><b>{{user.name}}</b></span>, on <span class="date-comment">{{createdAt}}</span></a>
           <p class="body-comment">{{body}}</p>
-          <form action="/post/updateComment" method="post" {{hidden}}>
+          <form action="/article/updateComment" method="post" {{hidden}}>
             <input type="hidden" name="comment_id" value="{{id}}">
             <input type="hidden" name="user_id" value="{{user_id}}">
             <input type="hidden" name="user_name" value="{{user.name}}">
@@ -92,7 +96,7 @@
               <button class="comment-buttons">Edit</button>
             </div>
           </form>
-          <form action="/post/deleteComment" method="post" {{hidden}}>
+          <form action="/article/deleteComment" method="post" {{hidden}}>
             <input type="hidden" name="comment_id" value="{{id}}">
             <div class="comment-buttons-div pb-5">
               <button class="comment-buttons">Remove</button>

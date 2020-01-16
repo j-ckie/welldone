@@ -12,7 +12,7 @@ module.exports.getThePostsandFavourites = async function (req, res) {
         }
     })
 
-    let session_id = await models.Users.findOne({
+    let sessionId = await models.Users.findOne({
         where: {
             email: req.session.email
         }
@@ -27,6 +27,12 @@ module.exports.getThePostsandFavourites = async function (req, res) {
             include: [
               {
                 model: models.Posts,
+                include: [
+                  {
+                    model: models.Users,
+                    as: 'user'
+                  }
+                ],
                 as: 'post'
               }
             ],
@@ -63,16 +69,23 @@ module.exports.getThePostsandFavourites = async function (req, res) {
         ]
       })
 
-      if(userPage.id == session_id.id) {
-        console.log('hi')
+      if(userPage.id == sessionId.id) {
         userPage.hidden = ''
       } else {
         userPage.hidden = 'hidden'
       }
 
+      for(let i = 0; i < userPage.notification.length; i++) {
+        if(userPage.notification[i].type == 'like') {
+          userPage.notification[i].hidden = ''
+        } else {
+          userPage.notification[i].hidden = 'hidden'
+        }
+      }
+
   let categories = await models.Categories.findAll()
 
-  res.render('account', { userPage: userPage, categories: categories, sessionId: user_id });
+  res.render('account', { userPage: userPage, categories: categories, sessionId: sessionId });
   //res.json(userPage)
 }
 
@@ -266,7 +279,7 @@ module.exports.addProfileImage = async function (req, res) {
             where: {
                 id: user_id.id
             }
-        }).then(res.redirect('/acct'))
+        }).then(res.redirect('back'))
 
     } else {
 

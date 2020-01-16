@@ -1,6 +1,15 @@
 {{>head}}
 
-{{>header}}
+<header class="header">
+        <div>
+            <a href='/'><b>WellDone</b></a>
+
+              <a href="/acct/{{sessionId.email}}" id="account-button" style='vertical-align:sub'><i>account</i></a>
+            <form method="POST" action="/logout">
+                <button id="logout-button" style='vertical-align:sub;'><i>logout</i></button>
+            </form>
+        </div>
+</header>
 
 <div class="row d-flex">
   <div id="blog-column" class="col">
@@ -151,9 +160,9 @@
         <div>
         <p class="text-light tab-subject-opener">Your favourites:</p>
           {{#userPage.notification}}
-          <div>
+          <div {{hidden}}>
             <a class="favourite-articles" href="/article/{{post.id}}">{{post.title}}</a>
-            <p class="by-author-text">by {{post.user}}</p>
+            <a class="by-author-text" href="/acct/{{post.user.email}}">by {{post.user.name}}</a>
             <form action="/acct/removeFavourite" method="post">
               <input type="hidden" name="favourite_id" value="{{id}}">
               <button id="remove-favourite-button" {{userPage.hidden}}>Remove</button>
