@@ -84,29 +84,36 @@
 <!--COMMENTS START-->
 
       {{#comment}}
-        <div>
+        <div class="form-group">
           <a href="/acct/{{user.email}}"><span class="username-comment"><b>{{user.name}}</b></span>, on <span class="date-comment">{{createdAt}}</span></a>
           <p class="body-comment">{{body}}</p>
-          <form action="/article/updateComment" method="post" {{hidden}}>
-            <input type="hidden" name="comment_id" value="{{id}}">
-            <input type="hidden" name="user_id" value="{{user_id}}">
-            <input type="hidden" name="user_name" value="{{user.name}}">
-            <textarea name="body" rows="8" cols="40"></textarea>
-            <div class="comment-buttons-div">
-              <button class="comment-buttons">Edit</button>
+          <div class="edit-comments">
+            <button id="show-hide-edit" class="edit-comment-buttons">Edit</button>
+            <div class="update-comment" id="revise-comment">
+              <form action="/article/updateComment" method="post" {{hidden}}>
+                <input type="hidden" name="comment_id" value="{{id}}">
+                <input type="hidden" name="user_id" value="{{user_id}}">
+                <input type="hidden" name="user_name" value="{{user.name}}">
+                <textarea class="form-control comment-textbox" name="body" rows="1" cols="80"></textarea>
+                <div class="comment-buttons-div-end">
+                  <button class="edit-comment-buttons">Submit</button>
+                </div>
+              </form>
             </div>
-          </form>
-          <form action="/article/deleteComment" method="post" {{hidden}}>
-            <input type="hidden" name="comment_id" value="{{id}}">
-            <div class="comment-buttons-div pb-5">
-              <button class="comment-buttons">Remove</button>
+            <div class="delete-comment">
+              <form action="/article/deleteComment" method="post" {{hidden}}>
+                <input type="hidden" name="comment_id" value="{{id}}">
+                <div class="comment-buttons-div-end pb-5">
+                  <button class="edit-comment-buttons">Remove</button>
+                </div>
+              </form>
             </div>
-          </form>
+          </div>
         </div>
       {{/comment}}
 
       {{^comment}}
-        <li>This Post Has No Comments</li>
+        <p>No one has commented on thisarticle yet. Be the first!</p>
       {{/comment}}
 
   </div>
@@ -120,5 +127,15 @@
 <!--FOOTER-->
 <script src="/heart.js"></script>
 <script src="/datesplit.js"></script>
+<script>
+  let showHideEditBtn = document.getElementById("show-hide-edit");
+  let revise = document.getElementById("revise-comment");
+
+  revise.style.display = "none";
+
+  showHideEditBtn.addEventListener("click", () => {
+    revise.style.display = "block";
+  })
+</script>
 
 {{> footer}}
