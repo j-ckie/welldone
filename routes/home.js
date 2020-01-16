@@ -9,5 +9,5 @@ const bcrypt = require("bcrypt");
 //============================================
 
 router.get('/',authenticate, HomeController.getHomePage)
-
+// router.get('/:categoryId',authenticate, HomeController.getHomePage)
 module.exports = router
