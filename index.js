@@ -180,7 +180,7 @@ app.post("/notify", (req, res) => {
                 post_id: postId
             });
 
-            newNotification.save().then(() => res.status(201)).catch(err => console.error(err))
+            newNotification.save()
 
             // look for endpoints table to find user specific endpoints
 
@@ -199,8 +199,11 @@ app.post("/notify", (req, res) => {
                         let remote = JSON.parse(endpoint.endpoint_data) // remote endpoint
                         console.log("pushing to" + remote)
                         webpush.sendNotification(remote, payload)
+
                     })
-                }).catch(err => console.error(err))
+                    res.redirect("back")
+                })
+                .catch(err => console.error(err))
         }).catch(err => console.error(err))
 })
 
