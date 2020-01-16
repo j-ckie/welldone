@@ -31,7 +31,7 @@
 
     <div id="tabs-div" class="w3-bar w3-black d-flex">
       <button class="account-page-tabs" onclick="openTab('Create')" {{userPage.hidden}}>Write</button>
-      <button class="account-page-tabs" onclick="openTab('Posts')">Your posts</button>
+      <button class="account-page-tabs" onclick="openTab('Posts')">Posts</button>
       <button class="account-page-tabs" onclick="openTab('Profile')">Profile</button>
       <button class="account-page-tabs" onclick="openTab('Favourites')">Favourites</button>
     </div>
@@ -82,87 +82,97 @@
 
     <div id="Posts" class="tab" style="display:none">
 
-      <!-- published posts -->
+        <!-- published posts -->
 
-      <p class="text-light tab-subject-opener">Your posts:</p>
-      {{#userPage.post}}
-      <div>
-        <div class="centered-content-posts">
-          {{#postImage}}
-          <img src="{{imageURL}}">
+        <p class="text-light tab-subject-opener">Posts:</p>
+        {{#userPage.post}}
+        <div class="row">
+          <div class="col">
+            <div class="centered-content-posts">
+              {{#postImage}}
+              <img src="{{imageURL}}">
 
-          <form class="remove-post-img-form" action="/acct/removePostImage" method="post" {{userPage.hidden}}>
-            {{#postImage}}
-            <input type="hidden" name="file_path" value="{{imageURL}}">
-            {{/postImage}}
-            <input type="hidden" name="post_id" value="{{id}}">
-            <button class="delete-post-image-button">Delete Image</button>
-          </form>
+              <form class="remove-post-img-form" action="/acct/removePostImage" method="post" {{userPage.hidden}}>
+                {{#postImage}}
+                <input type="hidden" name="file_path" value="{{imageURL}}">
+                {{/postImage}}
+                <input type="hidden" name="post_id" value="{{id}}">
+                <button class="delete-post-image-button">Delete Image</button>
+              </form>
 
-          {{/postImage}}
+              {{/postImage}}
 
-          {{^postimage}}
-          {{/postimage}}
+              {{^postimage}}
+              {{/postimage}}
 
-          <a href="/article/{{id}}" class="your-posts-titles">{{title}}</a>
-          {{#postswithcategories}}
-          <p>in {{category.category}}</p>
-          {{/postswithcategories}}
-        </div>
+              <a href="/article/{{id}}" class="your-posts-titles">{{title}}</a>
+              {{#postswithcategories}}
+              <p>in {{category.category}}</p>
+              {{/postswithcategories}}
+            </div>
 
-        <p>{{body}}</p>
-        <p class="number-of-comments">Comments: {{comment.length}}</p>
+            <p>{{body}}</p>
+            <p class="number-of-comments">Comments: {{comment.length}}</p>
 
               <!-- delete post -->
-      <div class="all-buttons row d-flex">
-        <form class="delete-post-form" action="/acct/deletePost" method="post" {{userPage.hidden}}>
-          <input type="hidden" name="post_id" value="{{id}}">
-          <button class="delete-post-button">Unpublish</button>
-        </form>
 
-      <!-- edit post -->
+            <div class="all-buttons row d-flex">
+                <form class="delete-post-form" action="/acct/deletePost" method="post" {{userPage.hidden}}>
+                  <input type="hidden" name="post_id" value="{{id}}">
+                  <button class="delete-post-button">Unpublish</button>
+                </form>
 
-      <button class="show-hide-edit-buttons" class="editpost-button" {{userPage.hidden}}>Edit this post</button>
-      <button class="show-hide-edit-buttons" class="hide-post-form">Cancel</button>
-      </div>
+              <!-- edit post -->
 
-      <div class="update-post-form" class="form-group" {{userPage.hidden}}>
-        <p class="write-post-textarea-name-text">Upload an image:</p>
-        <form action="/acct/updatePost" method="post" enctype="multipart/form-data">
-          <input type="hidden" name="user_id" value="1">
-          <input class="choose-file-text" type="file" name="post_image" accept="image/jpeg, image/jpg, image/png">
-          <input type="hidden" name="post_id" value="{{id}}">
+                <div class="w3-bar w3-black d-flex">
+                  <button class="edit-tab-tabs" onclick="showEdit({{id}})">Edit this post</button>
+                  <button style="display:none" id="hide-edit-button" class="edit-tab-tabs" onclick="hideEdit({{id}})">Cancel</button>
+                </div>
 
-          <p class="write-post-textarea-name-text">Choose a category:</p>
-          {{#categories}}
-            <div>
-                <input type="checkbox" name="categories" value="{{id}}">
-                <label class="text-light" for="huey">{{category}}</label>
+                <div class="row d-flex">
+                  <hr class="article-hr">
+                </div>
+
             </div>
-          {{/categories}}
 
-          <p class="write-post-textarea-name-text">Title:</p>
-          <input class="comment-textbox mb-1" type="text" name="title">
-          <p class="text-light write-post-textarea-name-text">Post body:</p>
-          <textarea class="form-control comment-textbox" name="body" rows="8" cols="80"></textarea>
-          <button class="edit-post-button">Save Changes</button>
-        </form>
+            <div id="Edit{{id}}" class="update-post-form" class="form-group tab" style="display:none" {{userPage.hidden}}>
+              <p class="write-post-textarea-name-text">Upload an image:</p>
+              <form action="/acct/updatePost" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="user_id" value="1">
+                <input class="choose-file-text" type="file" name="post_image" accept="image/jpeg, image/jpg, image/png">
+                <input type="hidden" name="post_id" value="{{id}}">
+
+                <p class="write-post-textarea-name-text">Choose a category:</p>
+                {{#categories}}
+                  <div>
+                      <input type="checkbox" name="categories" value="{{id}}">
+                      <label class="text-light" for="huey">{{category}}</label>
+                  </div>
+                {{/categories}}
+
+                <p class="write-post-textarea-name-text">Title:</p>
+                <input class="comment-textbox mb-1" type="text" name="title">
+                <p class="text-light write-post-textarea-name-text">Post body:</p>
+                <textarea class="form-control comment-textbox" name="body" rows="8" cols="80"></textarea>
+                <button class="edit-post-button">Save Changes</button>
+              </form>
+            </div>
+          </div>
       </div>
-      </div>
 
-    <div class="d-flex py-3"></div>
+        <div class="d-flex py-3"></div>
 
-      <div class="row d-flex">
-        <hr class="article-hr">
-      </div>
+        <div class="row d-flex">
+          <hr class="article-hr">
+        </div>
 
-    <div class="d-flex py-3"></div>
+        <div class="d-flex py-3"></div>
 
-      {{/userPage.post}}
+        {{/userPage.post}}
 
-      {{^userPage.post}}
-    <p class="text-light no-content-message">You haven't published anything yet!</p>
-      {{/userPage.post}}
+        {{^userPage.post}}
+          <p class="text-light no-content-message">You haven't published anything yet!</p>
+        {{/userPage.post}}
     </div>
 
 <!-- FAVOURITES TAB -->
@@ -192,5 +202,4 @@
 
 <script src="/tabFunction.js"></script>
 <script src="/editpost.js"></script>
-
 {{>footer}}

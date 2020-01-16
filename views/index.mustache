@@ -16,10 +16,8 @@
         <div class="row d-flex">
         {{#popular}}
             <div class="col-3 popular-posts ">
-
-                <img src="{{postImage.imageURL}}" onerror=this.src="/post_images/defaultImage.png">
+                <img class="img-fluid" src="{{postImage.imageURL}}" onerror=this.src="/post_images/defaultImage.png">
                 <p class="popular-title-text"><a href='/article/{{id}}'>
-
                     {{title}}</a>
                 </p>
                 <ul class="nextway">
@@ -54,7 +52,6 @@
 
         <p class="popular-title-text"><a href='/article/{{id}}'>
                     {{title}}</a>
-
         </p>
 
         <p class="text-light post-secondary-text opener">{{body}}
