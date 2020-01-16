@@ -32,22 +32,6 @@ module.exports.getPost = async function(req,res){
     ]
   })
 
-  //crosscheck users favourites with this post
-  models.Notifications.findAll({
-    where: {
-      post_id: req.params.postId,
-      user_id: user_id.id
-    }
-  }).then(result => {
-    if(result = null) {
-      //if user does not have post favourited show add favourite
-      post.hidden = ''
-    } else {
-      //if user does have post favourited hide add favourite
-      post.hidden = 'hidden'
-    }
-  })
-
   //crosscheck user with comments
   for(let i = 0; i < post.comment.length; i++) {
     if(post.comment[i].user_id == user_id.id) {
