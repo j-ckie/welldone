@@ -525,6 +525,18 @@ font-size: .9rem;
   height: 2.25rem;
 }
 
+.edit-tab-tabs {
+  margin: 1rem;
+  transition: all .2s ease-in-out;
+  color:#f8f9fa;
+  background: none;
+  border: none;
+}
+
+.edit-tab-tabs:hover {
+  transform: scale(1.2);
+  color: rgba(255, 215, 189, 0.9);
+}
 
 /************************************************* EDIT PROFILE PAGE *************************************************/
 
@@ -557,6 +569,14 @@ font-size: .9rem;
 
 .no-content-message {
   font-size: 0.7rem;
+}
+
+#update-profile-button {
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+  margin-top: 0.3rem;
 }
 
 /************************************************* MEDIA QUERIES *************************************************/

@@ -114,20 +114,26 @@
             <p>{{body}}</p>
             <p class="number-of-comments">Comments: {{comment.length}}</p>
 
-                  <!-- delete post -->
+              <!-- delete post -->
             <div class="all-buttons row d-flex">
-              <form class="delete-post-form" action="/acct/deletePost" method="post" {{userPage.hidden}}>
-                <input type="hidden" name="post_id" value="{{id}}">
-                <button class="delete-post-button">Unpublish</button>
-              </form>
+                <form class="delete-post-form" action="/acct/deletePost" method="post" {{userPage.hidden}}>
+                  <input type="hidden" name="post_id" value="{{id}}">
+                  <button class="delete-post-button">Unpublish</button>
+                </form>
 
-            <!-- edit post -->
+              <!-- edit post -->
 
-            <button class="show-hide-edit-buttons" class="editpost-button" {{userPage.hidden}}>Edit this post</button>
-            <button class="show-hide-edit-buttons" class="hide-post-form" {{userPage.hidden}}>Cancel</button>
+                <div class="w3-bar w3-black d-flex">
+                  <button class="edit-tab-tabs" onclick="showEdit({{id}})">Edit this post</button>
+                  <button style="display:none" id="hide-edit-button" class="edit-tab-tabs" onclick="hideEdit({{id}})">Cancel</button>
+                </div>
+
+                <div class="row d-flex">
+                  <hr class="article-hr">
+                </div>
             </div>
 
-            <div class="update-post-form" class="form-group" {{userPage.hidden}}>
+            <div id="Edit{{id}}" class="update-post-form" class="form-group tab" style="display:none" {{userPage.hidden}}>
               <p class="write-post-textarea-name-text">Upload an image:</p>
               <form action="/acct/updatePost" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="user_id" value="1">
@@ -194,5 +200,4 @@
 
 <script src="/tabFunction.js"></script>
 <script src="/editpost.js"></script>
-
 {{>footer}}
