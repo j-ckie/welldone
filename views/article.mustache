@@ -15,7 +15,7 @@
 
 <div class="row d-flex">
     <div id="articles-category" class="col">
-        <h1 id="category-title-text" class="text-light">{{title}}</h1>
+        <h1 id="category-title-text" class="text-light"><a href='/article/{{id}}'>{{title}}</a></h1>
 
         <p id="author-article-text"><a href='/acct/{{user.email}}'>
             {{user.name}}</a>
@@ -84,8 +84,8 @@
 <!--COMMENTS START-->
 
       {{#comment}}
-        <div class="form-group">
-          <a href="/acct/{{user.email}}"><span class="username-comment"><b>{{user.name}}</b></span>, on <span class="date-comment">{{createdAt}}</span></a>
+        <div>
+          <a href="/acct/{{user.email}}"><span class="username-comment"><b>{{user.name}}</b></span>, on <span class="date-comment datesplit">{{createdAt}}</span></a>
           <p class="body-comment">{{body}}</p>
           <div class="edit-comments">
             <button id="show-hide-edit" class="edit-comment-buttons">Edit</button>
@@ -139,3 +139,5 @@
 </script>
 
 {{> footer}}
+<script src="/heart.js"></script>
+<script src="/datesplit.js"></script>

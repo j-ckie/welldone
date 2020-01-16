@@ -4,6 +4,10 @@ const router = express.Router();
 
 router.use(express.urlencoded());
 
+
+
+
+
 router.get("/", async (req, res) => {
     let email = req.session.email;
 

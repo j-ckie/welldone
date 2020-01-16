@@ -1,5 +1,5 @@
 const models = require('../models')
-var whereStatement = {}
+
 module.exports.getCategories = async function (req,res) {
 
   let categories = await models.Categories.findAll()
@@ -18,7 +18,9 @@ module.exports.getCategories = async function (req,res) {
       }
       
     ] 
-}).then()
+})
+
+
   res.render('category',{categories:categories,aPost:aPost})
   
 }
