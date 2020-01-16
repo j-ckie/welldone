@@ -383,10 +383,71 @@ font-size: .9rem;
   font-size: 1.4rem;
 }
 
-/************************************************* EDIT PROFILE PAGE *************************************************/
+#remove-favourite-button {
+  color: rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+  border: none;
+  margin-bottom: 1.3rem;
+  font-size: 0.7rem;
+}
 
-.choose-file-text {
+.delete-post-image-button {
+  color: rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+  border: none;
+  font-size: 0.7rem;
+}
+
+.favourite-articles {
+  font-size: 1.3rem;
+}
+
+.by-author-text {
+  margin-bottom: 0.2rem;
+}
+
+.tab-subject-opener {
+  margin-bottom: 1.5rem;
+}
+
+.your-posts-titles {
   color: #f8f9fa;
+  font-size: 2rem;
+}
+
+.centered-content-posts {
+  text-align: center;
+}
+
+.remove-post-img-form {
+  text-align: end;
+}
+
+.delete-post-form {
+  margin-bottom: 2rem;
+}
+
+.delete-post-button {
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+  font-size: 1rem;
+  margin: 1rem;
+  transition: all .2s ease-in-out;
+}
+
+.delete-post-button:hover {
+  transform: scale(1.2);
+  color: red;
+  border: 1px solid red
+}
+
+.number-of-comments {
+  margin-bottom: 0rem;
+  font-size: 0.8rem;
 }
 
 #publish-button {
@@ -395,6 +456,20 @@ font-size: .9rem;
   padding: 0.3rem;
   background: none;
   margin-top: 0.3rem;
+}
+
+.edit-post-button {
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+  margin-top: 0.3rem;
+}
+
+/************************************************* EDIT PROFILE PAGE *************************************************/
+
+.choose-file-text {
+  color: #f8f9fa;
 }
 
 #save-photo-button {
