@@ -7,7 +7,7 @@ const authenticate = require("../util/auth");
 const bcrypt = require("bcrypt");
 // //============================================
 // router.get('/', authenticate, CategoryController.getCategories)
-router.get('/:categoryId', async (req, res) => {
+router.get('/:categoryId',authenticate, async (req, res) => {
   //user
   let user_id = await models.Users.findOne({
     where: {
