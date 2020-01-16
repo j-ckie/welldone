@@ -291,6 +291,23 @@ font-size: .9rem;
   font-size: 0.8rem;
 }
 
+.comment-buttons-div-end {
+  text-align: end;
+  margin-top: 0.5rem;
+}
+
+.edit-comment-buttons {
+  color: rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+  border: none;
+  font-size: 0.7rem;
+}
+
+.edit-comment {
+  display: flex;
+}
+
 /************************************************* LOGIN PAGE *************************************************/
 
 #login-button {
@@ -441,7 +458,7 @@ font-size: .9rem;
 }
 
 .delete-post-form {
-  margin-bottom: 2rem;
+  margin-bottom: 0rem;
 }
 
 .delete-post-button {
@@ -479,6 +496,20 @@ font-size: .9rem;
   padding: 0.3rem;
   background: none;
   margin-top: 0.3rem;
+}
+
+.show-hide-edit-buttons {
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
+  font-size: 1rem;
+  margin-top: 1rem;
+  height: 2.25rem;
+}
+
+.all-buttons {
+
 }
 
 /************************************************* EDIT PROFILE PAGE *************************************************/

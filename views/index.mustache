@@ -16,7 +16,7 @@
         <div class="row d-flex">
         {{#popular}}
             <div class="col-3 popular-posts ">
-                <img src="./images/pcImage140.jpg">
+                <img src="./images/pcImage140.jpg" alt="no image">
                 <p class="popular-title-text"><a href='article?art=1'>
                     {{title}}</a>
                 </p>
@@ -50,8 +50,8 @@
 <div class="row d-flex">
     <div class="col-6">
 
-        <p class="popular-title-text"><a href='article?art={{id}}'>
-                    {{title}}</a>
+        <p class="popular-title-text">
+            <a href='article?art={{id}}'>{{title}}</a>
         </p>
 
         <p class="text-light post-secondary-text opener">{{body}}
@@ -79,7 +79,7 @@
         </div>
     </div>
      <div class="col-6 post-image">
-        <img src="./images/pcImage.jpg">
+        <img src="./images/pcImage.jpg" alt="no image">
     </div>
 </div>
 
