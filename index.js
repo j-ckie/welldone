@@ -162,7 +162,7 @@ app.post("/notify", (req, res) => {
             let newNotification = models.Notifications.build({
                 type: type,
                 owner_id: ownerId,
-                sender_id: senderId,
+                user_id: senderId,
                 post_id: postId
             });
 
