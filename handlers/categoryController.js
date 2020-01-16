@@ -16,7 +16,10 @@ module.exports.getCategories = async function (req,res) {
             as: 'category'
           }
           ],
+
           as: 'postswithcategories'
+  
+      }, {
 
         model: models.Categories,
         as: 'category'
