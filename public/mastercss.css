@@ -468,6 +468,12 @@ font-size: .9rem;
 
 /************************************************* EDIT PROFILE PAGE *************************************************/
 
+/* .popular-title-text {
+    font-size: 1.3rem;
+} */
+
+/* a.text-light:hover,a.text-light:focus{
+  color:rgba(165, 143, 143) !important */
 .choose-file-text {
   color: #f8f9fa;
 }
