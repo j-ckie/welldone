@@ -156,7 +156,7 @@ module.exports.updateFromYourPosts = (req, res, next) => {
   let category = req.body.category
 
   //tests title for update
-  if (title != undefined) {
+  if (title != '') {
     models.Posts.update({
       title: title
       }, {
@@ -167,7 +167,7 @@ module.exports.updateFromYourPosts = (req, res, next) => {
     )
     .then()
   }
-  if (body != undefined) {
+  if (body != '') {
     models.Posts.update({
       body: body
     }, {
