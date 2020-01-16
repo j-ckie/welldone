@@ -19,25 +19,27 @@ module.exports.getPost = async function (req, res) {
         }
     })
 
-    models.Posts.findByPk(req.params.postId, {
-
-        //include comments
-        include: [
-          {
-            model: models.Users,
-            as: 'user'
-          }
-        ],
-        as: 'comment'
-      },{
-        model: models.Users,
-        as: 'user'
-      },{
-        model: models.PostImage,
-        as: 'postImage'
-      }
-    ]
-  })
+  let post = await models.Posts.findByPk(req.params.postId, {
+      //include comments
+      include: [
+        {
+          model: models.Comments,
+          include: [
+            {
+              model: models.Users,
+              as: 'user'
+            }
+          ],
+          as: 'comment'
+        },{
+          model: models.Users,
+          as: 'user'
+        },{
+          model: models.PostImage,
+          as: 'postImage'
+        }
+      ]
+    })
 
   //crosscheck user with comments
   for(let i = 0; i < post.comment.length; i++) {

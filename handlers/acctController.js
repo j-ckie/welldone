@@ -11,7 +11,13 @@ module.exports.getThePostsandFavourites = async function (req, res) {
             email: req.params.userEmail
         }
     })
-    console.log(user_id)
+
+    let session_id = await models.Users.findOne({
+        where: {
+            email: req.session.email
+        }
+    })
+
       let userPage = await models.Users.findByPk(user_id.id, {
         //include users favourites
         include: [
@@ -56,6 +62,13 @@ module.exports.getThePostsandFavourites = async function (req, res) {
           }
         ]
       })
+
+      if(userPage.id == session_id.id) {
+        console.log('hi')
+        userPage.hidden = ''
+      } else {
+        userPage.hidden = 'hidden'
+      }
 
   let categories = await models.Categories.findAll()
 
@@ -263,12 +276,6 @@ module.exports.addProfileImage = async function (req, res) {
 
 }
 
-module.exports.editprofile = async function(req, res) {
-    let categories = await models.Categories.findAll()
-
-    res.render('editprofile', {categories: categories})
-}
-
 //delete post image
 module.exports.removeFromPostImage = (req, res, next) => {
 
@@ -289,7 +296,18 @@ module.exports.removeFromPostImage = (req, res, next) => {
 }
 
 module.exports.editProfile = async function(req,res) {
+  let user_id = await models.Users.findOne({
+      where: {
+          email: req.session.email
+      }
+  })
+
+  let userPage = await models.Users.findByPk(user_id.id,{
+
+  })
+
+
   let categories = await models.Categories.findAll()
 
-  res.render('editprofile',{categories: categories})
+  res.render('editprofile',{userPage: userPage, categories: categories})
 }
