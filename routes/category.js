@@ -8,15 +8,16 @@ const bcrypt = require("bcrypt");
 // //============================================
 
 // router.get('/', authenticate, CategoryController.getCategories)
-router.get('/:categoryId',authenticate, async (req, res) => {
-  //user
-  let user_id = await models.Users.findOne({
-    where: {
-        email: req.session.email
-      }
-  })
+router.get('/:categoryId', authenticate, async (req, res) => {
+    //user
+    let user_id = await models.Users.findOne({
+        where: {
+            email: req.session.email
+        }
+    })
+})
 
 
-router.get('/:categoryId', authenticate, CategoryController.getCategories)
+// router.get('/:categoryId', authenticate, CategoryController.getCategories)
 
 module.exports = router
