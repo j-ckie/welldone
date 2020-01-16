@@ -48,11 +48,11 @@
                 <input type="hidden" name="postId" value={{post.id}} />
                 <input type="hidden" name="type" value="like" />
                 <input type="hidden" name="ownerId" value="{{post.user_id}}" />
-                <button class="heart" {{sessionUser.hideAdd}}><i class="heart fa fa-heart-o" ></i></button>
+                <button class="heart" {{user.hideAdd}}><i class="heart fa fa-heart-o" ></i></button>
             </form>
             <form method="POST" action="/acct/removeFavourite">
                 <input type="hidden" name="favourite_id" value="{{post.liked.id}}">
-                <button class="heart" {{sessionUser.hideRemove}}><i class="heart fa fa-heart" ></i></button>
+                <button class="heart" {{user.hideRemove}}><i class="heart fa fa-heart" ></i></button>
             </form>
           </span> {{post.likes.length}} likes
       </p>
