@@ -19,6 +19,8 @@ module.exports.getCategories = async function (req,res) {
       
     ] 
 })
+
+
   res.render('category',{categories:categories,aPost:aPost})
   
 }

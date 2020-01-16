@@ -13,6 +13,8 @@ webpush.setVapidDetails(`mailto:test@email.com`, publicVapidKey, privateVapidKey
 
 module.exports.getPost = async function (req, res) {
 
+  let categories = await models.Categories.findAll()
+
     let user_id = await models.Users.findOne({
         where: {
             email: req.session.email
@@ -70,7 +72,7 @@ module.exports.getPost = async function (req, res) {
   }
 
   //res.json(post)
-  res.render('article', {post: post, sessionUser: user_id})
+  res.render('article', {post: post, sessionUser: user_id,categories:categories})
 
 }
 

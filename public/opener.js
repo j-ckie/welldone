@@ -1,3 +1,5 @@
+
+i =0;
 for (i=0;i<document.getElementsByClassName('opener').length;i++)
 {
   var txt = document.getElementsByClassName('opener')[i].innerText
