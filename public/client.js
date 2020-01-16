@@ -4,39 +4,106 @@ const publicVapidKey = "BB9cTa531zVr4vy5_uHSK9e07xnM_2jBTnjIFvN0jzmQlNyOn5U1568N
 //console.log("FOO");
 
 //check for service worker
-if ("serviceWorker" in navigator) {
-    run().catch(err => console.error(err))
+// if ("serviceWorker" in navigator) {
+//     run().catch(err => console.error(err))
+// }
+
+const check = () => {
+    if (!("serviceWorker" in navigator)) {
+        throw new Error("No Service Worker Support!");
+    }
+    if (!("PushManager" in window)) {
+        throw new Error("No Push API Support!")
+    }
 }
 
-
-
-async function run() {
+// register service worker and push
+const registerServiceWorker = () => {
     console.log("Registering service worker...");
-    const register = await navigator.serviceWorker.register("/serviceworker.js", { // installing service worker if it does not exist
+    navigator.serviceWorker.register("/serviceworker.js", { // installing service worker if it does not exist
         scope: "/"
-    });
+    }).then(register => {
+        let serviceWorker;
+        if (register.installing) {
+            serviceWorker = register.installing;
+        } else if (register.waiting) {
+            serviceWorker = register.waiting;
+        } else if (register.active) {
+            serviceWorker = register.active;
+        }
 
-    console.log("Service Worker Registered");
+        if (serviceWorker) {
+            console.log("sw current state", serviceWorker.state);
+            if (serviceWorker.state == "activated") {
+                console.log("sw already active");
+                async function newUserOldSW() {
+                    console.log("NEW USER, OLD Service Worker Registered");
+                    // register push
+                    console.log("Registering push...");
+                    const notification = await register.pushManager.subscribe({
+                        userVisibleOnly: true,
+                        applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
+                    });
+                    console.log("Push registered");
+                    //send push notification
+                    console.log("Sending endpoint payload to server to save");
+                    await fetch("/endpoint", {
+                        method: "POST",
+                        body: JSON.stringify(notification),
+                        headers: {
+                            "content-type": "application/json"
+                        }
+                    });
+                    console.log("Payload sent");
+                }
+                newUserOldSW();
+            }
+            serviceWorker.addEventListener("statechange", async function (e) {
+                console.log("sw statechange : ", e.target.state);
+                if (e.target.state == "activated") {
 
-    // register push
-    console.log("Registering push...");
-    const notification = await register.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
-    });
-    console.log("Push registered");
+                    console.log("Service Worker Registered");
+                    // register push
+                    console.log("Registering push...");
+                    const notification = await register.pushManager.subscribe({
+                        userVisibleOnly: true,
+                        applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
+                    });
+                    console.log("Push registered");
+                    //send push notification
+                    console.log("Sending endpoint payload to server to save");
+                    await fetch("/endpoint", {
+                        method: "POST",
+                        body: JSON.stringify(notification),
+                        headers: {
+                            "content-type": "application/json"
+                        }
+                    });
+                    console.log("Payload sent");
 
-    //send push notification
-    console.log("Sending endpoint payload to server to save");
-    await fetch("/endpoint", {
-        method: "POST",
-        body: JSON.stringify(notification),
-        headers: {
-            "content-type": "application/json"
+                }
+            })
         }
     })
-    console.log("Payload sent")
+
+
 }
+
+
+
+
+const reqNotificationPerm = async () => {
+    const permission = await window.Notification.requestPermission();
+
+    if (permission !== "granted") {
+        throw new Error("Permission not granted for Notification!")
+    } else if (permission === "granted") {
+        return permission
+    }
+}
+
+
+
 
 function urlBase64ToUint8Array(base64String) {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);
@@ -54,3 +121,10 @@ function urlBase64ToUint8Array(base64String) {
 }
 
 
+const main = async () => {
+    check();
+    await reqNotificationPerm();
+    await registerServiceWorker();
+}
+
+main();
