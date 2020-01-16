@@ -140,7 +140,7 @@ app.post("/endpoint", (req, res) => {
                                 endpoint_data: persistedEndpoint.endpoint_data
                             }
                         }).then(() => res.status(201)).catch(err => console.error(err))
-                    } else if (persistedEndpoint.user_id === persistedId) { //do nothing 
+                    } else if (persistedEndpoint.user_id === persistedId) { //do nothing
                         console.log("CURRENT USER matches endpoint user")
                         res.status(201)
                     }
@@ -208,6 +208,6 @@ app.post("/notify", (req, res) => {
 })
 
 //Server Connection
-app.listen(PORT, () => {
+app.listen(3000, () => {
     console.log(`Server is live on http://localhost:${PORT} at ` + Date.now());
 });
