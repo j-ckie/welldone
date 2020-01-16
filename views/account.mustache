@@ -116,6 +116,7 @@
               <!-- delete post -->
       <div class="all-buttons row d-flex">
         <form class="delete-post-form" action="/acct/deletePost" method="post" {{userPage.hidden}}>
+          <input type="hidden" name="file_path" value="{{imageURL}}">
           <input type="hidden" name="post_id" value="{{id}}">
           <button class="delete-post-button">Unpublish</button>
         </form>

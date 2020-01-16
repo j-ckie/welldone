@@ -6,5 +6,7 @@ const models = require('../models')
 const authenticate = require("../util/auth");
 const bcrypt = require("bcrypt");
 // //============================================
+
 router.get('/:categoryId', authenticate, CategoryController.getCategories)
+
 module.exports = router
