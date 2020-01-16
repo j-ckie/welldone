@@ -8,7 +8,6 @@ const bcrypt = require("bcrypt");
 // //============================================
 // router.get('/', authenticate, CategoryController.getCategories)
 router.get('/:categoryId', async (req, res) => {
-    
   let categoryId = req.params.categoryId
   let category = await models.Categories.findOne({
       include:[
@@ -18,10 +17,9 @@ router.get('/:categoryId', async (req, res) => {
           }
       ],
       where:{
-          category:categoryId
-      }
+           category:categoryId
+       }
   })
-  // console.log(category)
   res.json(category)
   // res.render('category')
 })
