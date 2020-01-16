@@ -70,9 +70,11 @@
                 <div class="datesplit">
                     {{createdAt}}</div>                 
                     <span>
-                        <form method="POST" action="/notification">
-                            <input type="hidden">
-                            <i class="heart fa fa-heart-o" ></i>
+                        <form method="POST" action="/notify">
+                            <input type="hidden" name="postId" value="{{id}}" />
+                            <input type="hidden" name="type" value="like" />
+                            <input type="hidden" name="ownerId" value="{{user_id}}" />
+                            <button><i class="heart fa fa-heart-o" ></i></button>
                         </form>
                     <span></span>
                 </p>

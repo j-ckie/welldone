@@ -223,6 +223,6 @@ app.post("/notify", (req, res) => {
 })
 
 //Server Connection
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log(`Server is live on http://localhost:${PORT} at ` + Date.now());
 });

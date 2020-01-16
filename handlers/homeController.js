@@ -44,7 +44,7 @@ module.exports.getHomePage = async function(req, res) {
     include:[
       {
       model: models.Notifications,   
-       as:"notifications"
+       as:"notification"
      }
  ]
 }
