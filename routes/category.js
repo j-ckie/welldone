@@ -6,7 +6,7 @@ const models = require('../models')
 const authenticate = require("../util/auth");
 const bcrypt = require("bcrypt");
 // //============================================
-router.get('/', authenticate, CategoryController.getCategories)
+// router.get('/', authenticate, CategoryController.getCategories)
 router.get('/:categoryId', async (req, res) => {
   let categoryId = req.params.categoryId
   let category = await models.Categories.findAll({
@@ -20,6 +20,10 @@ router.get('/:categoryId', async (req, res) => {
                 {
                   model: models.Users,
                   as: "user"
+                },
+                {
+                  model: models.PostImage,
+                  as: 'postImage'
                 }
               ],
                 as:'post'

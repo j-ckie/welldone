@@ -21,7 +21,7 @@
                 </p>
                 <ul class="nextway">
                     <div class="num">{{notification.length}} Likes</div>
-                    {{#notifications}}
+                    {{#notification}}
                     <div style="display:none" class="sum">{{type}}{{post_id}}</div>
                     {{/notification}}
                 </ul>
@@ -60,9 +60,12 @@
                 <p class="author-text"><a href="/acct/{{user.email}}">
                     {{user.name}}</a><span>
                 in<span class="category-text">
+                {{#postswithcategories}}
+                
                   {{#category}}
                   <a href="/category/{{category}}">{{category}}</a></span></span>
                   {{/category}}
+                  {{/postswithcategories}}
                 </p>
                 <p class="post-secondary-text text-light">
                 <div class="datesplit">

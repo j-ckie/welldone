@@ -7,9 +7,9 @@
 <!--CATEGORY SCROLL BAR-->
 
 {{> carousel}}
-{{#categories}}
+{{#category}}
 <div id="category">{{category}}</div>
-{{/categories}}
+{{/category}}
 <!--HORIZONTAL LINE-->
 
 <div class="row d-flex py-3">
@@ -25,7 +25,7 @@
 <div class="row d-flex">
     <div class="col-6">
         {{#post}}
-        <p class="post-title-text"><a href='article?a=art'>{{title}}</a></p>
+        <p class="post-title-text"><a href='/article/{{id}}'>{{title}}</a></p>
         <p class="text-light post-secondary-text opener">{{body}}</p>
         <div class="row d-flex">
             <div class="col-10">
@@ -46,16 +46,16 @@
                         </form>
                     </span>
                 </p>
-        {{/post}}
 
             </div>
         </div>
     </div>
      <div class="col-6 post-image">
-        <img src="./images/pcImage.jpg">
+        <img src="{{postImage.imageURL}}" onerror=this.src="/post_images/defaultImage.png">
     </div>
 </div>
 <div class="row d-flex py-3"></div>
+        {{/post}}
 {{/postswithcategories}}
 {{/category}}
 
