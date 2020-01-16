@@ -20,8 +20,8 @@
 <div class="row d-flex">
 <div id="blog-column" class="col">
 
-{{#category}}
-{{#postswithcategories}}    
+
+{{#category.postswithcategories}}
 <div class="row d-flex">
     <div class="col-6">
         {{#post}}
@@ -30,9 +30,9 @@
         <div class="row d-flex">
             <div class="col-10">
             {{#user}}
-                <p class="author-text"><a href="/acct/{{}}">
-                    {{name}}</a><span>                   
-                </span></p>  
+                <p class="author-text"><a href="/acct/{{email}}">
+                    {{name}}</a><span>
+                </span></p>
                 {{/user}}
                 <p class="post-secondary-text text-light">
                 <div class="datesplit">
@@ -42,9 +42,15 @@
                             <input type="hidden" name="postId" value="{{id}}" />
                             <input type="hidden" name="type" value="like" />
                             <input type="hidden" name="ownerId" value="{{user_id}}" />
-                            <button class="heart-buttons"><i class="heart fa fa-heart-o" ></i></button>
+
+                            <button class="heart-buttons" {{hideAdd}}><i class="heart fa fa-heart-o" ></i></button>
+
                         </form>
-                    </span>
+                        <form method="POST" action="/acct/removeFavourite">
+                            <input type="hidden" name="favourite_id" value="{{liked.id}}">
+                            <button class="heart" {{hideRemove}}><i class="heart fa fa-heart" ></i></button>
+                        </form>
+                    </span>{{likes.length}} likes
                 </p>
 
             </div>
@@ -56,8 +62,7 @@
 </div>
 <div class="row d-flex py-3"></div>
         {{/post}}
-{{/postswithcategories}}
-{{/category}}
+{{/category.postswithcategories}}
 
 </div>
 </div>
@@ -66,6 +71,6 @@
 
 <!--FOOTER-->
 {{> footer}}
-<script src="/opener.js"></script> 
+<script src="/opener.js"></script>
 <script src="/heart.js"></script>
 <script src="/datesplit.js"></script>

@@ -115,6 +115,7 @@
             <p class="number-of-comments">Comments: {{comment.length}}</p>
 
               <!-- delete post -->
+
             <div class="all-buttons row d-flex">
                 <form class="delete-post-form" action="/acct/deletePost" method="post" {{userPage.hidden}}>
                   <input type="hidden" name="post_id" value="{{id}}">
@@ -131,6 +132,7 @@
                 <div class="row d-flex">
                   <hr class="article-hr">
                 </div>
+
             </div>
 
             <div id="Edit{{id}}" class="update-post-form" class="form-group tab" style="display:none" {{userPage.hidden}}>
