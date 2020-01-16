@@ -1,0 +1,150 @@
+{{>head}}
+
+<header class="header">
+  <nav>
+      <a href='/'><b>WellDone</b></a>
+      <div>
+        <a href='/' class="logout" id="logout-button-account" style='vertical-align:sub'><i>logout</i></a>
+      </div>
+  </nav>
+</header>
+
+<div class="row d-flex">
+  <div id="blog-column" class="col">
+
+
+      <div class="d-flex py-3"></div>
+
+    <div>
+      <div class="row d-flex">
+        <h1 id="username-text">{{userPage.name}}</h1>
+      </div>
+
+      <div class="d-flex py-3"></div>
+
+<!-- TABS -->
+
+    <div id="tabs-div" class="w3-bar w3-black d-flex">
+      <button class="account-page-tabs" onclick="openTab('Posts')">Your posts</button>
+      <button class="account-page-tabs" onclick="openTab('Profile')">Profile</button>
+      <button class="account-page-tabs" onclick="openTab('Favourites')">Favourites</button>
+    </div>
+
+    <div class="row d-flex">
+      <hr class="article-hr">
+    </div>
+
+    <div class="d-flex py-3"></div>
+
+<!-- PROFILE TAB -->
+
+    <div id="Profile" class="tab" style="display:none">
+      <p class="text-light tab-subject-opener">Your profile:</p>
+      <img src="{{userPage.user_image}}" alt="Profile picture">
+      <p><b>Name:</b> {{userPage.name}}</p>
+    </div>
+
+<!-- POSTS TAB -->
+
+    <div id="Posts" class="tab" style="display:none">
+
+      <!-- published posts -->
+
+      <p class="text-light tab-subject-opener">Your posts:</p>
+      {{#userPage.post}}
+      <div>
+        <div class="centered-content-posts">
+          {{#postImage}}
+          <img src="{{imageURL}}">
+
+          <form class="remove-post-img-form" action="/acct/removePostImage" method="post">
+            {{#postImage}}
+            <input type="hidden" name="file_path" value="{{imageURL}}">
+            {{/postImage}}
+            <input type="hidden" name="post_id" value="{{id}}">
+            <button class="delete-post-image-button">Delete Image</button>
+          </form>
+
+          {{/postImage}}
+
+          {{^postimage}}
+          {{/postimage}}
+
+          <a href="/article/{{id}}" class="your-posts-titles">{{title}}</a>
+          {{#postswithcategories}}
+          <p>in {{category.category}}</p>
+          {{/postswithcategories}}
+        </div>
+
+        <p>{{body}}</p>
+        <p class="number-of-comments">Comments: {{comment.length}}</p>
+
+              <!-- delete post -->
+
+        <form class="delete-post-form" action="/acct/deletePost" method="post">
+          <input type="hidden" name="post_id" value="{{id}}">
+          <button class="delete-post-button">Unpublish</button>
+        </form>
+
+      <!-- edit post -->
+
+      <p class="tab-subject-opener">Edit this post:<p>
+      <div class="form-group">
+        <p class="write-post-textarea-name-text">Upload an image:</p>
+        <form action="/acct/updatePost" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="user_id" value="1">
+          <input class="choose-file-text" type="file" name="post_image" accept="image/jpeg, image/jpg, image/png">
+          <input type="hidden" name="post_id" value="{{id}}">
+
+          <p class="write-post-textarea-name-text">Choose a category:</p>
+          {{#categories}}
+            <div>
+                <input type="checkbox" name="categories" value="{{id}}">
+                <label class="text-light" for="huey">{{category}}</label>
+            </div>
+          {{/categories}}
+
+          <p class="write-post-textarea-name-text">Title:</p>
+          <input class="comment-textbox mb-1" type="text" name="title">
+          <p class="text-light write-post-textarea-name-text">Post body:</p>
+          <textarea class="form-control comment-textbox" name="body" rows="8" cols="80"></textarea>
+          <button class="edit-post-button">Save Changes</button>
+        </form>
+      </div>
+
+      </div>
+      {{/userPage.post}}
+
+      {{^userPage.post}}
+    <p class="text-light no-content-message">You haven't published anything yet!</p>
+      {{/userPage.post}}
+    </div>
+
+<!-- FAVOURITES TAB -->
+
+    <div id="Favourites" class="tab" style="display:none">
+        <div>
+        <p class="text-light tab-subject-opener">Your favourites:</p>
+          {{#userPage.notification}}
+          <div>
+            <a class="favourite-articles" href="/article/{{post.id}}">{{post.title}}</a>
+            <p class="by-author-text">by {{post.user}}</p>
+            <form action="/acct/removeFavourite" method="post">
+              <input type="hidden" name="favourite_id" value="{{id}}">
+              <button id="remove-favourite-button">Remove</button>
+            </form>
+          </div>
+          {{/userPage.notification}}
+          {{^userPage.notification}}
+          <p class="text-light no-content-message">You don't have any favorites yet! Click on the heart at the end of an article to see it here.</p>
+          {{/userPage.notification}}
+        </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="/tabFunction.js"></script>
+
+{{>footer}}

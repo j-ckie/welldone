@@ -98,6 +98,11 @@ app.get('/category', (req, res) => {
     res.render('category')
 })
 
+//author page
+app.get('/author', (req, res) => {
+    res.render('author')
+})
+
 //====== notifications page ======
 const notificationsRouter = require("./handlers/notifications");
 app.use("/notifications", authenticate, notificationsRouter)
