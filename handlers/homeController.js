@@ -107,5 +107,5 @@ module.exports.getHomePage = async function(req, res) {
   }
 
   // res.json(aPost);
-  res.render('index', {categories: categories, aPost:aPost, postswithcategories:aPost.postswithcategories,category:aPost.category,popular:topten, user: user_id})
+  res.render('index', {categories: categories, aPost:aPost, postswithcategories:aPost.postswithcategories,category:aPost.category,popular:topten, sessionUser: user_id})
 }

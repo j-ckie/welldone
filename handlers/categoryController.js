@@ -90,6 +90,6 @@ let categoryId = req.params.categoryId
     }
   }
 
-  res.render('category',{categories:categories,aPost:aPost,category:category,user:user_id})
+  res.render('category',{categories:categories,aPost:aPost,category:category,sessionUser:user_id})
 
 }
