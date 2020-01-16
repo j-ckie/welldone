@@ -52,7 +52,7 @@
             </form>
             <form method="POST" action="/acct/removeFavourite">
                 <input type="hidden" name="favourite_id" value="{{post.notification.id}}">
-                <button class="heart" {{sessionUser.hideRemove}}><i class="heart fa fa-heart-o" ></i></button>
+                <button class="heart" {{sessionUser.hideRemove}}><i class="heart fa fa-heart" ></i></button>
             </form>
           </span> {{notification.length}} likes
       </p>
