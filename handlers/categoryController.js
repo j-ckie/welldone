@@ -14,7 +14,6 @@ module.exports.getCategories = async function (req,res) {
     include:
     [
       {
-
         model: models.PostsWithCategories,
           include:[
           {
