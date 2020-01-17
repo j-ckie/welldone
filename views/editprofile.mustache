@@ -1,12 +1,17 @@
 {{>head}}
-<header class="header">
-        <div>
-            <a href='/'><b>WellDone</b></a>
 
-              <a href="/acct/{{userPage.email}}" id="account-button" style='vertical-align:sub'><i>account</i></a>
-            <form method="POST" action="/logout">
-                <button id="logout-button" style='vertical-align:sub;'><i>logout</i></button>
-            </form>
+<header class="header">
+        <div class="row">
+            <div class="col-4">
+                <a href='/'><b>WellDone</b></a>
+            </div>
+            <div id="sign-out-profile-div" class="col">
+                <a href="/acct/{{userPage.email}}" id="account-button" style='vertical-align:sub'>Account</a>
+                <a href="/aboutus" id="aboutus-button">About Us</a>
+                <form method="POST" action="/logout">
+                    <button id="logout-button" style='vertical-align:sub;'>Log out</button>
+                </form>
+            </div>
         </div>
 </header>
 
