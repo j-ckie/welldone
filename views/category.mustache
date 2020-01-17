@@ -33,10 +33,10 @@
                 <p class="author-text"><a href="/acct/{{email}}">
                     {{name}}</a><span>
                 </span></p>
+                {{/user}}
                 <p class="post-secondary-text text-light">
                 <div class="datesplit">
                     {{createdAt}}</div>
-                {{/user}}
                     <span>
                         <form method="POST" action="/notify">
                             <input type="hidden" name="postId" value="{{id}}" />
