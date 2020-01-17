@@ -1,13 +1,16 @@
 {{>head}}
 
 <header class="header">
-        <div>
-            <a href='/'><b>WellDone</b></a>
-
-              <a href="/acct/{{sessionId.email}}" id="account-button" style='vertical-align:sub'><i>account</i></a>
-            <form method="POST" action="/logout">
-                <button id="logout-button" style='vertical-align:sub;'><i>logout</i></button>
-            </form>
+        <div class="row">
+            <div class="col">
+                <a href='/'><b>WellDone</b></a>
+            </div>
+            <div id="sign-out-profile-div" class="col">
+                <a href="/acct/{{sessionId.email}}" id="account-button" style='vertical-align:sub'>Account</a>
+                <form method="POST" action="/logout">
+                    <button id="logout-button" style='vertical-align:sub;'>Log out</button>
+                </form>
+            </div>
         </div>
 </header>
 
@@ -124,7 +127,7 @@
 
               <!-- edit post -->
 
-                <div class="w3-bar w3-black d-flex">
+                <div class="w3-bar w3-black d-flex" {{userPage.hidden}}>
                   <button class="edit-tab-tabs" id="show-edit-button" onclick="showEdit({{id}})">Edit this post</button>
                   <button style="display:none" id="hide-edit-button" class="edit-tab-tabs" onclick="hideEdit({{id}})">Cancel</button>
                 </div>
