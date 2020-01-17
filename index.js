@@ -67,6 +67,9 @@ app.post("/logout", authenticate, (req, res) => {
     res.redirect("/")
 })
 
+//======== about ========
+app.get("/aboutus", authenticate, (req, res) => res.render("about"));
+
 //Routes
 const articleRouter = require('./routes/article')
 app.use('/article', articleRouter)
@@ -93,7 +96,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 
 //account page
-app.get('/acct', authenticate,(req, res) => {
+app.get('/acct', authenticate, (req, res) => {
     res.render('account')
 })
 // edit profile mustache page
@@ -109,7 +112,7 @@ app.get('/article', (req, res) => {
     res.render('article')
 })
 //home
-app.get('/', authenticate,(req, res) => {
+app.get('/', authenticate, (req, res) => {
     res.render('index')
 })
 
