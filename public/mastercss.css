@@ -2,7 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Baskervville|Raleway:700&display=swap');
 
-
 #desktop-container-outer-space {
   max-width: 1100px;
   border: 1px solid gray;
@@ -148,6 +147,37 @@ header div a:nth-child(2),header div a:nth-child(3){
 
 #sign-out-profile-div {
   justify-content: flex-end;
+}
+
+.home-link-text {
+  font-size: 2rem;
+}
+
+.hamburger-menu {
+  display: none;
+}
+
+.navbar.navbar-1 .navbar-toggler-icon {
+  background-image: url('https://mdbootstrap.com/img/svg/hamburger6.svg?color=#f8f9fa');
+  }
+
+.navbar-light .navbar-toggler {
+  border-color: #f8f9fa !important;
+}
+
+.fa-bars::before {
+  opacity: 0%;
+}
+
+.hamburger-logout {
+  margin-right: 2rem;
+}
+
+.logout-button-hamburger {
+  color: #f8f9fa;
+  background: none;
+  border: none;
+  margin-top: 0rem;
 }
 
 /************************************************* FOOTER *************************************************/
@@ -743,6 +773,15 @@ font-size: .9rem;
 
   .post-image img {
       width:40vw;
+  }
+
+  .desktop-header {
+    display: none !important;
+  }
+
+  .hamburger-menu {
+    display: block !important;
+    text-align: center;
   }
 
 }
