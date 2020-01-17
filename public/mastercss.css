@@ -77,18 +77,18 @@ ul.navbar-nav{
 header div{
   display:flex;
   width:100%;
-  justify-content: space-around;
 }
 
 header div a:nth-child(1){
   text-decoration: none;
   font-size: 2rem;
   padding-top:5px;
-  padding-right:15vw;
 }
+
 header div a:nth-child(1):hover,header div a:nth-child(2):hover,header div a:nth-child(3):hover{
   color:white;
 }
+
 header div a:nth-child(2),header div a:nth-child(3){
   padding-top: 18px;
 }
@@ -98,12 +98,41 @@ header div a:nth-child(2),header div a:nth-child(3){
   background: none;
   border: none;
   margin-top: 1.1rem;
+  transition: all .2s ease-in-out;
+}
+
+#logout-button:hover {
+  color: rgba(255, 215, 189, 0.9);
+}
+
+#logout-button:focus {
+  outline: none;
 }
 
 #account-button {
   color: #f8f9fa;
   background: none;
   border: none;
+  font-size: 1rem;
+  transition: all .2s ease-in-out;
+  margin-top: 0.79rem;
+  margin-right: 1.8rem;
+}
+
+#account-button:hover {
+  color: rgba(255, 215, 189, 0.9);
+}
+
+#account-button-account {
+  color: #f8f9fa;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  transition: all .2s ease-in-out;
+}
+
+#sign-out-profile-div {
+  justify-content: flex-end;
 }
 
 /************************************************* FOOTER *************************************************/
@@ -119,6 +148,7 @@ header div a:nth-child(2),header div a:nth-child(3){
 
 #footer {
   text-align: center;
+  padding-left: 1rem;
 }
 
 .favortie-article-heart {
@@ -329,6 +359,10 @@ font-size: .9rem;
     background: none;
 }
 
+#login-button {
+  outline: none;
+}
+
 .login-textboxes {
     margin-bottom: 1rem;
 }
@@ -383,7 +417,10 @@ font-size: .9rem;
 
 #login-account-button {
   background: none;
-  border: none;
+  color: rgba(255, 215, 189, 0.9);
+  border: 1px solid rgba(255, 215, 189, 0.9);
+  padding: 0.3rem;
+  background: none;
 }
 
 .reg-textboxes {
