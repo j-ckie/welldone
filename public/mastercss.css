@@ -172,6 +172,7 @@ header div a:nth-child(2),header div a:nth-child(3){
 }
 
 /************************************************* CAROUSEL CODE *************************************************/
+
 .abreast .carousel-inner {
     overflow-x: auto;
     white-space: nowrap;
@@ -641,7 +642,7 @@ font-size: .9rem;
     height: 5rem;
 }
 
-.container {
+.container-about {
     width: 100%;
     display: flex;
     flex-flow: column;
