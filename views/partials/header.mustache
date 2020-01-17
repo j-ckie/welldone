@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header desktop-header">
         <div class="row">
             <div class="col-4">
                 <a href='/'><b>WellDone</b></a>
@@ -12,3 +12,31 @@
             </div>
         </div>
 </header>
+
+<!-- MOBILE HEADER -->
+
+<div class="hamburger-menu navbar-1 navbar navbar-light lighten-4 row">
+  <div class="home-link-mobile">
+    <a class="home-link-text" href='/'><b>WellDone</b></a>
+  </div>
+  <div>
+    <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+      aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i
+          class="fas fa-bars fa-1x"></i></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a href="/acct/{{sessionUser.email}}" id="account-button" style='vertical-align:sub'>Account</a>
+        </li>
+        <li class="nav-item">
+          <a href="/aboutus" id="aboutus-button" style="vertical-align:sub">About Us</a>
+        </li>
+        <li class="nav-item">
+          <form class="hamburger-logout" method="POST" action="/logout">
+              <button class="logout-button-hamburger" style='vertical-align:sub;'>Log out</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
