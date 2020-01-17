@@ -5,6 +5,6 @@ self.addEventListener("push", event => {
     console.log("Push received", data)
     self.registration.showNotification(data.title, {
         body: '',
-        icon: 'https://imgur.com/i7nlty1'
+        icon: 'https://i.imgur.com/ZZ7SWwY.png'
     });
 })

@@ -1,5 +1,8 @@
 /************************************************* GLOBAL CODE *************************************************/
 
+@import url('https://fonts.googleapis.com/css?family=Baskervville|Raleway:700&display=swap');
+
+
 #desktop-container-outer-space {
   max-width: 1100px;
   border: 1px solid gray;
@@ -616,7 +619,76 @@ font-size: .9rem;
   margin-top: 0.3rem;
 }
 
+
+/*********** ABOUT US ***************/
+
+.spacer {
+    height: 5rem;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.about-hero h2 {
+    font-family: "Raleway", sans-serif;
+    color: white;
+    margin: 3rem 0;
+    font-size: 4rem;
+}
+
+.team {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 80vw;
+}
+
+.team-member {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.name-image {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.name-image img {
+    width: 15rem;
+    margin-bottom: 2rem;
+}
+
+.name-image h3 {
+    color: white;
+    font-family: "Raleway", sans-serif;
+}
+
+.bio {
+    line-height: 1.5rem;
+    font-size: 1.2rem;
+    font-family: "Baskerville", serif;
+}
+
 /************************************************* MEDIA QUERIES *************************************************/
+
+@media screen and (min-width: 800px) {
+    .about-hero h2 {
+        margin: 5rem 0;
+    }
+
+    .team-member {
+        width: 50%;
+        padding: 1.5rem;
+    }
+}
+
+
 
 @media only screen and (max-width:1400px){
 
