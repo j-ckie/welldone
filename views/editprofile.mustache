@@ -55,16 +55,23 @@
     </div>
 
     <div class="mt-3">
-        <p class="write-post-textarea-name-text" id="change-pic-text">Change profile picture:</p>
+        <p class="write-post-textarea-name-text" id="change-pic-text">Change Profile Picture:</p>
         <form action="/acct/user_image" method="post" enctype="multipart/form-data">
           <input class="choose-file-text" type="file" name="user_image" accept="image/jpeg, image/jpg, image/png">
-          <button id="save-photo-button">Save</button>
+          <button id="save-photo-button">Update Profile Picture</button>
         </form>
         <img id="profile-pic-img" src="{{userPage.user_image}}" class="text-info" alt="Profile picture">
         <form class="" action="/acct/editprofile/updateProfile" method="post">
-          <p class="write-post-textarea-name-text" id="change-pic-text">Change profile Name:</p>
+          <p class="write-post-textarea-name-text" id="change-pic-text">Change Profile Name:</p>
           <input class="reg-textboxes" type="text" name="name" placeholder="Full name" />
-          <button id="update-profile-button">Update Profile</button>
+          <button id="update-profile-button">Update Profile Name</button>
+        </form>
+        <form class="" action="/acct/editprofile/updateProfilePassword" method="post">
+          <p class="write-post-textarea-name-text" id="change-pic-text">Change Password:</p>
+          <input class="reg-textboxes" type="password" name="password" placeholder="Current Password" />
+          <input class="reg-textboxes" type="password" name="newPassword" placeholder="New Password" />
+          <input class="reg-textboxes" type="password" name="confirmPassword" placeholder="Confirm Password" />
+          <button id="update-profile-button">Update Password</button>
         </form>
     </div>
 
