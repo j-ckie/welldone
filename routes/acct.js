@@ -41,6 +41,8 @@ router.post('/editprofile', authenticate, AcctController.editProfile)
 
 router.post('/editprofile/updateProfile', authenticate, AcctController.updateProfile)
 
+router.post('/editprofile/updateProfilePassword', authenticate, AcctController.updateProfilePassword)
+
 router.get('/:userEmail', authenticate,AcctController.getThePostsandFavourites)
 
 router.post('/addPost', post_image_upload.single('post_image'), authenticate,AcctController.postToYourPosts)

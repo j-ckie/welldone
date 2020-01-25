@@ -2,6 +2,8 @@ const models = require('../models')
 const sequelize = require("sequelize");
 const Op = sequelize.Op;
 const fs = require('fs')
+const bcrypt = require("bcrypt");
+const SALT_ROUNDS = 10;
 
 
 //Grabs Users Posts and Favourites then sends them to Page
@@ -232,7 +234,7 @@ module.exports.updateFromYourPosts = (req, res, next) => {
   //test image for update
   if (req.file != undefined) {
     const host = req.hostname;
-    const filePath = './post_images/' + req.file.filename;
+    const filePath = '/post_images/' + req.file.filename;
 
     models.PostImage.update({
       imageURL: filePath
@@ -350,6 +352,36 @@ module.exports.updateProfile = async function (req, res) {
       where: {
         id: user_id.id
       }
+    })
+  }
+  res.redirect('back')
+}
+
+//update profile password
+module.exports.updateProfilePassword = async function (req,res) {
+  let user_id = await models.Users.findOne({
+    where: {
+      email: req.session.email
+    }
+  })
+
+  let password = req.body.password,
+      newPassword = req.body.newPassword
+      confirmPassword = req.body.confirmPassword
+
+  if(newPassword == confirmPassword) {
+    bcrypt.compare(password, user_id.password)
+    .then( success => {
+      bcrypt.hash(newPassword, SALT_ROUNDS)
+      .then(hash => {
+        models.Users.update({
+          password: hash
+        },{
+          where: {
+            id: user_id.id
+          }
+        })
+      })
     })
   }
   res.redirect('back')
